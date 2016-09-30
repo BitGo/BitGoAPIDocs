@@ -1,27 +1,16 @@
----
+* * *
 
-title: BitGo APIレファレンス
+タイトル： BitGo APIレファレンス
 
-language_tabs:
-- javascript
-- shell
+language_tabs: - javascript - shell
 
-toc_footers:
-- <a href="https://www.bitgo.com/" target="_new">BitGoウェブサイト</a>
-- <a href="https://www.bitgo.com/terms" target="_new">サービス契約</a>
-- <a href="https://www.bitgo.com/settings" target="_new">BitGo 設定 (APIアクセストークンを取得)</a>
-- <a>言語</a>
-- <a href="../index.html">- English　英語</a>
-- <a href="index.html">- Japanese 日本語</a>
-- <a href="../zh-CN/index.html">- Chinese (Simplified) 简体中文</a>
+toc_footers: - <a href="https://www.bitgo.com/" target="_new">BitGoウェブサイト</a> - <a href="https://www.bitgo.com/terms" target="_new">サービス契約</a> - <a href="https://www.bitgo.com/settings" target="_new">BitGo 設定 (APIアクセストークンを取得)</a> - <a>言語</a> - [- English　英語](index.html) - [- Japanese 日本語](ja/index.html) - [- Chinese (Simplified) 简体中文](zh-CN/index.html)
 
----
+* * *
 
-# Getting Started はじめに
+# Getting Started はじめに<aside class="info"> 私達の開発者プラットフォームが立ち上がりました。インテグレーション支援やアクセストークン、追加情報にサインアップするには
 
-<aside class="info">
-私達の開発者プラットフォームが立ち上がりました。インテグレーション支援やアクセストークン、追加情報にサインアップするには<a href="https://www.bitgo.com/platform">BitGoプラットフォームポータル</a>にお越しください。
-</aside> 
+[BitGoプラットフォームポータル](https://www.bitgo.com/platform)にお越しください。 </aside> 
 
 ### Overview 概要
 
@@ -46,7 +35,7 @@ BitGo SDKは以下の操作を可能にします：
 
 詳細については、<a href="https://www.bitgo.com/p2sh_safe_address" target="_new">BitGoホワイトペーパー</a>をお読みください。
 
-### HD Wallets HDウォレット
+### HD Wallets, HDウォレット
 
 全てのBitGoウォレットは階層的決定性ウォレット（別名HDウォレット）です。 HDウォレットはビットコイン<a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" target="_new">BIP32規格</a>を用いて実装されています。 よって、BitGo' HDウォレットは個別の鍵というより「キーチェーン」から構築されており、2つの特徴的なセキュリティとプライバシー強化の機能を提供します。
 
@@ -174,7 +163,7 @@ curl http://$BITGO_EXPRESS_HOST:3080/api/v1/ping
 
 BitGo Express REST APIは、BitGoを利用したいがネイティブのBitGo SDKのない言語環境で開発している開発者向けのライトウェイトサービスです。
 
-BitGo Expressはあなたのデータセンターのサービスとして稼働し、BitGoに送信する前の部分的なトランザクションの署名など、あなた自身の鍵を伴うクライアントサイドの操作を処理します。 これにより、あなたの鍵は決してネットワーク外に出ることなく、BitGoの方で表示されることはありません。 BitGo Ecpressは、標準のBitGo REST APIをプロクシサーバーに送ることも出来、単一のREST APIを通じBitGoへの統一インターフェースを提供します。
+BitGo Expressはあなたのデータセンターのサービスとして稼働し、BitGoに送信する前の部分的なトランザクションの署名など、あなた自身の鍵を伴うクライアントサイドの操作を処理します。 これにより、あなたの鍵は決してネットワーク外に出ることなく、BitGoの方で表示されることはありません。 BitGo Expressは、標準のBitGo REST APのプロクシとして振舞うことも出来、単一のREST APIを通じBitGoへの統一インターフェースを提供します。
 
 BitGo Expressを利用するには:
 
@@ -245,15 +234,15 @@ bitgo.session({}, function callback(err, session) {
 
 ### Token Parameters トークンパラメーター
 
-| パラメーター         | 説明                                                                                                                                                |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Label          | 後で無効にすることを選択できるようトークンを特定するために用いられるラベル                                                                                                             |
-| Duration       | トークンが有効であり続ける秒数                                                                                                                                   |
-| Spending Limit | The token will come unlocked for a spending limit up this amount in BTC. Do not attempt to unlock the token via API as this will reset the limit. |
-| IP Addresses   | Lock down the token such that BitGo will only accept it from certain IP addresses.                                                                |
-| Permissions    | Auth Scope that the token will be created with                                                                                                    |
+| パラメーター         | 説明                                                                           |
+| -------------- | ---------------------------------------------------------------------------- |
+| Label          | 後で無効にすることを選択できるようトークンを特定するために用いられるラベル                                        |
+| Duration       | トークンが有効であり続ける秒数                                                              |
+| Spending Limit | トークンは、BTC建ての支出制限の額までのアンロックされた状態で来ます。制限がリセットされるので、API経由でトークンをアンロックしようとしないで下さい |
+| IP Addresses   | BitGoが特定のIPアドレスからのみ受け付けるよう、トークンをロックダウンします                                    |
+| Permissions    | トークンが生成される際の認証の範囲                                                            |
 
-## Current User Profile
+## Current User Profile 現在のユーザープロファイル
 
 ```shell
 curl -X GET -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -269,13 +258,13 @@ bitgo.me({}, function callback(err, user) {
 });
 ```
 
-Get information about the current authenticated user.
+現在認証されているユーザーについて情報を得る。
 
-### HTTP Request
+### HTTP Request HTTPリクエスト
 
 `GET /api/v1/user/me`
 
-> Example User Model response
+> ユーザモデルの応答の例
 
 ```json
 {
@@ -292,13 +281,13 @@ Get information about the current authenticated user.
 }
 ```
 
-### Response
+### 応答
 
-Returns a User Model object for the currently authenticated user.
+現在認証されているユーザーのユーザモデルのオブジェクトを返す。
 
-## Login
+## Login　ログイン　
 
-Get a token for first-party access to the BitGo API. First-party access is only intended for users accessing their own BitGo accounts. For 3rd party access to the BitGo API on behalf of another user, please see **Partner Authentication**.
+BitGo APIへのファーストパーティアクセスのためのトークンを取得します。 ファーストパーティアクセスは、自身のBitGoアカウントへアクセスしているユーザーのみ向けです。 別のユーザーの代わりでのBitGo APIへサードパーティアクセスの場合、**パートナー認証**を参照下さい。
 
 ```shell
 EMAIL="janedoe@bitgo.com"
@@ -310,7 +299,7 @@ curl -X POST \
 -d "{\"email\": \"$EMAIL\", \"password\": \"$HMAC\", \"otp\": \"0000000\"}" \
 https://test.bitgo.com/api/v1/user/login
 
-Note: The rest of the shell examples the share variable assume the shell variable ACCESS_TOKEN contains the access token.
+注意 : 以降のシェルの例では、シェル変数ACCESS_TOKENがアクセストークンを含んでいることを前提とします。
 ```
 
 ```javascript
@@ -326,20 +315,20 @@ bitgo.authenticate({ username: user, password: password, otp: otp }, function ca
 });
 ```
 
-### HTTP Request
+### HTTP Request HTTPリクエスト
 
 `POST /api/v1/user/login`
 
-### BODY Parameters
+### BODY Parameters BODYパラメーター
 
-| Parameter  | Type    | Required | Description                                                                  |
-| ---------- | ------- | -------- | ---------------------------------------------------------------------------- |
-| email      | string  | YES      | The email address of the user                                                |
-| password   | string  | YES      | The password of the user                                                     |
-| otp        | string  | YES      | The 2-factor-authentication token (Authy token).                             |
-| extensible | boolean | NO       | True if the session is supposed to be extensible beyond a one-hour duration. |
+| パラメーター     | 種類    | 必須か | 説明                      |
+| ---------- | ----- | --- | ----------------------- |
+| email      | 文字列   | YES | ユーザのメールアドレス             |
+| password   | 文字列   | YES | ユーザのパスワード               |
+| otp        | 文字列   | YES | 2要素認証トークン(Authyトークン)。   |
+| extensible | ブーリアン | NO  | セッションが１時間よりも延長可能である場合に真 |
 
-> Example Response
+> 応答の例
 
 ```json
 {
@@ -359,24 +348,24 @@ bitgo.authenticate({ username: user, password: password, otp: otp }, function ca
 }
 ```
 
-### Response
+### Response 応答
 
-Returns a token for use with the API.
+APIで使用するトークンを返す。
 
-The token must be added as a HTTP header to all API calls in the HTTP "Authorization" header:
+トークンはHTTP"Authorization"ヘッダーにある全てのAPIコールへへ、HTTPヘッダーとして追加されなければなりません。
 
-`Authorization: Bearer <your token goes here>`
+`Authorization: Bearer <あなたのトークンはここ>`
 
-### Errors
+### Errors　エラー
 
-| Response         | Description                                       |
-| ---------------- | ------------------------------------------------- |
-| 400 Bad Request  | The request parameters were missing or incorrect. |
-| 401 Unauthorized | The authentication parameters did not match.      |
+| 応答               | 説明                    |
+| ---------------- | --------------------- |
+| 400 Bad Request  | 要求パラメーターが見つからないか正しくない |
+| 401 Unauthorized | 認証パラメーターが一致しない        |
 
-## Logout
+## Logout ログアウト
 
-Logout of the BitGo service.
+BitGoサービスからのログアウト。
 
 ```shell
 curl -X GET -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -392,21 +381,21 @@ bitgo.logout({}, function callback(err) {
 });
 ```
 
-### HTTP Request
+### HTTP Request HTTPリクエスト
 
 `GET /api/v1/user/logout`
 
-### BODY Parameters
+### BODY Parameters BODYパラメーター
 
-None
+なし
 
-### Response
+### Response 応答
 
-None
+なし
 
-## Session Information
+## Session Information セッション情報
 
-Get information about the current session access token
+現在のセッションのアクセストークンに関する情報を取得する
 
 ```shell
 curl -X GET -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -424,7 +413,7 @@ bitgo.session({}, function callback(err, session) {
 });
 ```
 
-> Example response
+> 応答の例
 
     { "client": "bitgo",
       "user": "5458141599f715232500000530a94fd2",
@@ -449,24 +438,24 @@ bitgo.session({}, function callback(err, session) {
     }
     
 
-### HTTP Request
+### HTTP Request HTTPリクエスト
 
 `GET /api/v1/user/session`
 
-### Response
+### Response 応答
 
-| Field   | Description                                                                                  |
-| ------- | -------------------------------------------------------------------------------------------- |
-| client  | OAuth client ID where the user token was obtained                                            |
-| user    | BitGo user ID                                                                                |
-| expires | Timestamp which the login session is good until                                              |
-| scope   | List of allowed privileges for this session token                                            |
-| origin  | Origin hostname where token was created, if the session was initiated in the browser         |
-| unlock  | Available if session is unlocked. Shows number of transactions and expiry time of the unlock |
+| フィールド   | 説明                                             |
+| ------- | ---------------------------------------------- |
+| client  | ユーザートークンが取得された所のOAuthクライアントID                  |
+| user    | BitGo ユーザー ID                                  |
+| expires | ログインセッションがその時間まで有効なタイムスタンプ                     |
+| scope   | このセッショントークンについて許可されている権限のリスト                   |
+| origin  | ブラウザでセッションが開始された場合、トークンが作成されたオリジンホスト名          |
+| unlock  | セッションがアンロックされた時に利用可能。トランザクションの回数とアンロックの有効期限を示す |
 
-## Send OTP
+## Send OTP ワンタイムパスワードを送信
 
-Sends the one time password (2nd Factor Auth) token to the user, which can be used for login / unlock.
+ワンタイムパスワード(第二因子認証) トークンをユーザーに送信します。ログイン/アンロックに使用することができます。
 
 ```shell
 curl -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -484,11 +473,11 @@ bitgo.sendOTP({forceSMS: true}, function callback(err) {
 });
 ```
 
-### HTTP Request
+### HTTP Request HTTPリクエスト 
 
 `POST /api/v1/user/sendotp`
 
-### BODY Parameters
+### BODY Parameters BODYパラメーター
 
 | Name     | Type    | Required | Description                                                         |
 | -------- | ------- | -------- | ------------------------------------------------------------------- |

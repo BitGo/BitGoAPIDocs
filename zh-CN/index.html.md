@@ -1,32 +1,20 @@
----
+* * *
+
 title: BitGo API Reference
 
-language_tabs:
-  - javascript
-  - shell
+language_tabs: - javascript - shell
 
-toc_footers:
- - <a href="https://www.bitgo.com/" target="_new">BitGo Website</a>
- - <a href="https://www.bitgo.com/terms" target="_new">Services Agreement</a>
- - <a href="https://www.bitgo.com/settings" target="_new">BitGo Settings (Get API Access Token)</a>
- - <a>Languages</a>
- - <a href="../index.html">- English</a>
- - <a href="../ja/index.html">- Japanese 日本語</a>
- - <a href="index.html">- Chinese (Simplified) 简体中文</a>
- 
----
+toc_footers: - <a href="https://www.bitgo.com/" target="_new">BitGo Website</a> - <a href="https://www.bitgo.com/terms" target="_new">Services Agreement</a> - <a href="https://www.bitgo.com/settings" target="_new">BitGo Settings (Get API Access Token)</a> - <a>Languages</a> - [- English](index.html) - [- Japanese 日本語](ja/index.html) - [- Chinese (Simplified) 简体中文](zh-CN/index.html)
 
-# Getting Started
+* * *
 
-<aside class="info">
-Our developer platform is live. Visit the <a href="https://www.bitgo.com/platform">BitGo Platform Portal</a>  to sign up for integration support, access tokens and more information.
-</aside>
+# Getting Started<aside class="info"> Our developer platform is live. Visit the 
+
+[BitGo Platform Portal](https://www.bitgo.com/platform) to sign up for integration support, access tokens and more information. </aside> 
 
 ### Overview
 
-BitGo provides a simple and robust REST-ful API as well as a simple
-client javascript SDK to integrate multi-signature technology into
-your existing bitcoin applications and services.
+BitGo provides a simple and robust REST-ful API as well as a simple client javascript SDK to integrate multi-signature technology into your existing bitcoin applications and services.
 
 The BitGo SDK enables the following operations:
 
@@ -39,50 +27,31 @@ The BitGo SDK enables the following operations:
 
 ### Multi-Signature Wallets
 
-The primary advantage of multi-signature wallets is the ability for multiple
-machines and people to work together to approve a given transaction.  Without
-multiple signatures on a transaction, all credentials to approve a
-transaction must reside with a single person on a machine.  If that person,
-or machine is compromised by an attacker, all of your bitcoin can be taken.
+The primary advantage of multi-signature wallets is the ability for multiple machines and people to work together to approve a given transaction. Without multiple signatures on a transaction, all credentials to approve a transaction must reside with a single person on a machine. If that person, or machine is compromised by an attacker, all of your bitcoin can be taken.
 
-Traditionally, it has been so difficult to secure these single person / single
-machine systems, that many vendors have opted to simply use "cold storage" and
-move Bitcoin offline entirely.
+Traditionally, it has been so difficult to secure these single person / single machine systems, that many vendors have opted to simply use "cold storage" and move Bitcoin offline entirely.
 
-Multi-signature wallets offer all the flexibility you would expect from a modern
-Bitcoin address without having to take your bitcoin offline.  The BitGo API
-enables you to use multi-signature features in your own applications so you can harness
-the full flexibility of multiple users, cosigners and state-of-the-art
-fraud detection services to protect against loss and theft.
+Multi-signature wallets offer all the flexibility you would expect from a modern Bitcoin address without having to take your bitcoin offline. The BitGo API enables you to use multi-signature features in your own applications so you can harness the full flexibility of multiple users, cosigners and state-of-the-art fraud detection services to protect against loss and theft.
 
 For more information, please read the <a href="https://www.bitgo.com/p2sh_safe_address" target="_new">BitGo Whitepaper</a>.
 
 ### HD Wallets
 
-All BitGo wallets are hierarchical deterministic wallets - also known as
-"HD Wallets".  HD Wallets are implemented using the bitcoin
-<a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" target="_new">BIP32 standard</a>.  As such, BitGo&#39;s HD Wallets are built from 'keychains' rather
-than from individual keys, and offer two distinct security and privacy
-enhancing features:
+All BitGo wallets are hierarchical deterministic wallets - also known as "HD Wallets". HD Wallets are implemented using the bitcoin <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" target="_new">BIP32 standard</a>. As such, BitGo's HD Wallets are built from 'keychains' rather than from individual keys, and offer two distinct security and privacy enhancing features:
 
- *  More secure backups
+* More secure backups
+    
+    Because keychains can be backed up with a single secret, a wallet can use many public keys all of which are maintained by a single backup key.
 
-    Because keychains can be backed up with a single secret, a wallet can use
-    many public keys all of which are maintained by a single backup key.
-
- *  Blockchain Privacy
-
-    With HD Wallets, applications can create new keys with every transaction
-    such that no two transactions ever appear to come from the same wallet.
-    This protects the wallet holder from revealing the true size of the wallet.
+* Blockchain Privacy
+    
+    With HD Wallets, applications can create new keys with every transaction such that no two transactions ever appear to come from the same wallet. This protects the wallet holder from revealing the true size of the wallet.
 
 ## Software Development Kit
 
-The BitGo API provides developers with a means to create and manage multi-signature wallets, manipulate their policies and interact with the Bitcoin network.
-However, several sensitive operations, such as the creation of user private keys and signing of transactions, are required to be performed client-side.
+The BitGo API provides developers with a means to create and manage multi-signature wallets, manipulate their policies and interact with the Bitcoin network. However, several sensitive operations, such as the creation of user private keys and signing of transactions, are required to be performed client-side.
 
-For this reason, we provide and recommend the use of our <a href="https://github.com/BitGo/BitGoJS" target="_new">Software Development Kit (SDK)</a>, which implements these client side wallet features and interfaces with our APIs.
-In practice, developers contemplating use of the BitGo API will likely be using both the BitGo client-side SDK as well as the BitGo REST service.
+For this reason, we provide and recommend the use of our <a href="https://github.com/BitGo/BitGoJS" target="_new">Software Development Kit (SDK)</a>, which implements these client side wallet features and interfaces with our APIs. In practice, developers contemplating use of the BitGo API will likely be using both the BitGo client-side SDK as well as the BitGo REST service.
 
 Currently, our SDK is available in Javascript and runs in either node.js or a browser. If you are using a non-supported programming language, see the "BitGo Express REST API" section of the documentation for how to setup BitGo Express, or contact us for further help.
 
@@ -115,16 +84,16 @@ bitgo.ping({}, function(err, res) {
 });
 ```
 
-To import the library, you simply require the `src/index.js` file.
-You can then initialize the SDK by doing `BitGoJS.BitGo()`.
+To import the library, you simply require the `src/index.js` file. You can then initialize the SDK by doing `BitGoJS.BitGo()`.
 
-Parameter | Value
---------- | -----
-useproduction | Whether or not to connect to production. Defaults to false.
+| Parameter     | Value                                                       |
+| ------------- | ----------------------------------------------------------- |
+| useproduction | Whether or not to connect to production. Defaults to false. |
 
 The Javascript SDK supports both promises and callbacks. If you pass in a callback as the last argument, it will return callback-style. Otherwise, a promise will be returned.
 
 ### Important notes on test environment
+
 Our SDK and examples default to the BitGo test environment which is connected to the Bitcoin TestNet. Please refer to the [Test Environments](#bitgo-api-endpoints) section for further details.
 
 ## BitGo API Endpoints
@@ -143,6 +112,7 @@ bitgo.ping({}, function(err, res) {
   }
 });
 ```
+
 ```shell
 TEST_ENDPOINT='https://test.bitgo.com/api/v1'
 PROD_ENDPOINT='https://www.bitgo.com/api/v1'
@@ -156,35 +126,36 @@ All responses are of content-type `application/json`
 
 > Example Response
 
-```
-{
-    "status": "service is ok!",
-    "environment": "BitGo Test"
-}
-```
+    {
+        "status": "service is ok!",
+        "environment": "BitGo Test"
+    }
+    
 
 ### Production Environment
+
 The BitGo production endpoint is live and used by partners and our own web application on www.bitgo.com.
 
 * Production Site: https://www.bitgo.com/
 * Production API: https://www.bitgo.com/api/v1
 
 ### Test Environment
-The BitGo test environment is used by default in our examples and SDK. It is entirely separate from BitGo production and there is no overlap in data and accounts.
-You will need to create accounts at <a href="https://test.bitgo.com/" target="_new">test.bitgo.com</a>.
+
+The BitGo test environment is used by default in our examples and SDK. It is entirely separate from BitGo production and there is no overlap in data and accounts. You will need to create accounts at <a href="https://test.bitgo.com/" target="_new">test.bitgo.com</a>.
 
 * BitGo Test Site: https://test.bitgo.com/
 * Test Environment API: https://test.bitgo.com/api/v1
 
 On the test environment only, you can use `0000000` in place of the OTP when authenticating with BitGo (for the purpose of automated tests).
 
-This environment is connected to the Bitcoin TestNet which you can use <a href="http://tbtc.blockr.io/" target="_new">Blockr</a> to navigate.
-To get some test coins, try a <a href="http://tpfaucet.appspot.com/" target="_new">faucet</a> or talk to us.
+This environment is connected to the Bitcoin TestNet which you can use <a href="http://tbtc.blockr.io/" target="_new">Blockr</a> to navigate. To get some test coins, try a <a href="http://tpfaucet.appspot.com/" target="_new">faucet</a> or talk to us.
 
 ## BitGo Express REST API
+
 ```shell
 ./bitgo-express --debug --port 3080 --env test --bind localhost
 ```
+
 ```shell
 BITGO_EXPRESS_HOST='localhost'
 curl http://$BITGO_EXPRESS_HOST:3080/api/v1/ping
@@ -192,8 +163,7 @@ curl http://$BITGO_EXPRESS_HOST:3080/api/v1/ping
 
 The BitGo Express REST API is a lightweight service for developers that want to take advantage of BitGo but are developing in a language without a native BitGo SDK.
 
-BitGo Express runs as a service in your own datacenter, and handles the client-side operations involving your own keys, such as partially signing transactions before submitting to BitGo.
-This ensures your keys never leave your network, and are not seen by BitGo. BitGo Express can also proxy the standard BitGo REST APIs, providing a unified interface to BitGo through a single REST API.
+BitGo Express runs as a service in your own datacenter, and handles the client-side operations involving your own keys, such as partially signing transactions before submitting to BitGo. This ensures your keys never leave your network, and are not seen by BitGo. BitGo Express can also proxy the standard BitGo REST APIs, providing a unified interface to BitGo through a single REST API.
 
 To use BitGo Express:
 
@@ -215,36 +185,26 @@ To use BitGo Express:
 }
 ```
 
-All errors follow general REST principles.  Included in the body of any
-error response (e.g. non-200 status code) will be an error object of the
-form:
+All errors follow general REST principles. Included in the body of any error response (e.g. non-200 status code) will be an error object of the form:
 
-Parameter | Value
---------- | -----
-status|The HTTP error status returned
-error|The detailed description of the error
+| Parameter | Value                                 |
+| --------- | ------------------------------------- |
+| status    | The HTTP error status returned        |
+| error     | The detailed description of the error |
 
 # User Authentication
 
 BitGo's authentication is via the "Authorization" header, which allows the caller to specify an access token.
 
-Access tokens are used to maintain a session and are created via the password login (requires OTP) or Oauth login paths.
-Typical access tokens are valid for 1 hour and require an OTP unlock to spend funds.
+Access tokens are used to maintain a session and are created via the password login (requires OTP) or Oauth login paths. Typical access tokens are valid for 1 hour and require an OTP unlock to spend funds.
 
 By default, tokens are bound to a single IP address and valid for 60 minutes, after which time the user must re-authenticate.
 
-For certain API calls, a valid session token is not sufficient. To access these API calls, the session must be explicitly unlocked using the Unlock API, using an additional 2-factor code.
-A single unlock call enables the user to do one transaction of any size (still subject to wallet policy), or any number of transactions up to an internal BitGo-managed quota.
-
-<aside class="info">
-APIs which require unlocking will include needsUnlock=true in their response, if the session is currently locked, or
-if the current unlock session has insufficient transaction quota remaining.
-</aside>
+For certain API calls, a valid session token is not sufficient. To access these API calls, the session must be explicitly unlocked using the Unlock API, using an additional 2-factor code. A single unlock call enables the user to do one transaction of any size (still subject to wallet policy), or any number of transactions up to an internal BitGo-managed quota.<aside class="info"> APIs which require unlocking will include needsUnlock=true in their response, if the session is currently locked, or if the current unlock session has insufficient transaction quota remaining. </aside> 
 
 Alternatively, access tokens created for API purposes can be unlocked indefinitely up to a certain amount, but must be bound to certain scopes when created.
 
 ## API Access Tokens
-
 
 ```shell
 ACCESS_TOKEN='DeveloperAccessToken'
@@ -253,6 +213,7 @@ curl -X GET -H "Authorization: Bearer $ACCESS_TOKEN" \
 -H "Content-Type: application/json" \
 https://test.bitgo.com/api/v1/user/session
 ```
+
 ```javascript
 var bitgo = new BitGoJS.BitGo({accessToken:'DeveloperAccessToken'});
 bitgo.session({}, function callback(err, session) {
@@ -265,20 +226,21 @@ bitgo.session({}, function callback(err, session) {
 
 For the purposes of automation, developers can request long-lived access tokens which do not expire after 1 hour and are unlocked for a certain amount in funds.
 
-1. Access the BitGo dashboard and head into the "Settings" page.
-2. Click on the "Developer" tab.
-3. You can now create a long-lived access token.
+  1. Access the BitGo dashboard and head into the "Settings" page.
+  2. Click on the "Developer" tab.
+  3. You can now create a long-lived access token.
 
 The token will come unlocked by default with your specified spending limit. Do not attempt to unlock the token again via API as this will reset the unlock.
 
 ### Token Parameters
-Parameter | Description
--------- | -----------
-Label | A label used to identify the token so that you can choose to revoke it later.
-Duration | Time in seconds which the token will be valid for.
-Spending Limit | The token will come unlocked for a spending limit up this amount in BTC. Do not attempt to unlock the token via API as this will reset the limit.
-IP Addresses | Lock down the token such that BitGo will only accept it from certain IP addresses.
-Permissions | Auth Scope that the token will be created with
+
+| Parameter      | Description                                                                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Label          | A label used to identify the token so that you can choose to revoke it later.                                                                     |
+| Duration       | Time in seconds which the token will be valid for.                                                                                                |
+| Spending Limit | The token will come unlocked for a spending limit up this amount in BTC. Do not attempt to unlock the token via API as this will reset the limit. |
+| IP Addresses   | Lock down the token such that BitGo will only accept it from certain IP addresses.                                                                |
+| Permissions    | Auth Scope that the token will be created with                                                                                                    |
 
 ## Current User Profile
 
@@ -323,13 +285,9 @@ Get information about the current authenticated user.
 
 Returns a User Model object for the currently authenticated user.
 
-
-
 ## Login
 
-Get a token for first-party access to the BitGo API.  First-party access is only intended for users
-accessing their own BitGo accounts.  For 3rd party access to the BitGo API on behalf of another
-user, please see **Partner Authentication**.
+Get a token for first-party access to the BitGo API. First-party access is only intended for users accessing their own BitGo accounts. For 3rd party access to the BitGo API on behalf of another user, please see **Partner Authentication**.
 
 ```shell
 EMAIL="janedoe@bitgo.com"
@@ -343,6 +301,7 @@ https://test.bitgo.com/api/v1/user/login
 
 Note: The rest of the shell examples the share variable assume the shell variable ACCESS_TOKEN contains the access token.
 ```
+
 ```javascript
 var useTestnet = false;
 var bitgo = new Bitgo(useTestnet);
@@ -362,12 +321,12 @@ bitgo.authenticate({ username: user, password: password, otp: otp }, function ca
 
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-email|string|YES|The email address of the user
-password|string|YES|The password of the user
-otp|string|YES|The 2-factor-authentication token (Authy token).
-extensible | boolean | NO | True if the session is supposed to be extensible beyond a one-hour duration.
+| Parameter  | Type    | Required | Description                                                                  |
+| ---------- | ------- | -------- | ---------------------------------------------------------------------------- |
+| email      | string  | YES      | The email address of the user                                                |
+| password   | string  | YES      | The password of the user                                                     |
+| otp        | string  | YES      | The 2-factor-authentication token (Authy token).                             |
+| extensible | boolean | NO       | True if the session is supposed to be extensible beyond a one-hour duration. |
 
 > Example Response
 
@@ -393,16 +352,16 @@ extensible | boolean | NO | True if the session is supposed to be extensible bey
 
 Returns a token for use with the API.
 
-The token must be added as a HTTP header to all API calls in the HTTP
-"Authorization" header:
+The token must be added as a HTTP header to all API calls in the HTTP "Authorization" header:
 
 `Authorization: Bearer <your token goes here>`
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
+
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
 
 ## Logout
 
@@ -412,6 +371,7 @@ Logout of the BitGo service.
 curl -X GET -H "Authorization: Bearer $ACCESS_TOKEN" \
 https://test.bitgo.com/api/v1/user/logout
 ```
+
 ```javascript
 bitgo.logout({}, function callback(err) {
   if (err) {
@@ -443,6 +403,7 @@ curl -X GET -H "Authorization: Bearer $ACCESS_TOKEN" \
 -H "Content-Type: application/json" \
 https://test.bitgo.com/api/v1/user/session
 ```
+
 ```javascript
 bitgo.session({}, function callback(err, session) {
   if (err) {
@@ -454,29 +415,28 @@ bitgo.session({}, function callback(err, session) {
 
 > Example response
 
-```
-{ "client": "bitgo",
-  "user": "5458141599f715232500000530a94fd2",
-  "scope":
-   [ "user_manage",
-     "openid",
-     "profile",
-     "wallet_create",
-     "wallet_manage_all",
-     "wallet_approve_all",
-     "wallet_spend_all",
-     "wallet_edit_all",
-     "wallet_view_all" ],
-  "expires": "2015-01-21T02:18:11.534Z",
-  "origin": "test.bitgo.com",
-  "unlock":
-      { "time": "2015-01-21T01:20:25.366Z",
-        "expires": "2015-01-21T01:30:25.366Z",
-        "txCount": 0,
-        "txValue": 0
-      }
-}
-```
+    { "client": "bitgo",
+      "user": "5458141599f715232500000530a94fd2",
+      "scope":
+       [ "user_manage",
+         "openid",
+         "profile",
+         "wallet_create",
+         "wallet_manage_all",
+         "wallet_approve_all",
+         "wallet_spend_all",
+         "wallet_edit_all",
+         "wallet_view_all" ],
+      "expires": "2015-01-21T02:18:11.534Z",
+      "origin": "test.bitgo.com",
+      "unlock":
+          { "time": "2015-01-21T01:20:25.366Z",
+            "expires": "2015-01-21T01:30:25.366Z",
+            "txCount": 0,
+            "txValue": 0
+          }
+    }
+    
 
 ### HTTP Request
 
@@ -484,14 +444,14 @@ bitgo.session({}, function callback(err, session) {
 
 ### Response
 
-Field | Description
------ | -----------
-client | OAuth client ID where the user token was obtained
-user | BitGo user ID
-expires | Timestamp which the login session is good until
-scope | List of allowed privileges for this session token
-origin | Origin hostname where token was created, if the session was initiated in the browser
-unlock | Available if session is unlocked. Shows number of transactions and expiry time of the unlock
+| Field   | Description                                                                                  |
+| ------- | -------------------------------------------------------------------------------------------- |
+| client  | OAuth client ID where the user token was obtained                                            |
+| user    | BitGo user ID                                                                                |
+| expires | Timestamp which the login session is good until                                              |
+| scope   | List of allowed privileges for this session token                                            |
+| origin  | Origin hostname where token was created, if the session was initiated in the browser         |
+| unlock  | Available if session is unlocked. Shows number of transactions and expiry time of the unlock |
 
 ## Send OTP
 
@@ -503,6 +463,7 @@ curl -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
 -H "Content-Type: application/json" \
 https://test.bitgo.com/api/v1/user/sendotp
 ```
+
 ```javascript
 bitgo.sendOTP({forceSMS: true}, function callback(err) {
   if (err) {
@@ -518,9 +479,9 @@ bitgo.sendOTP({forceSMS: true}, function callback(err) {
 
 ### BODY Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-forceSMS | boolean | NO | Use SMS to send the OTP to the user, even if they have Authy set up
+| Name     | Type    | Required | Description                                                         |
+| -------- | ------- | -------- | ------------------------------------------------------------------- |
+| forceSMS | boolean | NO       | Use SMS to send the OTP to the user, even if they have Authy set up |
 
 ### Response
 
@@ -528,8 +489,7 @@ None
 
 ## Unlock
 
-Unlock the current session, which is required for certain other
-sensitive API calls.
+Unlock the current session, which is required for certain other sensitive API calls.
 
 ```shell
 curl -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
@@ -537,6 +497,7 @@ curl -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
 -H "Content-Type: application/json" \
 https://test.bitgo.com/api/v1/user/unlock
 ```
+
 ```javascript
 bitgo.unlock({otp: otp}, function callback(err) {
   if (err) {
@@ -552,20 +513,21 @@ bitgo.unlock({otp: otp}, function callback(err) {
 
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-otp | string | YES | An Authy OTP code for the account
-duration | number | NO | Desired duration of the unlock in seconds (default=600, max=3600)
+| Parameter | Type   | Required | Description                                                       |
+| --------- | ------ | -------- | ----------------------------------------------------------------- |
+| otp       | string | YES      | An Authy OTP code for the account                                 |
+| duration  | number | NO       | Desired duration of the unlock in seconds (default=600, max=3600) |
 
 ### Response
 
 None
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect
-401 Unauthorized | The authentication parameters did not match, or OTP code was incorrect
+
+| Response         | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect                       |
+| 401 Unauthorized | The authentication parameters did not match, or OTP code was incorrect |
 
 ## Lock
 
@@ -591,48 +553,34 @@ bitgo.lock({}, function callback(err) {
 None
 
 ### Errors
-Response | Description
--------- | -----------
-401 Unauthorized | The authentication parameters did not match
+
+| Response         | Description                                 |
+| ---------------- | ------------------------------------------- |
+| 401 Unauthorized | The authentication parameters did not match |
 
 ## Partner Authentication
 
-3rd party applications using the BitGo API use OAuth to authenticate through BitGo.
-Please contact BitGo for a partner ID and more information.
+3rd party applications using the BitGo API use OAuth to authenticate through BitGo. Please contact BitGo for a partner ID and more information.
 
 # Keychains
 
-All BitGo wallets are created using keychains. A keychain is a standard
-<a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" target="_new">BIP32</a>
-extended HD key.  Unlike traditional bitcoin keys, which represent a single
-<a href="http://en.wikipedia.org/wiki/Elliptic_Curve_DSA" target="_new">ECDSA</a> key pair,
-a keychain can represent many key pairs, all derived from a common private key.
-This allows the user to retain a single private key, but generate an infinite
-number of public keys.  BitGo uses these extended keys to keep your bitcoin more private and secure.
+All BitGo wallets are created using keychains. A keychain is a standard <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" target="_new">BIP32</a> extended HD key. Unlike traditional bitcoin keys, which represent a single <a href="http://en.wikipedia.org/wiki/Elliptic_Curve_DSA" target="_new">ECDSA</a> key pair, a keychain can represent many key pairs, all derived from a common private key. This allows the user to retain a single private key, but generate an infinite number of public keys. BitGo uses these extended keys to keep your bitcoin more private and secure.
 
-To make wallet creation simple, BitGo maintains a list of Keychains
-for each user.  Each keychain may be used in any number of BitGo Wallets.
+To make wallet creation simple, BitGo maintains a list of Keychains for each user. Each keychain may be used in any number of BitGo Wallets.
 
 There are two types of keychains:
 
- *  Public Keychains
-
+* Public Keychains
+    
     These are comprised of a single BIP32 extended public key (xpub).
 
- *  Private Keychains
+* Private Keychains
+    
+    These are comprised of a single BIP32 extended private key (xprv), which is always stored in encrypted form.
 
-    These are comprised of a single BIP32 extended private key (xprv),
-    which is always stored in encrypted form.
+All keychains are identified by their xpub. For convenience, each keychain may have a label.
 
-All keychains are identified by their xpub.  For convenience, each keychain may have a label.
-
-Before creating your first wallet, you must create keychains to use
-with that wallet.
-
-<aside class="success">
-Note that accessing the private keychain (even in encrypted form) always requires
-2-factor-authentication.
-</aside>
+Before creating your first wallet, you must create keychains to use with that wallet.<aside class="success"> Note that accessing the private keychain (even in encrypted form) always requires 2-factor-authentication. </aside> 
 
 ## List Keychains
 
@@ -651,11 +599,7 @@ keychains.list({}, function callback(err, keychains) {
 });
 ```
 
-Get the list of public keychains for the user
-
-<aside class="success">
-This API only provides the public keys and never the private data for a keychain.
-</aside>
+Get the list of public keychains for the user<aside class="success"> This API only provides the public keys and never the private data for a keychain. </aside> 
 
 ### HTTP Request
 
@@ -688,21 +632,21 @@ This API only provides the public keys and never the private data for a keychain
 
 ### QUERY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-skip | number | NO | The starting index number to list from.  Default is 0.
-limit | number | NO | Max number of results to return in a single call (default=100, max=500)
+| Parameter | Type   | Required | Description                                                             |
+| --------- | ------ | -------- | ----------------------------------------------------------------------- |
+| skip      | number | NO       | The starting index number to list from. Default is 0.                   |
+| limit     | number | NO       | Max number of results to return in a single call (default=100, max=500) |
 
 ### Response
 
 Returns an array of Keychain Model objects.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
 
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
 
 ## Create Keychain
 
@@ -711,6 +655,7 @@ Available only as a local method (BitGo Express)
 
 curl -X POST http://$BITGO_EXPRESS_HOST:3080/api/v1/keychain/local
 ```
+
 ```javascript
 var keychains = bitgo.keychains();
 var keychain = keychains.create();
@@ -730,16 +675,9 @@ console.dir(keychain);
 
 Local client-side function to create a new keychain.
 
-Optionally, a single parameter, 'seed', may be provided which uses a deterministic seed to create your keychain.  The seed should
-be an array of numbers at least 32 elements long.  Calling this function with the same seed will generate the same BIP32 keychain.
+Optionally, a single parameter, 'seed', may be provided which uses a deterministic seed to create your keychain. The seed should be an array of numbers at least 32 elements long. Calling this function with the same seed will generate the same BIP32 keychain.<aside class="warning"> Creating your keychains is a critical step for safely securing your Bitcoin. When generating new keychains, this API uses a random number generator that adheres to industry standards. If you provide your own seed, you must take extreme caution when creating it. </aside> 
 
-<aside class="warning">
-Creating your keychains is a critical step for safely securing your Bitcoin. When generating new keychains, this API uses a random
-number generator that adheres to industry standards. If you provide your own seed, you must take extreme caution when creating it.
-</aside>
-
-Returns an object containing the xprv and xpub for the new chain. The created keychain is not known to the BitGo service.
-To use it with the BitGo service, use the Keychains.Add API.
+Returns an object containing the xprv and xpub for the new chain. The created keychain is not known to the BitGo service. To use it with the BitGo service, use the Keychains.Add API.
 
 For security reasons, it is highly recommended that you [encrypt](#encrypt) and destroy the original xprv immediately to prevent theft.
 
@@ -769,13 +707,7 @@ bitgo.keychains().add(data, function callback(err, keychain) {
 
 Registers a new keychain for the user. You must supply at least the public key. An encrypted private key may be uploaded, but it will be treated as opaque to the server.
 
-The purpose in providing an encrypted private key with the address is so users will be able to access their keys securely whenever they are connected to BitGo without the burden of storing it.
-It is highly recommended that you encrypt any private keys stored at the server with a strong password from the user. Encryption must be performed on the client.
-For convenience, you can use BitGo&#39;s [encrypt/decrypt functions](#encrypt), but you can use any encryption you wish.
-
-<aside class="warning">
-If you provide the encrypted xprv, the security of this keychain is only as good as your encryption.  Encryption is your responsibility.
-</aside>
+The purpose in providing an encrypted private key with the address is so users will be able to access their keys securely whenever they are connected to BitGo without the burden of storing it. It is highly recommended that you encrypt any private keys stored at the server with a strong password from the user. Encryption must be performed on the client. For convenience, you can use BitGo's [encrypt/decrypt functions](#encrypt), but you can use any encryption you wish.<aside class="warning"> If you provide the encrypted xprv, the security of this keychain is only as good as your encryption. Encryption is your responsibility. </aside> 
 
 ### HTTP Request
 
@@ -783,11 +715,10 @@ If you provide the encrypted xprv, the security of this keychain is only as good
 
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-xpub | string | YES | The BIP32 xpub for this keychain
-encryptedXprv | string | NO | The encrypted, BIP32 xprv for this keychain
-
+| Parameter     | Type   | Required | Description                                 |
+| ------------- | ------ | -------- | ------------------------------------------- |
+| xpub          | string | YES      | The BIP32 xpub for this keychain            |
+| encryptedXprv | string | NO       | The encrypted, BIP32 xprv for this keychain |
 
 > Example Keychain Model response
 
@@ -805,10 +736,11 @@ encryptedXprv | string | NO | The encrypted, BIP32 xprv for this keychain
 Returns a Keychain Model object.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
+
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
 
 ## Create BitGo Keychain
 
@@ -827,8 +759,7 @@ bitgo.keychains().createBitGo({}, function callback(err, keychain) {
 });
 ```
 
-Creates a new keychain on BitGo's servers and returns the public keychain to
-the caller.
+Creates a new keychain on BitGo's servers and returns the public keychain to the caller.
 
 ### HTTP Request
 
@@ -837,7 +768,6 @@ the caller.
 ### BODY Parameters
 
 None.
-
 
 > Example Keychain Model response
 
@@ -855,10 +785,11 @@ None.
 Returns a Keychain Model object.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
+
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
 
 ## Create Backup Keychain
 
@@ -876,20 +807,17 @@ bitgo.keychains().createBackup({ provider: 'lastkeysolutions' }, function callba
 });
 ```
 
-Creates a new backup keychain on a third party specializing in key recovery services.
-This keychain will be stored on the third party service and usable for recovery purposes only.
+Creates a new backup keychain on a third party specializing in key recovery services. This keychain will be stored on the third party service and usable for recovery purposes only.
 
 ### HTTP Request
 
 `POST /api/v1/keychain/backup`
 
-
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-provider | string | YES | name of the KRS or backup key provider to use
-
+| Parameter | Type   | Required | Description                                   |
+| --------- | ------ | -------- | --------------------------------------------- |
+| provider  | string | YES      | name of the KRS or backup key provider to use |
 
 > Example Keychain Model response
 
@@ -904,7 +832,6 @@ provider | string | YES | name of the KRS or backup key provider to use
 ### Response
 
 Returns a Keychain Model object.
-
 
 ## Get Keychain
 
@@ -922,11 +849,7 @@ bitgo.keychains().get({xpub: xpub}, function callback(err, keychain) {
 });
 ```
 
-Lookup a keychain by xpub
-
-<aside class="info">
-This operation requires the session to be unlocked using the Unlock API.
-</aside>
+Lookup a keychain by xpub<aside class="info"> This operation requires the session to be unlocked using the Unlock API. </aside> 
 
 ### HTTP Request
 
@@ -934,10 +857,9 @@ This operation requires the session to be unlocked using the Unlock API.
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-xpub | string | YES | The BIP32 xpub to lookup
-
+| Parameter | Type   | Required | Description              |
+| --------- | ------ | -------- | ------------------------ |
+| xpub      | string | YES      | The BIP32 xpub to lookup |
 
 > Example Keychain Model response
 
@@ -955,12 +877,12 @@ xpub | string | YES | The BIP32 xpub to lookup
 Returns a Keychain Model object.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
-404 Bad Request | The xpub was not found
 
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
+| 404 Bad Request  | The xpub was not found                                              |
 
 ## Update Keychain
 
@@ -974,7 +896,6 @@ curl -X PUT \
 https://test.bitgo.com/api/v1/keychain/$XPUB
 ```
 
-
 ```javascript
 var params = {
   xpub: xpub,
@@ -986,18 +907,7 @@ bitgo.keychains().update(params, function callback(err, keychain) {
 });
 ```
 
-Update a keychain.  This is used if you wish to store a new version of the
-xprv (for example, if you changed the password used to encrypt the xprv).
-
-<aside class="info">
-This operation requires the session to be unlocked using the Unlock API.
-</aside>
-
-<aside class="warning">
-If you change the encryptedXprv, the existing value
-is overwritten.  If the new value is incorrect, or you forget the password
-to the new value, your ability to sign with this keychain will be lost forever.
-</aside>
+Update a keychain. This is used if you wish to store a new version of the xprv (for example, if you changed the password used to encrypt the xprv).<aside class="info"> This operation requires the session to be unlocked using the Unlock API. </aside> <aside class="warning"> If you change the encryptedXprv, the existing value is overwritten. If the new value is incorrect, or you forget the password to the new value, your ability to sign with this keychain will be lost forever. </aside> 
 
 ### HTTP Request
 
@@ -1005,10 +915,9 @@ to the new value, your ability to sign with this keychain will be lost forever.
 
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-encryptedXprv | string | NO | A new encrypted, BIP32 xprv for this keychain
-
+| Parameter     | Type   | Required | Description                                   |
+| ------------- | ------ | -------- | --------------------------------------------- |
+| encryptedXprv | string | NO       | A new encrypted, BIP32 xprv for this keychain |
 
 > Example Keychain Model response
 
@@ -1026,27 +935,20 @@ encryptedXprv | string | NO | A new encrypted, BIP32 xprv for this keychain
 Returns a Keychain Model object.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
-404 Not Found | The xpub was not found
+
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
+| 404 Not Found    | The xpub was not found                                              |
 
 # Wallets
 
-All BitGo Wallets are multi-signature, hierarchical, deterministic wallets.
-Multi-signature wallets are comprised of *N* keys, and require *M* keys
-to sign a transaction before the transaction is valid.
-This is called an *M-of-N* wallet.
+All BitGo Wallets are multi-signature, hierarchical, deterministic wallets. Multi-signature wallets are comprised of *N* keys, and require *M* keys to sign a transaction before the transaction is valid. This is called an *M-of-N* wallet.
 
 BitGo currently supports only 2-of-3 wallets. We use a policy layer to support m-of-n permission models.
 
-To create a wallet, 3 keychains must be provided. The first two keychains are provided by the user; the last
-must be a BitGo keychain. While BitGo can see the public portion of the first
-two keys, BitGo never has access to the private portion of these keys and
-therefore cannot conduct transactions without the user.  BitGo's single
-key is not sufficient to sign transactions, and BitGo will only use this key
-in accordance with the policies set by the user.
+To create a wallet, 3 keychains must be provided. The first two keychains are provided by the user; the last must be a BitGo keychain. While BitGo can see the public portion of the first two keys, BitGo never has access to the private portion of these keys and therefore cannot conduct transactions without the user. BitGo's single key is not sufficient to sign transactions, and BitGo will only use this key in accordance with the policies set by the user.
 
 ## List Wallets
 
@@ -1116,28 +1018,25 @@ Get the list of wallets for the user
 
 ### QUERY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-skip | number | NO | The starting index number to list from.  Default is 0.
-limit | number | NO | Max number of results to return in a single call (default=25, max=250)
+| Parameter | Type   | Required | Description                                                            |
+| --------- | ------ | -------- | ---------------------------------------------------------------------- |
+| skip      | number | NO       | The starting index number to list from. Default is 0.                  |
+| limit     | number | NO       | Max number of results to return in a single call (default=25, max=250) |
 
 ### Response
 
 Returns an array of Wallet Model objects.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
 
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
 
-## Add Wallet
+## Add Wallet<aside class="warning"> This method is for advanced API users and allows manual creation of keys and specification of user and backup key xPubs. For most scenarios in the SDK, 
 
-<aside class="warning">
-This method is for advanced API users and allows manual creation of keys and specification of user and backup key xPubs.
-For most scenarios in the SDK, <a href="#create-wallet-with-keychains">Create Wallet With Keychains</a> is the simpler and recommended SDK method to send bitcoins from a wallet.
-</aside>
+[Create Wallet With Keychains](#create-wallet-with-keychains) is the simpler and recommended SDK method to send bitcoins from a wallet. </aside> 
 
 ```shell
 XPUB_USER=xpub661MyMwAqRbcF8BFQAaLnkkDar6uHQZn9cvzPX5qdfUL42gyts7YeYHZgWvNVjcUDP8BEDMduMBhtKLnVAKaT3sW1g14xnv29w5D3ts8LVd
@@ -1172,22 +1071,13 @@ bitgo.wallets().add(data, function callback(err, wallet) {
 });
 ```
 
-This API creates a new wallet for the user.  The keychains to use with the
-new wallet must be registered with BitGo prior to using this API.
+This API creates a new wallet for the user. The keychains to use with the new wallet must be registered with BitGo prior to using this API.
 
-BitGo currently only supports 2-of-3 (e.g. m=2 and n=3) wallets. The third keychain, and
-**only** the third keychain, _must_ be a BitGo key.
-The first keychain is by convention the user key, with it's **encrypted** xpriv is stored on BitGo.
+BitGo currently only supports 2-of-3 (e.g. m=2 and n=3) wallets. The third keychain, and **only** the third keychain, *must* be a BitGo key. The first keychain is by convention the user key, with it's **encrypted** xpriv is stored on BitGo.
 
-BitGo wallets currently are hard-coded with their root at **m/0/0** across all
-3 keychains (however, older legacy wallets may use different key paths).
-Below the root, the wallet supports two chains of addresses, 0 and 1. The
-**0-chain** is for external receiving addresses, while the **1-chain** is for internal
-(change) addresses.
+BitGo wallets currently are hard-coded with their root at **m/0/0** across all 3 keychains (however, older legacy wallets may use different key paths). Below the root, the wallet supports two chains of addresses, 0 and 1. The **0-chain** is for external receiving addresses, while the **1-chain** is for internal (change) addresses.
 
-The first receiving address of a wallet is at the BIP32 path **m/0/0/0/0**, which
-is also the ID used to refer to a wallet in BitGo's system. The first change address of a wallet is at **m/0/0/1/0**.
-</aside>
+The first receiving address of a wallet is at the BIP32 path **m/0/0/0/0**, which is also the ID used to refer to a wallet in BitGo's system. The first change address of a wallet is at **m/0/0/1/0**. </aside>
 
 ### HTTP Request
 
@@ -1195,14 +1085,14 @@ is also the ID used to refer to a wallet in BitGo's system. The first change add
 
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-label | string | YES | A label for this wallet
-m | number | YES | The number of signatures required to redeem (must be 2)
-n | number | YES | The number of keys in the wallet (must be 3)
-keychains | array | YES | An array of **n** keychain xpubs to use with this wallet; last must be a BitGo key
-enterprise | string | NO | Enterprise ID to create this wallet under.
-disableTransactionNotifications | boolean | NO | Set to true to prevent wallet transaction notifications.
+| Parameter                       | Type    | Required | Description                                                                        |
+| ------------------------------- | ------- | -------- | ---------------------------------------------------------------------------------- |
+| label                           | string  | YES      | A label for this wallet                                                            |
+| m                               | number  | YES      | The number of signatures required to redeem (must be 2)                            |
+| n                               | number  | YES      | The number of keys in the wallet (must be 3)                                       |
+| keychains                       | array   | YES      | An array of **n** keychain xpubs to use with this wallet; last must be a BitGo key |
+| enterprise                      | string  | NO       | Enterprise ID to create this wallet under.                                         |
+| disableTransactionNotifications | boolean | NO       | Set to true to prevent wallet transaction notifications.                           |
 
 > Example response
 
@@ -1241,12 +1131,12 @@ disableTransactionNotifications | boolean | NO | Set to true to prevent wallet t
 Returns a Wallet Model object.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
-406 Not acceptable | One of the keychains provided was not acceptable.
 
+| Response           | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| 400 Bad Request    | The request parameters were missing or incorrect. |
+| 401 Unauthorized   | The authentication parameters did not match.      |
+| 406 Not acceptable | One of the keychains provided was not acceptable. |
 
 ## Get Wallet
 
@@ -1375,27 +1265,27 @@ Lookup wallet information, returning the wallet model including balances, permis
 
 Returns a Wallet Model object.
 
-Field | Description
------ | -----------
-id | id of the wallet (also the first receiving address)
-label | the wallet label, as shown in the UI
-index | the index of the address within the chain (0, 1, 2, ...)
-private | contains summarised version of keychains
-permissions | user's permissions on this wallet
-admin | policy information on the wallet's administrators
-pendingApprovals | pending transaction approvals on the wallet
-confirmedBalance | the confirmed balance
-balance | the balance, including transactions with 0 confirmations
-canSendInstant | boolean indicating if wallet is eligible to send instant transactions backed by BitGo's guarantee against double spends
-
+| Field            | Description                                                                                                             |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| id               | id of the wallet (also the first receiving address)                                                                     |
+| label            | the wallet label, as shown in the UI                                                                                    |
+| index            | the index of the address within the chain (0, 1, 2, ...)                                                                |
+| private          | contains summarised version of keychains                                                                                |
+| permissions      | user's permissions on this wallet                                                                                       |
+| admin            | policy information on the wallet's administrators                                                                       |
+| pendingApprovals | pending transaction approvals on the wallet                                                                             |
+| confirmedBalance | the confirmed balance                                                                                                   |
+| balance          | the balance, including transactions with 0 confirmations                                                                |
+| canSendInstant   | boolean indicating if wallet is eligible to send instant transactions backed by BitGo's guarantee against double spends |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
-404 Not Found | The wallet was not found
-406 Not acceptable | One of the keychains provided were not acceptable.
+
+| Response           | Description                                        |
+| ------------------ | -------------------------------------------------- |
+| 400 Bad Request    | The request parameters were missing or incorrect.  |
+| 401 Unauthorized   | The authentication parameters did not match.       |
+| 404 Not Found      | The wallet was not found                           |
+| 406 Not acceptable | One of the keychains provided were not acceptable. |
 
 ## Create Wallet With Keychains
 
@@ -1430,30 +1320,26 @@ bitgo.wallets().createWalletWithKeychains(data, function(err, result) {
 
 This method is available on the client SDK as an easy way to create a wallet. It performs the following:
 
-1. Creates the user keychain and the backup keychain
-2. Encrypts the user keychain
-3. Uploads the encrypted user and backup keychains to BitGo
-4. Creates the BitGo key on the service
-5. Creates the wallet on BitGo with the 3 public keys above
-
-<aside class="warning">
-It is **VERY IMPORTANT** to have the user print out / back up their user and backup keys.
-Failure to do so can result in the loss of funds!
-</aside>
+  1. Creates the user keychain and the backup keychain
+  2. Encrypts the user keychain
+  3. Uploads the encrypted user and backup keychains to BitGo
+  4. Creates the BitGo key on the service
+  5. Creates the wallet on BitGo with the 3 public keys above<aside class="warning"> It is **VERY IMPORTANT** to have the user print out / back up their user and backup keys. Failure to do so can result in the loss of funds! </aside> 
 
 ### BitGo Instant Wallets
+
 By default, this method will create backup keychains locally. To create a wallet that can be used to send BitGo Instant, use the **backupXpubProvider** parameter to specify a KRS, e.g. "keyternal".
 
 ### Method Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-passphrase | string | YES | The passphrase that will be used to encrypt the user keys of the wallet before sending it to BitGo
-label | string | YES | A label for this wallet
-backupXpub | string | NO | Public key of a backup keychain, created on another device, such that no 2 private keys are ever on the same machine. See also backupXpubProvider as an option to have your key hosted remotely.
-backupXpubProvider | string | NO | Create a backup xPub on your KRS of choice, e.g. "keyternal". This will make the wallet BitGo Instant compatible.
-enterprise | string | NO | Enterprise ID to create this wallet under.
-disableTransactionNotifications | boolean | NO | Set to true to prevent wallet transaction notifications..
+| Name                            | Type    | Required | Description                                                                                                                                                                                      |
+| ------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| passphrase                      | string  | YES      | The passphrase that will be used to encrypt the user keys of the wallet before sending it to BitGo                                                                                               |
+| label                           | string  | YES      | A label for this wallet                                                                                                                                                                          |
+| backupXpub                      | string  | NO       | Public key of a backup keychain, created on another device, such that no 2 private keys are ever on the same machine. See also backupXpubProvider as an option to have your key hosted remotely. |
+| backupXpubProvider              | string  | NO       | Create a backup xPub on your KRS of choice, e.g. "keyternal". This will make the wallet BitGo Instant compatible.                                                                                |
+| enterprise                      | string  | NO       | Enterprise ID to create this wallet under.                                                                                                                                                       |
+| disableTransactionNotifications | boolean | NO       | Set to true to prevent wallet transaction notifications..                                                                                                                                        |
 
 > Example response
 
@@ -1470,37 +1356,34 @@ disableTransactionNotifications | boolean | NO | Set to true to prevent wallet t
  "balance": 0,
  "pendingApprovals": [] }
 ```
-```
-User keychain encrypted xPrv: {"iv":"v2aVEG5A8VwnI+ewS..."}
-Backup keychain encrypted xPrv: {"iv":"vNOUQpzUmHNPwKt..."}
-```
+
+    User keychain encrypted xPrv: {"iv":"v2aVEG5A8VwnI+ewS..."}
+    Backup keychain encrypted xPrv: {"iv":"vNOUQpzUmHNPwKt..."}
+    
 
 ### Response
-Response | Description
--------- | -----------
-wallet | the wallet model object
-userKeychain | the newly created user keychain, which has an encrypted xprv stored on BitGo - back this up
-backupKeychain | the newly created backup keychain - back this up
+
+| Response       | Description                                                                                 |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| wallet         | the wallet model object                                                                     |
+| userKeychain   | the newly created user keychain, which has an encrypted xprv stored on BitGo - back this up |
+| backupKeychain | the newly created backup keychain - back this up                                            |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
-406 Not acceptable | One of the keychains provided were not acceptable.
+
+| Response           | Description                                        |
+| ------------------ | -------------------------------------------------- |
+| 400 Bad Request    | The request parameters were missing or incorrect.  |
+| 401 Unauthorized   | The authentication parameters did not match.       |
+| 406 Not acceptable | One of the keychains provided were not acceptable. |
 
 # Wallet Operations - Basic
-Each wallet is comprised of many addresses, and each address can be used to receive Bitcoin.
-The Wallet API provides helpful interfaces for interacting with a user's wallets.
+
+Each wallet is comprised of many addresses, and each address can be used to receive Bitcoin. The Wallet API provides helpful interfaces for interacting with a user's wallets.
 
 ## Create Address
 
-Creates a new address for an existing wallet. BitGo wallets consist of
-two independent chains of addresses, designated 0 and 1. The 0-chain is
-typically used for receiving funds, while the 1-chain is used internally
-for creating change when spending from a wallet. It is considered best practice
-to generate a new receiving address for each new incoming transaction, in order
-to help maximize privacy.
+Creates a new address for an existing wallet. BitGo wallets consist of two independent chains of addresses, designated 0 and 1. The 0-chain is typically used for receiving funds, while the 1-chain is used internally for creating change when spending from a wallet. It is considered best practice to generate a new receiving address for each new incoming transaction, in order to help maximize privacy.
 
 ```shell
 CHAIN=0
@@ -1527,10 +1410,10 @@ bitgo.wallets().get({ "id": id }, function callback(err, wallet) {
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletid | bitcoin address (string) | YES | The ID of the wallet
-chain  | number | YES | 0 or 1
+| Parameter | Type                     | Required | Description          |
+| --------- | ------------------------ | -------- | -------------------- |
+| walletid  | bitcoin address (string) | YES      | The ID of the wallet |
+| chain     | number                   | YES      | 0 or 1               |
 
 > Example response
 
@@ -1548,23 +1431,23 @@ chain  | number | YES | 0 or 1
 
 Returns a new bitcoin address which is associated with the wallet.
 
-Field | Description
------ | -----------
-address | The chained address
-chain | the chain (0 or 1)
-index | the index of the address within the chain (0, 1, 2, ...)
-path | the BIP32 path of the address relative to the wallet root
-redeemScript | the redeemScript for the address
+| Field        | Description                                               |
+| ------------ | --------------------------------------------------------- |
+| address      | The chained address                                       |
+| chain        | the chain (0 or 1)                                        |
+| index        | the index of the address within the chain (0, 1, 2, ...)  |
+| path         | the BIP32 path of the address relative to the wallet root |
+| redeemScript | the redeemScript for the address                          |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
-403 Forbidden | The wallet is not a multi-sig BIP32 (SafeHD) wallet
-404 Not Found | The wallet was not found
-406 Not acceptable | One of the keychains provided were not acceptable.
 
+| Response           | Description                                         |
+| ------------------ | --------------------------------------------------- |
+| 400 Bad Request    | The request parameters were missing or incorrect.   |
+| 401 Unauthorized   | The authentication parameters did not match.        |
+| 403 Forbidden      | The wallet is not a multi-sig BIP32 (SafeHD) wallet |
+| 404 Not Found      | The wallet was not found                            |
+| 406 Not acceptable | One of the keychains provided were not acceptable.  |
 
 ## Send Coins to Address
 
@@ -1584,6 +1467,7 @@ bitgo.wallets().get({id: walletId}, function(err, wallet) {
   });
 });
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 Advanced users should consider the Send Transaction API.
@@ -1600,11 +1484,7 @@ curl -X POST \
 http://$BITGO_EXPRESS_HOST:3080/api/v1/wallet/$WALLETID/sendcoins
 ```
 
-Easiest way to send coins from your BitGo wallet to a destination Bitcoin address.
-
-<aside class="info">
-This operation requires the session to be unlocked using the Unlock API.
-</aside>
+Easiest way to send coins from your BitGo wallet to a destination Bitcoin address.<aside class="info"> This operation requires the session to be unlocked using the Unlock API. </aside> 
 
 This method will perform the following on the client:
 
@@ -1621,19 +1501,19 @@ It will send the partially signed transaction to BitGo servers for processing, w
 
 ### Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-address | string | YES | Destination bitcoin address
-amount | number | YES | Amount to be sent (in Satoshis), e.g. 0.1 * 1e8 for a tenth of a Bitcoin
-walletPassphrase | string | YES | Passphrase for the wallet, used to decrypt the encrypted user key (on client)
-fee | number | NO | Fee (in Satoshis), leave blank for autodetect. Do not specify unless you are sure it is sufficient.
-message | String | NO | User-provided string (this does not hit the blockchain)
-feeTxConfirmTarget | number | NO | Calculate fees per kilobyte, targeting transaction confirmation in this number of blocks. Default: 2, Minimum: 2, Maximum: 20.
-minConfirms | number | NO | only choose unspent inputs with a certain number of confirmations. We recommend setting this to 1 and using enforceMinConfirmsForChange.
-enforceMinConfirms ForChange | boolean | NO | Defaults to false. Set to true to require a minConfirms (explain in the line above) number of confirmations for unspents originating from the wallet's change addresses. If set to false then the minConfirms will only be enforced for unspents originating from wallets other than this user's wallet (i.e. non-change addresses).
-sequenceId | String | NO | A custom user-provided string that can be used to uniquely identify the state of this transaction before and after signing
-instant | boolean | NO | set to true to request that the transaction be sent with BitGo's instant guarantee against double-spends (fees may apply).
-otp | String | NO | A 7 digit code used to bypass a policy with the "getOTP" action type. See <a href="#wallet-policy">Wallet Policy</a> for more details
+| Name                         | Type    | Required | Description                                                                                                                                                                                                                                                                                                                          |
+| ---------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| address                      | string  | YES      | Destination bitcoin address                                                                                                                                                                                                                                                                                                          |
+| amount                       | number  | YES      | Amount to be sent (in Satoshis), e.g. 0.1 * 1e8 for a tenth of a Bitcoin                                                                                                                                                                                                                                                             |
+| walletPassphrase             | string  | YES      | Passphrase for the wallet, used to decrypt the encrypted user key (on client)                                                                                                                                                                                                                                                        |
+| fee                          | number  | NO       | Fee (in Satoshis), leave blank for autodetect. Do not specify unless you are sure it is sufficient.                                                                                                                                                                                                                                  |
+| message                      | String  | NO       | User-provided string (this does not hit the blockchain)                                                                                                                                                                                                                                                                              |
+| feeTxConfirmTarget           | number  | NO       | Calculate fees per kilobyte, targeting transaction confirmation in this number of blocks. Default: 2, Minimum: 2, Maximum: 20.                                                                                                                                                                                                       |
+| minConfirms                  | number  | NO       | only choose unspent inputs with a certain number of confirmations. We recommend setting this to 1 and using enforceMinConfirmsForChange.                                                                                                                                                                                             |
+| enforceMinConfirms ForChange | boolean | NO       | Defaults to false. Set to true to require a minConfirms (explain in the line above) number of confirmations for unspents originating from the wallet's change addresses. If set to false then the minConfirms will only be enforced for unspents originating from wallets other than this user's wallet (i.e. non-change addresses). |
+| sequenceId                   | String  | NO       | A custom user-provided string that can be used to uniquely identify the state of this transaction before and after signing                                                                                                                                                                                                           |
+| instant                      | boolean | NO       | set to true to request that the transaction be sent with BitGo's instant guarantee against double-spends (fees may apply).                                                                                                                                                                                                           |
+| otp                          | String  | NO       | A 7 digit code used to bypass a policy with the "getOTP" action type. See [Wallet Policy](#wallet-policy) for more details                                                                                                                                                                                                           |
 
 > Example Response
 
@@ -1660,22 +1540,22 @@ otp | String | NO | A 7 digit code used to bypass a policy with the "getOTP" act
 
 ### Success Response
 
-Field | Description
------ | -----------
-tx | hex-encoded form of the signed transaction
-hash | the transaction id
-fee | amount in satoshis sent to the Bitcoin miners as part of this transaction
-feeRate | amount in satoshis per kilobyte sent to the Bitcoin miners as part of this transaction
+| Field   | Description                                                                            |
+| ------- | -------------------------------------------------------------------------------------- |
+| tx      | hex-encoded form of the signed transaction                                             |
+| hash    | the transaction id                                                                     |
+| fee     | amount in satoshis sent to the Bitcoin miners as part of this transaction              |
+| feeRate | amount in satoshis per kilobyte sent to the Bitcoin miners as part of this transaction |
 
 ### Policy/Failure Response
 
-Field | Description
------ | -----------
-error | the message from the policy that triggered this pending approval
-pendingApproval | the pending approval id, which will need to be approved by another user
-otp | set to true if the policy that fired was a "getOTP" type
-triggeredPolicy | id of the policy that triggered this pending approval
-status | the transaction status
+| Field           | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| error           | the message from the policy that triggered this pending approval        |
+| pendingApproval | the pending approval id, which will need to be approved by another user |
+| otp             | set to true if the policy that fired was a "getOTP" type                |
+| triggeredPolicy | id of the policy that triggered this pending approval                   |
+| status          | the transaction status                                                  |
 
 ## Send Coins to Multiple Addresses
 
@@ -1697,6 +1577,7 @@ bitgo.wallets().get({id: walletId}, function(err, wallet) {
   });
 });
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 Advanced users should consider the Send Transaction API.
@@ -1711,24 +1592,20 @@ curl -X POST \
 http://$BITGO_EXPRESS_HOST:3080/api/v1/wallet/$WALLETID/sendmany
 ```
 
-Convenience function to send Bitcoin to multiple destination addresses in a single transaction.
-
-<aside class="info">
-This operation requires the session to be unlocked using the Unlock API.
-</aside>
+Convenience function to send Bitcoin to multiple destination addresses in a single transaction.<aside class="info"> This operation requires the session to be unlocked using the Unlock API. </aside> 
 
 ### Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-recipients | string | YES | array of recipient objects and the amount to send to each e.g. [{address: '38BKDNZbPcLogvVbcx2ekJ9E6Vv94DqDqw', amount: 1500}, ..]
-message | string | NO | Notes about the transaction
-fee | number | NO | Fee (in Satoshis), leave blank for autodetect. Do not specify unless you are sure it is sufficient.
-feeTxConfirmTarget | number | NO | Calculate fees per kilobyte, targeting transaction confirmation in this number of blocks. Default: 2, Minimum: 2, Maximum: 20.
-minConfirms | number | NO | only choose unspent inputs with a certain number of confirmations. We recommend setting this to 1 and using enforceMinConfirmsForChange.
-enforceMinConfirms ForChange | boolean | NO | Defaults to false. When constructing a transaction, minConfirms will only be enforced for unspents not originating from the wallet.
-sequenceId | String | NO | A custom user-provided string that can be used to uniquely identify the state of this transaction before and after signing
-otp | String | NO | A 7 digit code used to bypass a policy with the "getOTP" action type. See <a href="#wallet-policy">Wallet Policy</a> for more details
+| Name                         | Type    | Required | Description                                                                                                                              |
+| ---------------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| recipients                   | string  | YES      | array of recipient objects and the amount to send to each e.g. [{address: '38BKDNZbPcLogvVbcx2ekJ9E6Vv94DqDqw', amount: 1500}, ..]       |
+| message                      | string  | NO       | Notes about the transaction                                                                                                              |
+| fee                          | number  | NO       | Fee (in Satoshis), leave blank for autodetect. Do not specify unless you are sure it is sufficient.                                      |
+| feeTxConfirmTarget           | number  | NO       | Calculate fees per kilobyte, targeting transaction confirmation in this number of blocks. Default: 2, Minimum: 2, Maximum: 20.           |
+| minConfirms                  | number  | NO       | only choose unspent inputs with a certain number of confirmations. We recommend setting this to 1 and using enforceMinConfirmsForChange. |
+| enforceMinConfirms ForChange | boolean | NO       | Defaults to false. When constructing a transaction, minConfirms will only be enforced for unspents not originating from the wallet.      |
+| sequenceId                   | String  | NO       | A custom user-provided string that can be used to uniquely identify the state of this transaction before and after signing               |
+| otp                          | String  | NO       | A 7 digit code used to bypass a policy with the "getOTP" action type. See [Wallet Policy](#wallet-policy) for more details               |
 
 > Example Response
 
@@ -1740,22 +1617,22 @@ otp | String | NO | A 7 digit code used to bypass a policy with the "getOTP" act
 
 ### Response
 
-Field | Description
------ | -----------
-tx | hex-encoded form of the signed transaction
-hash | the transaction id
-fee | amount in satoshis sent to the Bitcoin miners as part of this transaction
-feeRate | amount in satoshis per kilobyte sent to the Bitcoin miners as part of this transaction
+| Field   | Description                                                                            |
+| ------- | -------------------------------------------------------------------------------------- |
+| tx      | hex-encoded form of the signed transaction                                             |
+| hash    | the transaction id                                                                     |
+| fee     | amount in satoshis sent to the Bitcoin miners as part of this transaction              |
+| feeRate | amount in satoshis per kilobyte sent to the Bitcoin miners as part of this transaction |
 
 ### Policy/Failure Response
 
-Field | Description
------ | -----------
-error | the message from the policy that triggered this pending approval
-pendingApproval | the pending approval id, which will need to be approved by another user
-otp | set to true if the policy that fired was a "getOTP" type
-triggeredPolicy | id of the policy that triggered this pending approval
-status | the transaction status
+| Field           | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| error           | the message from the policy that triggered this pending approval        |
+| pendingApproval | the pending approval id, which will need to be approved by another user |
+| otp             | set to true if the policy that fired was a "getOTP" type                |
+| triggeredPolicy | id of the policy that triggered this pending approval                   |
+| status          | the transaction status                                                  |
 
 ## List Wallet Transactions
 
@@ -1889,29 +1766,28 @@ Get transactions for a given wallet, ordered by reverse block height (unconfirme
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | The ID of the wallet
+| Parameter | Type                     | Required | Description          |
+| --------- | ------------------------ | -------- | -------------------- |
+| walletId  | bitcoin address (string) | YES      | The ID of the wallet |
 
 ### QUERY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-skip | number | NO | The starting index number to list from.  Default is 0.
-limit | number | NO | Max number of results to return in a single call (default=25, max=250)
-compact | boolean | NO | Omit inputs and outputs in the transaction results
+| Parameter | Type    | Required | Description                                                            |
+| --------- | ------- | -------- | ---------------------------------------------------------------------- |
+| skip      | number  | NO       | The starting index number to list from. Default is 0.                  |
+| limit     | number  | NO       | Max number of results to return in a single call (default=25, max=250) |
+| compact   | boolean | NO       | Omit inputs and outputs in the transaction results                     |
 
 ### Response
 
-Returns an array of Transaction objects.  Each transaction contains summary
-information about how that transaction affected any wallet or bitcoin address involved
-in the transaction.
+Returns an array of Transaction objects. Each transaction contains summary information about how that transaction affected any wallet or bitcoin address involved in the transaction.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
+
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
 
 ## Get Wallet Transaction
 
@@ -1993,39 +1869,39 @@ Get information about a transaction on a wallet.
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | The ID of the wallet
-txId | transaction hash (string) | YES | The hash of the transaction to fetch
+| Parameter | Type                      | Required | Description                          |
+| --------- | ------------------------- | -------- | ------------------------------------ |
+| walletId  | bitcoin address (string)  | YES      | The ID of the wallet                 |
+| txId      | transaction hash (string) | YES      | The hash of the transaction to fetch |
 
 ### Response
 
 Returns a Transaction object
 
-Parameter | Type | Description
---------- | ---- | -----------
-id | String | Hash of the transaction
-hex | String | Raw hex of the transaction
-date | DateTime | Date this transaction was first seen
-blockhash | String | Hash of the block, if this transaction has been confirmed
-height | Number | Height of the block this transaction was seen in
-confirmations | Number | Number of blocks this transaction has been part of the blockchain
-entries | Array | Consolidated entries of the transaction, taking into account net inputs/outputs
-outputs | Array | Information about outputs of the transaction, including the wallet account, value, vout index, isMine, chain (0 for normal addresses, 1 for change addresss)
-fee | Number | Amount in Satoshis paid to the miners for this transaction
-pending | Boolean | Set to true if the transaction has not yet been confirmed on the blockchain
-instant | Boolean | Set to true if this transaction was sent using BitGo instant
-instantId | String | The identifier for the instant transaction to be used to reference / obtain the guarantee from BitGo
-sequenceId | String | The sequenceId (unique custom data provided when the transaction was sent)
-comment | String | The comment as set on the transaction
+| Parameter     | Type     | Description                                                                                                                                                  |
+| ------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id            | String   | Hash of the transaction                                                                                                                                      |
+| hex           | String   | Raw hex of the transaction                                                                                                                                   |
+| date          | DateTime | Date this transaction was first seen                                                                                                                         |
+| blockhash     | String   | Hash of the block, if this transaction has been confirmed                                                                                                    |
+| height        | Number   | Height of the block this transaction was seen in                                                                                                             |
+| confirmations | Number   | Number of blocks this transaction has been part of the blockchain                                                                                            |
+| entries       | Array    | Consolidated entries of the transaction, taking into account net inputs/outputs                                                                              |
+| outputs       | Array    | Information about outputs of the transaction, including the wallet account, value, vout index, isMine, chain (0 for normal addresses, 1 for change addresss) |
+| fee           | Number   | Amount in Satoshis paid to the miners for this transaction                                                                                                   |
+| pending       | Boolean  | Set to true if the transaction has not yet been confirmed on the blockchain                                                                                  |
+| instant       | Boolean  | Set to true if this transaction was sent using BitGo instant                                                                                                 |
+| instantId     | String   | The identifier for the instant transaction to be used to reference / obtain the guarantee from BitGo                                                         |
+| sequenceId    | String   | The sequenceId (unique custom data provided when the transaction was sent)                                                                                   |
+| comment       | String   | The comment as set on the transaction                                                                                                                        |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
-404 Not Found | The transaction was not found on the wallet
 
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
+| 404 Not Found    | The transaction was not found on the wallet                         |
 
 ## List Wallet Addresses
 
@@ -2056,17 +1932,17 @@ bitgo.wallets().get({ "id": id }, function(err, wallet) {
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | The ID of the wallet
+| Parameter | Type                     | Required | Description          |
+| --------- | ------------------------ | -------- | -------------------- |
+| walletId  | bitcoin address (string) | YES      | The ID of the wallet |
 
 ### QUERY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-chain | number | NO | Optionally restrict to chain 0 or chain 1
-skip | number | NO | Skip this number of results
-limit | number | NO | Limit number of results to this number (default=25, max=500)
+| Parameter | Type   | Required | Description                                                  |
+| --------- | ------ | -------- | ------------------------------------------------------------ |
+| chain     | number | NO       | Optionally restrict to chain 0 or chain 1                    |
+| skip      | number | NO       | Skip this number of results                                  |
+| limit     | number | NO       | Limit number of results to this number (default=25, max=500) |
 
 > Example response
 
@@ -2103,19 +1979,19 @@ limit | number | NO | Limit number of results to this number (default=25, max=50
 
 Returns an array of Wallet Address objects.
 
-Field | Description
------ | -----------
-chain | Which chain is the address on (0 or 1, currently)
-index | BIP32 index on the chain
-path | BIP32 path from wallet
-address | the bitcoin address
+| Field   | Description                                       |
+| ------- | ------------------------------------------------- |
+| chain   | Which chain is the address on (0 or 1, currently) |
+| index   | BIP32 index on the chain                          |
+| path    | BIP32 path from wallet                            |
+| address | the bitcoin address                               |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
 
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
 
 ## Get Single Wallet Address
 
@@ -2148,10 +2024,10 @@ bitgo.wallets().get({ "id": id }, function(err, wallet) {
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | The ID of the wallet
-address | bitcoin address (string) | YES | The address on the wallet to get information of
+| Parameter | Type                     | Required | Description                                     |
+| --------- | ------------------------ | -------- | ----------------------------------------------- |
+| walletId  | bitcoin address (string) | YES      | The ID of the wallet                            |
+| address   | bitcoin address (string) | YES      | The address on the wallet to get information of |
 
 > Example response
 
@@ -2173,21 +2049,21 @@ address | bitcoin address (string) | YES | The address on the wallet to get info
 
 Returns a wallet address object
 
-Field | Description
------ | -----------
-address | The bitcoin address being looked up
-balance | Current balance (satoshis) in this address
-chain | The HD chain used to generate this address (0 for user-generated, 1 for change)
-index | The index in the HD chain used to generate this address
-path | The HD path of the address on the wallet
-received | Total amount (satoshis) received on this address
-sent | Total amount (satoshis) sent on this address
-txCount | Total number of transactions on this address
-redeemScript | The redeemScript that may be used to spend funds from this P2SH address
+| Field        | Description                                                                     |
+| ------------ | ------------------------------------------------------------------------------- |
+| address      | The bitcoin address being looked up                                             |
+| balance      | Current balance (satoshis) in this address                                      |
+| chain        | The HD chain used to generate this address (0 for user-generated, 1 for change) |
+| index        | The index in the HD chain used to generate this address                         |
+| path         | The HD path of the address on the wallet                                        |
+| received     | Total amount (satoshis) received on this address                                |
+| sent         | Total amount (satoshis) sent on this address                                    |
+| txCount      | Total number of transactions on this address                                    |
+| redeemScript | The redeemScript that may be used to spend funds from this P2SH address         |
 
 # Wallet Operations - Advanced
-These features are available and recommended for advanced developers.
-Using these APIs will provide expanded (but potentially complex) functionality and greater control of the transaction creation process.
+
+These features are available and recommended for advanced developers. Using these APIs will provide expanded (but potentially complex) functionality and greater control of the transaction creation process.
 
 ## Get Transaction By Sequence Id
 
@@ -2250,8 +2126,7 @@ bitgo.wallets().get({ "id": walletId }, function callback(err, wallet) {
 }
 ```
 
-Get the transaction on a wallet sequence ID that was passed in when sending an outgoing transaction (via sendCoins or sendTransaction).
-This is useful for tracking an unsigned/unconfirmed transaction via your own unique ID, as Bitcoin transaction IDs are not defined before co-signing and malleable before confirmation.
+Get the transaction on a wallet sequence ID that was passed in when sending an outgoing transaction (via sendCoins or sendTransaction). This is useful for tracking an unsigned/unconfirmed transaction via your own unique ID, as Bitcoin transaction IDs are not defined before co-signing and malleable before confirmation.
 
 A pending transaction that has not yet been co-signed by BitGo will still have a sequence id.
 
@@ -2261,21 +2136,22 @@ A pending transaction that has not yet been co-signed by BitGo will still have a
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | The ID of the wallet
-sequenceId | custom user-provided string | YES | The unique id previously sent with an outgoing transaction.
+| Parameter  | Type                        | Required | Description                                                 |
+| ---------- | --------------------------- | -------- | ----------------------------------------------------------- |
+| walletId   | bitcoin address (string)    | YES      | The ID of the wallet                                        |
+| sequenceId | custom user-provided string | YES      | The unique id previously sent with an outgoing transaction. |
 
 ### Response
 
 Returns a WalletTx object, containing the history and state of the transaction on the Bitcoin network.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
-404 Not Found | The transaction was not found on the wallet
+
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
+| 404 Not Found    | The transaction was not found on the wallet                         |
 
 ## List Wallet Unspents
 
@@ -2303,10 +2179,7 @@ https://test.bitgo.com/api/v1/wallet/$WALLET/unspents
 
 Gets a list of unspent input transactions for a wallet.
 
-In order to create a bitcoin transaction, the creator of the transaction
-will need to accumulate a set of bitcoin 'inputs' for use in creation of
-that transaction.
-
+In order to create a bitcoin transaction, the creator of the transaction will need to accumulate a set of bitcoin 'inputs' for use in creation of that transaction.
 
 ### HTTP Request
 
@@ -2314,17 +2187,17 @@ that transaction.
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | The ID of the wallet
+| Parameter | Type                     | Required | Description          |
+| --------- | ------------------------ | -------- | -------------------- |
+| walletId  | bitcoin address (string) | YES      | The ID of the wallet |
 
 ### QUERY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-target | number | NO | The API will attempt to return enough unspents to accumulate to at least this amount (in satoshis).
-skip | number | NO | The starting index number to list from.  Default is 0.
-limit | number | NO | Max number of results to return in a single call (default=100, max=250)
+| Parameter | Type   | Required | Description                                                                                         |
+| --------- | ------ | -------- | --------------------------------------------------------------------------------------------------- |
+| target    | number | NO       | The API will attempt to return enough unspents to accumulate to at least this amount (in satoshis). |
+| skip      | number | NO       | The starting index number to list from. Default is 0.                                               |
+| limit     | number | NO       | Max number of results to return in a single call (default=100, max=250)                             |
 
 > Example response
 
@@ -2373,23 +2246,24 @@ limit | number | NO | Max number of results to return in a single call (default=
 
 Returns an array of Unspent Input objects.
 
-Field | Description
------ | -----------
-tx_hash | The hash of the unspent input
-tx_output_n | The index of the unspent input from *tx_hash*
-value | The value, in satoshis of the unspent input
-script | Output script hash (in hex format)
-redeemScript | The redeem script
-chainPath | The BIP32 path of the unspent output relative to the wallet
-confirmations | Number of blocks seen on and after the unspent transaction was included in a block
-isChange | Boolean indicating this is an output from a previous spend originating on this wallet, and may be safe to spend even with 0 confirmations
-instant | Boolean indicating if this unspent can be used to create a BitGo Instant transaction guaranteed against double spends
+| Field         | Description                                                                                                                               |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| tx_hash       | The hash of the unspent input                                                                                                             |
+| tx_output_n | The index of the unspent input from *tx_hash*                                                                                             |
+| value         | The value, in satoshis of the unspent input                                                                                               |
+| script        | Output script hash (in hex format)                                                                                                        |
+| redeemScript  | The redeem script                                                                                                                         |
+| chainPath     | The BIP32 path of the unspent output relative to the wallet                                                                               |
+| confirmations | Number of blocks seen on and after the unspent transaction was included in a block                                                        |
+| isChange      | Boolean indicating this is an output from a previous spend originating on this wallet, and may be safe to spend even with 0 confirmations |
+| instant       | Boolean indicating if this unspent can be used to create a BitGo Instant transaction guaranteed against double spends                     |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
+
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
 
 ## Consolidate Unspents
 
@@ -2410,6 +2284,7 @@ bitgo.wallets().get({ "id": walletId }, function callback (err, wallet) {
   );
 });
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 WALLETID="2NB5G2jmqSswk7C427ZiHuwuAt1GPs5WeGa"
@@ -2422,18 +2297,17 @@ curl -X PUT \
 http://$BITGO_EXPRESS_HOST:3080/api/v1/wallet/$WALLETID/consolidateunspents
 ```
 
-Coalesce the unspents currently held in a wallet to a smaller number. This is an iterative process, largely due to
-transaction size limits and signing speed. Each iteration requires its own transaction fees.
+Coalesce the unspents currently held in a wallet to a smaller number. This is an iterative process, largely due to transaction size limits and signing speed. Each iteration requires its own transaction fees.
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-target | number | NO | desired number of unspents after running the function
-maxInputCountPerConsolidation | number | NO | maximum number of unspents to be used for each iteration. Defaults to 85.
-minConfirms | number | NO | only choose unspent inputs with a certain number of confirmations
-walletPassphrase | string | NO | Passphrase of the wallet
-progressCallback | function | NO | Closure to be called after each iteration. It can be used for monitoring the progress.
+| Parameter                     | Type     | Required | Description                                                                            |
+| ----------------------------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| target                        | number   | NO       | desired number of unspents after running the function                                  |
+| maxInputCountPerConsolidation | number   | NO       | maximum number of unspents to be used for each iteration. Defaults to 85.              |
+| minConfirms                   | number   | NO       | only choose unspent inputs with a certain number of confirmations                      |
+| walletPassphrase              | string   | NO       | Passphrase of the wallet                                                               |
+| progressCallback              | function | NO       | Closure to be called after each iteration. It can be used for monitoring the progress. |
 
 ## Fan Out Unspents
 
@@ -2454,6 +2328,7 @@ bitgo.wallets().get({ "id": walletId }, function callback (err, wallet) {
   );
 });
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 WALLETID="2NB5G2jmqSswk7C427ZiHuwuAt1GPs5WeGa"
@@ -2470,11 +2345,11 @@ Take all the wallet's unspents (that match the selection criteria, such as minim
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-target | number | YES | desired number of unspents after running the function
-minConfirms | number | NO | only choose unspent inputs with a certain number of confirmations
-walletPassphrase | string | NO | Passphrase of the wallet
+| Parameter        | Type   | Required | Description                                                       |
+| ---------------- | ------ | -------- | ----------------------------------------------------------------- |
+| target           | number | YES      | desired number of unspents after running the function             |
+| minConfirms      | number | NO       | only choose unspent inputs with a certain number of confirmations |
+| walletPassphrase | string | NO       | Passphrase of the wallet                                          |
 
 ## Create Transaction
 
@@ -2495,6 +2370,7 @@ bitgo.wallets().get({ "id": walletId }, function callback(err, wallet) {
   });
 });
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 WALLETID='2NB5G2jmqSswk7C427ZiHuwuAt1GPs5WeGa'
@@ -2504,11 +2380,7 @@ curl -X POST \
 -H "Authorization: Bearer $ACCESS_TOKEN" \
 -d "{ \"recipients\": [{ \"address\": \"2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD\", \"amount\": 1500000}, { \"address\": \"2NGJP7z9DZwyVjtY32YSoPqgU6cG2QXpjHu\", \"amount\": 2500000 }] }" \
 http://$BITGO_EXPRESS_HOST:3080/api/v1/wallet/$WALLETID/createtransaction
-```
-
-<aside class="warning">
-This method is for advanced API users. For most scenarios, [sendCoins](#send-coins-to-address) is the recommended method to send bitcoins from a wallet.
-</aside>
+```<aside class="warning"> This method is for advanced API users. For most scenarios, \[sendCoins\](#send-coins-to-address) is the recommended method to send bitcoins from a wallet. </aside> 
 
 Create a transaction with multiple recipients from a wallet using unspents from addresses on that wallet. This is client-side functionality only in the SDK.
 
@@ -2516,7 +2388,7 @@ Typically used before signTransaction, which signs a created transaction. Change
 
 This is an advanced method that allows you to manually specify the miner fee (could be 0) and decrypted keychain.
 
-<b>WARNING</b>: If you provide an insufficient fee, your transaction may not get confirmed and your unspents may be unusable for some time.
+**WARNING**: If you provide an insufficient fee, your transaction may not get confirmed and your unspents may be unusable for some time.
 
 > Example Response
 
@@ -2548,16 +2420,16 @@ This is an advanced method that allows you to manually specify the miner fee (co
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-recipients | string | YES | array of recipient objects and the amount to send to each e.g. [{address: '38BKDNZbPcLogvVbcx2ekJ9E6Vv94DqDqw', amount: 1500}, ..]
-fee | number | NO | The absolute fee in Satoshis to be paid to the Bitcoin miners. Set as 'undefined' for automatic.
-feeRate | number | NO | The fee in Satoshis to be paid to the Bitcoin miners PER KB of transaction size. Set as 'undefined' for automatic.
-feeTxConfirmTarget | number | NO | Calculate fees per kilobyte, targeting transaction confirmation in this number of blocks. Default: 2, Minimum: 2, Maximum: 20.
-minConfirms | number | NO | only choose unspent inputs with a certain number of confirmations. We recommend setting this to 1 and using enforceMinConfirmsForChange.
-enforceMinConfirms ForChange | boolean | NO | Defaults to false. When constructing a transaction, minConfirms will only be enforced for unspents not originating from the wallet.
-minUnspentSize | number | NO | Minimum amount in satoshis for an unspent to be considered usable. Defaults to 5460 (to combat tx dust spam).
-instant | boolean | NO | set to true to request that the transaction be sent with BitGo's instant guarantee against double-spends (fees may apply).
+| Parameter                    | Type    | Required | Description                                                                                                                              |
+| ---------------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| recipients                   | string  | YES      | array of recipient objects and the amount to send to each e.g. [{address: '38BKDNZbPcLogvVbcx2ekJ9E6Vv94DqDqw', amount: 1500}, ..]       |
+| fee                          | number  | NO       | The absolute fee in Satoshis to be paid to the Bitcoin miners. Set as 'undefined' for automatic.                                         |
+| feeRate                      | number  | NO       | The fee in Satoshis to be paid to the Bitcoin miners PER KB of transaction size. Set as 'undefined' for automatic.                       |
+| feeTxConfirmTarget           | number  | NO       | Calculate fees per kilobyte, targeting transaction confirmation in this number of blocks. Default: 2, Minimum: 2, Maximum: 20.           |
+| minConfirms                  | number  | NO       | only choose unspent inputs with a certain number of confirmations. We recommend setting this to 1 and using enforceMinConfirmsForChange. |
+| enforceMinConfirms ForChange | boolean | NO       | Defaults to false. When constructing a transaction, minConfirms will only be enforced for unspents not originating from the wallet.      |
+| minUnspentSize               | number  | NO       | Minimum amount in satoshis for an unspent to be considered usable. Defaults to 5460 (to combat tx dust spam).                            |
+| instant                      | boolean | NO       | set to true to request that the transaction be sent with BitGo's instant guarantee against double-spends (fees may apply).               |
 
 ## Sign Transaction
 
@@ -2587,6 +2459,7 @@ bitgo.wallets().get({id: walletId}, function(err, wallet) {
   });
 });
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 WALLETID='2NB5G2jmqSswk7C427ZiHuwuAt1GPs5WeGa'
@@ -2618,11 +2491,7 @@ curl -X POST \
 -H "Authorization: Bearer $ACCESS_TOKEN" \
 -d "{ \"transactionHex\": \"$TRANSACTIONHEX\", \"unspents\": $UNSPENTS, \"keychain\": $KEYCHAIN }" \
 http://$BITGO_EXPRESS_HOST:3080/api/v1/wallet/$WALLETID/signtransaction
-```
-
-<aside class="warning">
-This method is for advanced API users. For most scenarios, [sendCoins](#send-coins-to-address) is the recommended method to send bitcoins from a wallet.
-</aside>
+```<aside class="warning"> This method is for advanced API users. For most scenarios, \[sendCoins\](#send-coins-to-address) is the recommended method to send bitcoins from a wallet. </aside> 
 
 Sign a multi-sig transaction using a created transaction hex, keychain and unspent information (derivation paths and redeem scripts). Typically used with the output from createTransaction.
 
@@ -2638,11 +2507,11 @@ This is client-side functionality only in the SDK.
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-transactionHex | string | YES | The unsigned transaction, in hex string form
-unspents | array | YES | Array of unspents objects, which contain the chainpath and redeemScript.
-keychain | keychain object | YES | The decrypted keychain (object), with available xprv property.
+| Parameter      | Type            | Required | Description                                                              |
+| -------------- | --------------- | -------- | ------------------------------------------------------------------------ |
+| transactionHex | string          | YES      | The unsigned transaction, in hex string form                             |
+| unspents       | array           | YES      | Array of unspents objects, which contain the chainpath and redeemScript. |
+| keychain       | keychain object | YES      | The decrypted keychain (object), with available xprv property.           |
 
 ## Send Transaction
 
@@ -2709,23 +2578,12 @@ bitgo.wallets().get({id: walletId}, function(err, wallet) {
     );
   });
 });
-```
-<aside class="warning">
-This method is for advanced API users. For most scenarios, [sendCoins](#send-coins-to-address) is the recommended method to send bitcoins from a wallet.
-</aside>
+```<aside class="warning"> This method is for advanced API users. For most scenarios, \[sendCoins\](#send-coins-to-address) is the recommended method to send bitcoins from a wallet. </aside> 
 
-Send a partially-signed transaction. The server will do one of the following:
-* reject the transaction
-* gather additional approvals from other wallet admins
-* apply the final signature, and submit to the Bitcoin P2P network
-
-<aside class="info">
-This API requires the session to be unlocked using the Unlock API
-A single call to the Unlock API allows any single transaction, or multiple transactions up
-to an internally-set BitGo quota (currently set at 50 BTC).
-</aside>
+Send a partially-signed transaction. The server will do one of the following: * reject the transaction * gather additional approvals from other wallet admins * apply the final signature, and submit to the Bitcoin P2P network<aside class="info"> This API requires the session to be unlocked using the Unlock API A single call to the Unlock API allows any single transaction, or multiple transactions up to an internally-set BitGo quota (currently set at 50 BTC). </aside> 
 
 ### HTTP Request
+
 `POST /api/v1/tx/send`
 
 > Example Response
@@ -2742,35 +2600,35 @@ to an internally-set BitGo quota (currently set at 50 BTC).
 
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-tx | Transaction Object | YES | The transaction, in hex string form
-sequenceId | String | NO | A custom user-provided string that can be used to uniquely identify the state of this transaction before and after signing
-message | String | NO | User-provided string (this does not hit the blockchain)
-instant | boolean | NO | set to true to request that the transaction be sent with BitGo's instant guarantee against double-spends (fees may apply).
-otp | String | NO | A 7 digit code used to bypass a policy with the "getOTP" action type. See <a href="#wallet-policy">Wallet Policy</a> for more details
+| Parameter  | Type               | Required | Description                                                                                                                |
+| ---------- | ------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| tx         | Transaction Object | YES      | The transaction, in hex string form                                                                                        |
+| sequenceId | String             | NO       | A custom user-provided string that can be used to uniquely identify the state of this transaction before and after signing |
+| message    | String             | NO       | User-provided string (this does not hit the blockchain)                                                                    |
+| instant    | boolean            | NO       | set to true to request that the transaction be sent with BitGo's instant guarantee against double-spends (fees may apply). |
+| otp        | String             | NO       | A 7 digit code used to bypass a policy with the "getOTP" action type. See [Wallet Policy](#wallet-policy) for more details |
 
 ### Response
 
 Returns the sent transaction and its hash in hex-encoded form.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
-402 Payment Required | The transaction fee in this request seems too low.
+
+| Response             | Description                                                         |
+| -------------------- | ------------------------------------------------------------------- |
+| 400 Bad Request      | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized     | The authentication parameters did not match, or unlock is required. |
+| 402 Payment Required | The transaction fee in this request seems too low.                  |
 
 ### Policy/Failure Response
 
-Field | Description
------ | -----------
-error | the message from the policy that triggered this pending approval
-pendingApproval | the pending approval id, which will need to be approved by another user
-otp | set to true if the policy that fired was a "getOTP" type
-triggeredPolicy | id of the policy that triggered this pending approval
-status | the transaction status
-
+| Field           | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| error           | the message from the policy that triggered this pending approval        |
+| pendingApproval | the pending approval id, which will need to be approved by another user |
+| otp             | set to true if the policy that fired was a "getOTP" type                |
+| triggeredPolicy | id of the policy that triggered this pending approval                   |
+| status          | the transaction status                                                  |
 
 ## Get Instant Guarantee
 
@@ -2793,15 +2651,11 @@ bitgo.instantGuarantee({ id: '56562ee923ab7f3a28d638085ba6955a' }, function(err,
   console.dir(result);
 });
 ```
-BitGo Instant is built on top of our wallet platform, as a guarantee by BitGo against double spends.
-As a co-signer on a multi-sig wallet, BitGo will never double-spend an output.
-We back our promise with a cryptographically signed guarantee on each transaction, enabling receivers to accept funds without the need for any block confirmations.
 
-<aside class="info">
-Anyone can receive instant transactions. Sending an instant transaction requires an instant-compatible / KRS BitGo wallet.
-</aside>
+BitGo Instant is built on top of our wallet platform, as a guarantee by BitGo against double spends. As a co-signer on a multi-sig wallet, BitGo will never double-spend an output. We back our promise with a cryptographically signed guarantee on each transaction, enabling receivers to accept funds without the need for any block confirmations.<aside class="info"> Anyone can receive instant transactions. Sending an instant transaction requires an instant-compatible / KRS BitGo wallet. </aside> 
 
 ### HTTP Request
+
 `GET /api/v1/instant/<id>`
 
 > Example Response
@@ -2818,20 +2672,21 @@ Anyone can receive instant transactions. Sending an instant transaction requires
     "transactionId": "8ba08ef2a745246f309ec4eaff5d7652c4fc01e61eebd9aabc1c58996355acd7"
 }
 ```
+
 ### Response
 
 Returns the instant guarantee message, including the amount and Transaction ID.
 
-Parameter | Type | Description
---------- | ---- | -----------
-amount | Number | Amount in Satoshis of the instant guarantee
-createTime | DateTime | The time at which the transaction was created
-guarantee | String | The message by BitGo to guarantee the instant transaction
-id | String | The instant guarantee ID on BitGo
-transactionId | String | The hash of the guaranteed transaction
-normalizedHash | String | The hash of the guaranteed transaction without signatures
-signature | String | Cryptographically signed guarantee, to provide an audit record in cases of a dispute
-state | String | The state of a transaction as monitored by BitGo (you do not need to take any action on this)
+| Parameter      | Type     | Description                                                                                   |
+| -------------- | -------- | --------------------------------------------------------------------------------------------- |
+| amount         | Number   | Amount in Satoshis of the instant guarantee                                                   |
+| createTime     | DateTime | The time at which the transaction was created                                                 |
+| guarantee      | String   | The message by BitGo to guarantee the instant transaction                                     |
+| id             | String   | The instant guarantee ID on BitGo                                                             |
+| transactionId  | String   | The hash of the guaranteed transaction                                                        |
+| normalizedHash | String   | The hash of the guaranteed transaction without signatures                                     |
+| signature      | String   | Cryptographically signed guarantee, to provide an audit record in cases of a dispute          |
+| state          | String   | The state of a transaction as monitored by BitGo (you do not need to take any action on this) |
 
 ### Verifying BitGo's Guarantee
 
@@ -2841,20 +2696,18 @@ To confirm, verify the guarantee with our signature. Example:
 
 `assert(bitcoin.Message.verify('1BitGo3gxRZ6mQSEH52dvCKSUgVCAH4Rja', signature, guarantee, process.config.bitcoin.network));`
 
-If the signature is valid, you may accept the transaction instantly without the need for any block information.
-You can save the guarantee & signature locally to provide an audit record in case of a dispute.
-
+If the signature is valid, you may accept the transaction instantly without the need for any block information. You can save the guarantee & signature locally to provide an audit record in case of a dispute.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
+
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
 
 ## Get Wallet by Address
 
-Given an address, returns the address information (including balances) and wallet the address is associated with.
-Useful where one has many addresses / wallets, but does not know the wallet an address belongs to.
+Given an address, returns the address information (including balances) and wallet the address is associated with. Useful where one has many addresses / wallets, but does not know the wallet an address belongs to.
 
 ```shell
 ADDRESS=2NBMGw7K9XiBPfvW3nUQcrANKncmAoLUdDX
@@ -2879,9 +2732,9 @@ bitgo.getWalletAddress({ address: address }, function(err, result) {
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-address | bitcoin address (string) | YES | The address to look up information on
+| Parameter | Type                     | Required | Description                           |
+| --------- | ------------------------ | -------- | ------------------------------------- |
+| address   | bitcoin address (string) | YES      | The address to look up information on |
 
 > Example response
 
@@ -2904,18 +2757,18 @@ address | bitcoin address (string) | YES | The address to look up information on
 
 Returns a wallet address object
 
-Field | Description
------ | -----------
-address | The bitcoin address being looked up
-balance | Current balance (satoshis) in this address
-chain | The HD chain used to generate this address (0 for user-generated, 1 for change)
-index | The index in the HD chain used to generate this address
-path | The HD path of the address on the wallet
-received | Total amount (satoshis) received on this address
-sent | Total amount (satoshis) sent on this address
-txCount | Total number of transactions on this address
-redeemScript | The redeemScript that may be used to spend funds from this P2SH address
-wallet | The base address (wallet ID) of the wallet this address is on
+| Field        | Description                                                                     |
+| ------------ | ------------------------------------------------------------------------------- |
+| address      | The bitcoin address being looked up                                             |
+| balance      | Current balance (satoshis) in this address                                      |
+| chain        | The HD chain used to generate this address (0 for user-generated, 1 for change) |
+| index        | The index in the HD chain used to generate this address                         |
+| path         | The HD path of the address on the wallet                                        |
+| received     | Total amount (satoshis) received on this address                                |
+| sent         | Total amount (satoshis) sent on this address                                    |
+| txCount      | Total number of transactions on this address                                    |
+| redeemScript | The redeemScript that may be used to spend funds from this P2SH address         |
+| wallet       | The base address (wallet ID) of the wallet this address is on                   |
 
 ## Freeze Wallet
 
@@ -2952,43 +2805,41 @@ bitgo.wallets().get({ "id": walletId }, function(err, wallet) {
 }
 ```
 
-Prevent all spend activity on a wallet. This call is designed to be used in cases of emergency, and prevent spends
-for a default of 1 hour.
+Prevent all spend activity on a wallet. This call is designed to be used in cases of emergency, and prevent spends for a default of 1 hour.
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-duration | number | NO | length of time in seconds to freeze spend activity. Defaults to 1 hour.
+| Parameter | Type   | Required | Description                                                             |
+| --------- | ------ | -------- | ----------------------------------------------------------------------- |
+| duration  | number | NO       | length of time in seconds to freeze spend activity. Defaults to 1 hour. |
 
 ### Response
 
-Field | Description
------ | -----------
-time | The date the freeze command was called
-expires | The date after which spend activity will be allowed
+| Field   | Description                                         |
+| ------- | --------------------------------------------------- |
+| time    | The date the freeze command was called              |
+| expires | The date after which spend activity will be allowed |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
+
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
 
 # Wallet Sharing
 
-A BitGo wallet may be shared between multiple users.
-All users on a wallet share the same private key (although each individual user may encrypt it separately).
+A BitGo wallet may be shared between multiple users. All users on a wallet share the same private key (although each individual user may encrypt it separately).
 
-Security on a shared wallet is enforced by BitGo, which requires that users log in and authenticate before co-signing.
-Wallet permission levels define what an individual user is able to do on a wallet.
+Security on a shared wallet is enforced by BitGo, which requires that users log in and authenticate before co-signing. Wallet permission levels define what an individual user is able to do on a wallet.
 
 ### Wallet Permissions
 
-Permission | Description
---------- | ----
-View | View transactions on the wallet
-Spend | Initiate transactions on the wallet, which are subject to wallet policy
-Admin | Change policy and manage users and settings on the wallet
+| Permission | Description                                                             |
+| ---------- | ----------------------------------------------------------------------- |
+| View       | View transactions on the wallet                                         |
+| Spend      | Initiate transactions on the wallet, which are subject to wallet policy |
+| Admin      | Change policy and manage users and settings on the wallet               |
 
 ## Sharing a wallet
 
@@ -3033,16 +2884,11 @@ bitgo.wallets().get({ "id": walletId }, function(err, wallet) {
      "path": "m/999999/26697279/124485569"
    }
 }
-```
-
-<aside class="info">
-This operation requires the session to be unlocked using the Unlock API.
-</aside>
+```<aside class="info"> This operation requires the session to be unlocked using the Unlock API. </aside> 
 
 Sharing a wallet involves giving another user permission to use the wallet through BitGo.
 
-In order for the receiver to use the wallet, we also need to share the private key with them.
-Each user on BitGo creates a public-private keypair for this purpose during their signup process.
+In order for the receiver to use the wallet, we also need to share the private key with them. Each user on BitGo creates a public-private keypair for this purpose during their signup process.
 
 The BitGo SDK does the following client-side to create a new wallet share:
 
@@ -3053,25 +2899,25 @@ The BitGo SDK does the following client-side to create a new wallet share:
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-email | string | YES | Email of the user to share the wallet with
-permissions | string | YES | Comma-separated list of permissions, e.g. view,spend,admin
-walletPassphrase | string | NO | Passphrase on the wallet being shared
-skipKeychain | boolean | NO | Set to true if sharing a wallet with another user who will obtain the keychain out-of-band
-disableEmail | boolean | NO | Set to true to prevent a notification email sent to the user added
+| Parameter        | Type    | Required | Description                                                                                |
+| ---------------- | ------- | -------- | ------------------------------------------------------------------------------------------ |
+| email            | string  | YES      | Email of the user to share the wallet with                                                 |
+| permissions      | string  | YES      | Comma-separated list of permissions, e.g. view,spend,admin                                 |
+| walletPassphrase | string  | NO       | Passphrase on the wallet being shared                                                      |
+| skipKeychain     | boolean | NO       | Set to true if sharing a wallet with another user who will obtain the keychain out-of-band |
+| disableEmail     | boolean | NO       | Set to true to prevent a notification email sent to the user added                         |
 
 ### Response
 
-Field | Description
------ | -----------
-id | The id of the walletShare, used to accept it
-walletId | The id of the wallet being shared
-walletLabel | Label of the wallet to present to the user
-fromUser | BitGo ID of the user sharing the wallet
-toUser | BitGo ID of the user receiving the wallet
-permissions | Comma-separated list of permissions that the wallet share will give to the receiving user
-keychain | The encrypted keychain for the receiver to decrypt (to obtain the private key)
+| Field       | Description                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------- |
+| id          | The id of the walletShare, used to accept it                                              |
+| walletId    | The id of the wallet being shared                                                         |
+| walletLabel | Label of the wallet to present to the user                                                |
+| fromUser    | BitGo ID of the user sharing the wallet                                                   |
+| toUser      | BitGo ID of the user receiving the wallet                                                 |
+| permissions | Comma-separated list of permissions that the wallet share will give to the receiving user |
+| keychain    | The encrypted keychain for the receiver to decrypt (to obtain the private key)            |
 
 ## List Wallet Shares
 
@@ -3126,14 +2972,14 @@ Gets lists of incoming and outgoing wallet shares for the logged-on account.
 
 Each wallet share object returned contains the following fields:
 
-Field | Description
------ | -----------
-id | The id of the walletShare, used to accept it
-walletId | The id of the wallet being shared
-walletLabel | Label of the wallet to present to the user
-fromUser | BitGo ID of the user sharing the wallet
-toUser | BitGo ID of the user receiving the wallet
-permissions | Comma-separated list of permissions that the wallet share will give to the receiving user
+| Field       | Description                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------- |
+| id          | The id of the walletShare, used to accept it                                              |
+| walletId    | The id of the wallet being shared                                                         |
+| walletLabel | Label of the wallet to present to the user                                                |
+| fromUser    | BitGo ID of the user sharing the wallet                                                   |
+| toUser      | BitGo ID of the user receiving the wallet                                                 |
+| permissions | Comma-separated list of permissions that the wallet share will give to the receiving user |
 
 ## Accept Wallet Share
 
@@ -3166,11 +3012,7 @@ bitgo.wallets().acceptShare(
 
 ```json
 { "state": "accepted", "changed": "true" }
-```
-
-<aside class="info">
-This operation requires the session to be unlocked using the Unlock API.
-</aside>
+```<aside class="info"> This operation requires the session to be unlocked using the Unlock API. </aside> 
 
 Client-side operation to accept a wallet share. Performs the following steps:
 
@@ -3181,19 +3023,19 @@ Client-side operation to accept a wallet share. Performs the following steps:
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletShareId | bitcoin address (string) | YES | The incoming wallet share ID to accept
-newWalletPassphrase | string | NO | the passphrase to set on the wallet, for use during future spends
-userPassword | string | NO | the user's password to decrypt the shared private key
-overrideEncryptedXprv | string | NO | Set to an alternate encrypted xprv if you wish to store an encrypted xprv received out-of-band
+| Parameter             | Type                     | Required | Description                                                                                    |
+| --------------------- | ------------------------ | -------- | ---------------------------------------------------------------------------------------------- |
+| walletShareId         | bitcoin address (string) | YES      | The incoming wallet share ID to accept                                                         |
+| newWalletPassphrase   | string                   | NO       | the passphrase to set on the wallet, for use during future spends                              |
+| userPassword          | string                   | NO       | the user's password to decrypt the shared private key                                          |
+| overrideEncryptedXprv | string                   | NO       | Set to an alternate encrypted xprv if you wish to store an encrypted xprv received out-of-band |
 
 ### Response
 
-Field | Description
------ | -----------
-state | end state of walletShare (should be 'accepted')
-changed | true if successful
+| Field   | Description                                     |
+| ------- | ----------------------------------------------- |
+| state   | end state of walletShare (should be 'accepted') |
+| changed | true if successful                              |
 
 ## Cancel Wallet Share
 
@@ -3227,11 +3069,10 @@ Can be used to cancel a pending outgoing wallet share, or reject an incoming sha
 
 ### Response
 
-Field | Description
------ | -----------
-state | new state of walletShare
-changed | true if successful
-
+| Field   | Description              |
+| ------- | ------------------------ |
+| state   | new state of walletShare |
+| changed | true if successful       |
 
 ## Remove Wallet User
 
@@ -3271,40 +3112,31 @@ https://test.bitgo.com/api/v1/wallet/$WALLETID/user/$USERID
 
 ### URL Parameters
 
-Parameter | Required | Description
---------- | -------- | -----------
-wallet | YES | The ID of the wallet
-userId | YES | The user id of the user to remove (can be found on the wallet object)
+| Parameter | Required | Description                                                           |
+| --------- | -------- | --------------------------------------------------------------------- |
+| wallet    | YES      | The ID of the wallet                                                  |
+| userId    | YES      | The user id of the user to remove (can be found on the wallet object) |
 
 ### Response
 
 Returns the updated Wallet Model for this wallet, or a Pending Approval object (if approval is required).
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match, or unlock is required.
+
+| Response         | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect.                   |
+| 401 Unauthorized | The authentication parameters did not match, or unlock is required. |
 
 # Wallet Policy
-BitGo wallets feature advanced security features such as multi-user or 2FA approval of transactions and spending limits.
-To take advantage of this, a user/developer may add and modify policy rules on a wallet. Rules will triggered an associated action (set by the user).
-The policy engine will collect all triggered rule results, and perform any triggered actions in the order of deny, get approval (from another user), get OTP (sent via SMS to another user) or allow (the default).
 
-If a wallet carries a balance and there are more than two "admin" users associated with a Wallet,
-any policy change will require approval by another administrator before it will take effect (if there are no additional "admin" users, this will not be necessary).
-It is thus highly recommended to create wallets with at least 2 administrators by [performing a wallet share](#wallet-sharing).
-This way, policy can be effective even if a single user is compromised.
+BitGo wallets feature advanced security features such as multi-user or 2FA approval of transactions and spending limits. To take advantage of this, a user/developer may add and modify policy rules on a wallet. Rules will triggered an associated action (set by the user). The policy engine will collect all triggered rule results, and perform any triggered actions in the order of deny, get approval (from another user), get OTP (sent via SMS to another user) or allow (the default).
 
-For policies with the "getOTP" action type, successfully sending a transaction will require a 7 digit OTP code before the
-transaction is signed and sent. This policy effectively lets you offer a 2FA security option for your own service, without implementing it yourself.
-The first attempt to send a transaction will fail and send out the code to the phone specified on the policy. Once you acquire
-the code from the user, make another send transaction call with the otp code included as a parameter in the API call
-and the transaction will successfully send. See the "otp" parameter at <a href="#send-coins-to-address">Sends Coins to Address</a> for further details.
+If a wallet carries a balance and there are more than two "admin" users associated with a Wallet, any policy change will require approval by another administrator before it will take effect (if there are no additional "admin" users, this will not be necessary). It is thus highly recommended to create wallets with at least 2 administrators by [performing a wallet share](#wallet-sharing). This way, policy can be effective even if a single user is compromised.
 
-This documentation provides API and SDK coverage of basic BitGo policy involving a single wallet.
-Further custom policy may be implemented using the [webhook policy type](#set-policy-rule),
-which causes BitGo to call out to a URL endpoint capable of evaluating any custom policy behavior involving external state.
+For policies with the "getOTP" action type, successfully sending a transaction will require a 7 digit OTP code before the transaction is signed and sent. This policy effectively lets you offer a 2FA security option for your own service, without implementing it yourself. The first attempt to send a transaction will fail and send out the code to the phone specified on the policy. Once you acquire the code from the user, make another send transaction call with the otp code included as a parameter in the API call and the transaction will successfully send. See the "otp" parameter at [Sends Coins to Address](#send-coins-to-address) for further details.
+
+This documentation provides API and SDK coverage of basic BitGo policy involving a single wallet. Further custom policy may be implemented using the [webhook policy type](#set-policy-rule), which causes BitGo to call out to a URL endpoint capable of evaluating any custom policy behavior involving external state.
 
 Advanced policy involving multiple wallets may be implemented by contacting BitGo directly.
 
@@ -3370,6 +3202,7 @@ bitgo.wallets().get({ "id": walletId }, function callback(err, wallet) {
     "version": 4
 }
 ```
+
 Gets the policy rules in operation on a wallet.
 
 ### HTTP Request
@@ -3378,9 +3211,9 @@ Gets the policy rules in operation on a wallet.
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | The ID of the wallet
+| Parameter | Type                     | Required | Description          |
+| --------- | ------------------------ | -------- | -------------------- |
+| walletId  | bitcoin address (string) | YES      | The ID of the wallet |
 
 ### Response
 
@@ -3441,9 +3274,9 @@ bitgo.wallets().get({ "id": walletId }, function callback(err, wallet) {
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | The ID of the wallet
+| Parameter | Type                     | Required | Description          |
+| --------- | ------------------------ | -------- | -------------------- |
+| walletId  | bitcoin address (string) | YES      | The ID of the wallet |
 
 ### Response
 
@@ -3479,22 +3312,18 @@ https://test.bitgo.com/api/v1/wallet/$WALLETID/policy/rule
 
 ### HTTP Request
 
-`PUT /api/v1/wallet/:wallet/policy/rule`
-
-<aside class="info">
-This operation requires the session to be unlocked using the Unlock API.
-</aside>
+`PUT /api/v1/wallet/:wallet/policy/rule`<aside class="info"> This operation requires the session to be unlocked using the Unlock API. </aside> 
 
 ### BODY Parameters
 
 Policy rule objects have a type, a condition, and an action. The type of policy often dictates the condition values.
 
-Parameter | Type | Required | Example
---------- | ---- | -------- | -----------
-id | the id of the policy | "com.bitgo.limit.tx", "custom1", "anyUniqueRuleId"
-type | The type of policy | *See Policy Types*
-condition | The condition for this policy | *See Policy Types*
-action | The action to take when the condition is false |  *See Policy Action Object*
+| Parameter | Type                                           | Required                                           | Example |
+| --------- | ---------------------------------------------- | -------------------------------------------------- | ------- |
+| id        | the id of the policy                           | "com.bitgo.limit.tx", "custom1", "anyUniqueRuleId" |         |
+| type      | The type of policy                             | *See Policy Types*                                 |         |
+| condition | The condition for this policy                  | *See Policy Types*                                 |         |
+| action    | The action to take when the condition is false | *See Policy Action Object*                         |         |
 
 > Example response
 
@@ -3535,21 +3364,22 @@ action | The action to take when the condition is false |  *See Policy Action Ob
 Returns the updated Wallet Model object.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
+
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
 
 ### Policy Object
 
 The aggregate Wallet Policy is an array of Policy Rule Objects. Policy rule objects have a type, a condition, and an action.
 
-Field | Description | Possible Values
------ | ----------- | ---------------
-id | the id of the policy | "com.bitgo.limit.tx", "custom1", "anyUniqueRuleId"
-type | The type of policy | "transactionLimit", "dailyLimit", "bitcoinAddressWhitelist", "webhook"
-condition | The condition for this policy | *Depends on policy rule type used*
-action | The action to take when the condition is false |  *See policy action object*
+| Field     | Description                                    | Possible Values                                                        |
+| --------- | ---------------------------------------------- | ---------------------------------------------------------------------- |
+| id        | the id of the policy                           | "com.bitgo.limit.tx", "custom1", "anyUniqueRuleId"                     |
+| type      | The type of policy                             | "transactionLimit", "dailyLimit", "bitcoinAddressWhitelist", "webhook" |
+| condition | The condition for this policy                  | *Depends on policy rule type used*                                     |
+| action    | The action to take when the condition is false | *See policy action object*                                             |
 
 ### Policy Type - dailyLimit
 
@@ -3557,9 +3387,9 @@ A dailyLimit policy rule will trigger when the amount of Bitcoin within the last
 
 Conditions for this include:
 
-Field | Description | Possible Values
------ | ----------- | ---------------
-amount | The maximum allowed value of all transactions per day| Number of satoshis
+| Field  | Description                                           | Possible Values    |
+| ------ | ----------------------------------------------------- | ------------------ |
+| amount | The maximum allowed value of all transactions per day | Number of satoshis |
 
 ### Policy Type - transactionLimit
 
@@ -3567,9 +3397,9 @@ A transactionLimit policy rule will trigger when a single transaction exceeds th
 
 Conditions for this include:
 
-Field | Description | Possible Values
------ | ----------- | ---------------
-amount | The maximum allowed value of each transaction on the wallet | Number of satoshis
+| Field  | Description                                                 | Possible Values    |
+| ------ | ----------------------------------------------------------- | ------------------ |
+| amount | The maximum allowed value of each transaction on the wallet | Number of satoshis |
 
 ### Policy Type - bitcoinAddressWhitelist
 
@@ -3577,10 +3407,10 @@ When active, a Bitcoin address whitelist rule will be triggered whenever any des
 
 Conditions for this include:
 
-Field | Description | Possible Values
------ | ----------- | ---------------
-add | The bitcoin address to add to the whitelist | Bitcoin address
-remove | The bitcoin address to remove from the whitelist | Bitcoin address
+| Field  | Description                                      | Possible Values |
+| ------ | ------------------------------------------------ | --------------- |
+| add    | The bitcoin address to add to the whitelist      | Bitcoin address |
+| remove | The bitcoin address to remove from the whitelist | Bitcoin address |
 
 > Example webhook callback (sent to your server, any non-200 response will trigger the policy rule action)
 
@@ -3609,40 +3439,37 @@ remove | The bitcoin address to remove from the whitelist | Bitcoin address
 
 ### Policy Type - webhook
 
-When active, a webhook rule will issue a callback to the HTTPS endpoint specified in the condition.
-The rule will trigger an action if the HTTPS endpoint returns a non-200 (status) response.
+When active, a webhook rule will issue a callback to the HTTPS endpoint specified in the condition. The rule will trigger an action if the HTTPS endpoint returns a non-200 (status) response.
 
 Conditions for this rule:
 
-Field | Description | Possible Values
------ | ----------- | ---------------
-url | The URL to issue the callback to | HTTPs endpoint
+| Field | Description                      | Possible Values |
+| ----- | -------------------------------- | --------------- |
+| url   | The URL to issue the callback to | HTTPs endpoint  |
 
 Body parameters sent in the callback:
 
-Field | Description | Possible Values
------ | ----------- | ---------------
-walletId | The ID of the wallet from which the transaction is originating | "2N8ryDAob6Qn8uCsWvkkQDhyeCQTqybGUFe"
-ruleId | The ID of the wallet from which the transaction is originating | "webhookPolicy1"
-outputs | Array of output objects containing outputAddress and value | [{ "outputAddress":"2N9kNR8iS46WuwekvQVaTUa74w2fbvAXHQn", "value":24885327}]
-spendAmount | The net spend amount from the wallet, less change (includes fees) | 10009060
-approvalCount | The number of user approvals on the wallet thus far | 0
-unsignedRawTx | The hex string of the half-signed raw transaction | "0100000001... 0794c5382a38700000000"
-sequenceId | The custom sequence ID provided by the sender when creating a transaction | "custom1"
+| Field         | Description                                                               | Possible Values                                                              |
+| ------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| walletId      | The ID of the wallet from which the transaction is originating            | "2N8ryDAob6Qn8uCsWvkkQDhyeCQTqybGUFe"                                        |
+| ruleId        | The ID of the wallet from which the transaction is originating            | "webhookPolicy1"                                                             |
+| outputs       | Array of output objects containing outputAddress and value                | [{ "outputAddress":"2N9kNR8iS46WuwekvQVaTUa74w2fbvAXHQn", "value":24885327}] |
+| spendAmount   | The net spend amount from the wallet, less change (includes fees)         | 10009060                                                                     |
+| approvalCount | The number of user approvals on the wallet thus far                       |                                                                              |
+| unsignedRawTx | The hex string of the half-signed raw transaction                         | "0100000001... 0794c5382a38700000000"                                        |
+| sequenceId    | The custom sequence ID provided by the sender when creating a transaction | "custom1"                                                                    |
 
 ### Policy Action Object
 
-An action is the action to take when the condition is not met by a
-transaction.
+An action is the action to take when the condition is not met by a transaction.
 
-Field | Description | Possible Values
------ | ----------- | ---------------
-type | The type of action | "deny", "getApproval", "getOTP"
-actionParams | JSON object containing phone/otpType/duration | *See below*
-otpType | Determines how the code should be sent (must set type === "getOTP") | "sms"
-phone | The phone number that will receive the code (must set type === "getOTP") | "541-754-3010", "+498963648018"
-duration | The time in seconds the OTP should be valid for (must set type === "getOTP") | 3600
-
+| Field        | Description                                                                  | Possible Values                 |
+| ------------ | ---------------------------------------------------------------------------- | ------------------------------- |
+| type         | The type of action                                                           | "deny", "getApproval", "getOTP" |
+| actionParams | JSON object containing phone/otpType/duration                                | *See below*                     |
+| otpType      | Determines how the code should be sent (must set type === "getOTP")          | "sms"                           |
+| phone        | The phone number that will receive the code (must set type === "getOTP")     | "541-754-3010", "+498963648018" |
+| duration     | The time in seconds the OTP should be valid for (must set type === "getOTP") | 3600                            |
 
 ## Remove Policy Rule
 
@@ -3683,17 +3510,13 @@ Removes a policy rule with the id specified. This may require a secondary approv
 
 ### HTTP Request
 
-`DELETE /api/v1/wallet/:WALLETID/policy/rule`
-
-<aside class="info">
-This operation requires the session to be unlocked using the Unlock API.
-</aside>
+`DELETE /api/v1/wallet/:WALLETID/policy/rule`<aside class="info"> This operation requires the session to be unlocked using the Unlock API. </aside> 
 
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-id | string | YES | the id of the policy rule to remove
+| Parameter | Type   | Required | Description                         |
+| --------- | ------ | -------- | ----------------------------------- |
+| id        | string | YES      | the id of the policy rule to remove |
 
 ### Response
 
@@ -3703,7 +3526,7 @@ Returns the updated Wallet Model object.
 
 ## List Pending Approvals
 
-List pending approvals on a wallet or an enterprise by providing either a wallet id or an enterprise in the url. By default, the request returns all the pending approvals for a user.  
+List pending approvals on a wallet or an enterprise by providing either a wallet id or an enterprise in the url. By default, the request returns all the pending approvals for a user.
 
 ```shell
 curl -X GET \
@@ -3761,10 +3584,10 @@ bitgo.pendingapprovals().list({
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | address (string) | NO | The base address of the wallet 
-enterprise | string | NO | The public ID of the enterprise
+| Parameter  | Type             | Required | Description                     |
+| ---------- | ---------------- | -------- | ------------------------------- |
+| walletId   | address (string) | NO       | The base address of the wallet  |
+| enterprise | string           | NO       | The public ID of the enterprise |
 
 ### Response
 
@@ -3839,9 +3662,9 @@ bitgo.pendingapprovals().list({
 
 ### BODY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-state | string | YES | the new state of the pending approval: 'approved', 'rejected' 
+| Parameter | Type   | Required | Description                                                   |
+| --------- | ------ | -------- | ------------------------------------------------------------- |
+| state     | string | YES      | the new state of the pending approval: 'approved', 'rejected' |
 
 ### Response
 
@@ -3849,11 +3672,7 @@ Returns the updated pending approvals with the new state.
 
 # Address Labels
 
-Labels allow you to keep track of addresses with human readable notes.
-You can add a label to any valid address; the address does not need to be
-one controlled by the wallet. Address labels are distinct from wallet labels,
-but they are tied to a wallet so that when you share the wallet with other users
-they will be also able to view the labels.
+Labels allow you to keep track of addresses with human readable notes. You can add a label to any valid address; the address does not need to be one controlled by the wallet. Address labels are distinct from wallet labels, but they are tied to a wallet so that when you share the wallet with other users they will be also able to view the labels.
 
 ## List Labels For All Wallets
 
@@ -3902,17 +3721,18 @@ Get the list of labels for the user
 
 Returns an array of Label Model objects.
 
-Field | Description
------ | -----------
-walletId | id of the wallet (also the first receiving address)
-address | the bitcoin address being labeled
-label | the address label
+| Field    | Description                                         |
+| -------- | --------------------------------------------------- |
+| walletId | id of the wallet (also the first receiving address) |
+| address  | the bitcoin address being labeled                   |
+| label    | the address label                                   |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
+
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
 
 ## List Labels For Specific Wallet
 
@@ -3968,18 +3788,19 @@ Get the list of labels for the wallet
 
 Returns an array of Label Model objects.
 
-Field | Description
------ | -----------
-walletId | id of the wallet (also the first receiving address)
-address | the bitcoin address being labeled
-label | the address label
+| Field    | Description                                         |
+| -------- | --------------------------------------------------- |
+| walletId | id of the wallet (also the first receiving address) |
+| address  | the bitcoin address being labeled                   |
+| label    | the address label                                   |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
-404 Not Found | The wallet could not be found.
+
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
+| 404 Not Found    | The wallet could not be found.                    |
 
 ## Set Label
 
@@ -4014,9 +3835,7 @@ wallets.get(data, function callback(err, wallet) {
 });
 ```
 
-Set a label on a specific address and associate it with a specific wallet.
-Labels are limited to 250 characters in length. Labels cannot be set on a wallet's first receiving address
-because it reserved for the wallet's label.
+Set a label on a specific address and associate it with a specific wallet. Labels are limited to 250 characters in length. Labels cannot be set on a wallet's first receiving address because it reserved for the wallet's label.
 
 ### HTTP Request
 
@@ -4031,35 +3850,37 @@ because it reserved for the wallet's label.
   "label": "A Noteworthy Label"
 }
 ```
+
 ### URL Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | id of the wallet (also the first receiving address)
-address | bitcoin address (string) | YES | the bitcoin address being labeled
+| Name     | Type                     | Required | Description                                         |
+| -------- | ------------------------ | -------- | --------------------------------------------------- |
+| walletId | bitcoin address (string) | YES      | id of the wallet (also the first receiving address) |
+| address  | bitcoin address (string) | YES      | the bitcoin address being labeled                   |
 
 ### PUT Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-label | string | YES | the address label
+| Name  | Type   | Required | Description       |
+| ----- | ------ | -------- | ----------------- |
+| label | string | YES      | the address label |
 
 ### Response
 
 Returns a Label Model object.
 
-Field | Description
------ | -----------
-walletId | id of the wallet (also the first receiving address)
-address | the bitcoin address being labeled
-label | the address label
+| Field    | Description                                         |
+| -------- | --------------------------------------------------- |
+| walletId | id of the wallet (also the first receiving address) |
+| address  | the bitcoin address being labeled                   |
+| label    | the address label                                   |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
-404 Not Found | The wallet could not be found.
+
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
+| 404 Not Found    | The wallet could not be found.                    |
 
 ## Delete Label
 
@@ -4098,27 +3919,28 @@ Delete a label from a specific address and wallet.
 
 ### URL Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-walletId | bitcoin address (string) | YES | id of the wallet (also the first receiving address)
-address | bitcoin address (string) | YES | the bitcoin address being labeled
+| Name     | Type                     | Required | Description                                         |
+| -------- | ------------------------ | -------- | --------------------------------------------------- |
+| walletId | bitcoin address (string) | YES      | id of the wallet (also the first receiving address) |
+| address  | bitcoin address (string) | YES      | the bitcoin address being labeled                   |
 
 ### Response
 
 Returns a Label Model object of the label that was deleted.
 
-Field | Description
------ | -----------
-walletId | id of the wallet (also the first receiving address)
-address | the bitcoin address being labeled
-label | the address label
+| Field    | Description                                         |
+| -------- | --------------------------------------------------- |
+| walletId | id of the wallet (also the first receiving address) |
+| address  | the bitcoin address being labeled                   |
+| label    | the address label                                   |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-401 Unauthorized | The authentication parameters did not match.
-404 Not Found | The wallet or label could not be found.
+
+| Response         | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| 400 Bad Request  | The request parameters were missing or incorrect. |
+| 401 Unauthorized | The authentication parameters did not match.      |
+| 404 Not Found    | The wallet or label could not be found.           |
 
 # Tags
 
@@ -4134,12 +3956,113 @@ Tags are an advanced policy feature for enterprise clients.
 
 The tag must have a name and exactly one of either a user, wallet, or enterprise.
 
-Parameter | Type | Required | Description | Possible Values
---------- | ---- | -------- | ----------- | ---------------
-name | string | YES |  The name of the tag. |
-user | id | NO |  The user id of the user who owns the tag, which can only be the id of the user adding the tag. |
-wallet | id | NO |  The id, not bitcoin address, of the wallet to own the tag. |
-enterprise | id | NO |  The id of the enterprise to own the tag. |
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    
+    <th>
+      Type
+    </th>
+    
+    <th>
+      Required
+    </th>
+    
+    <th>
+      Description
+    </th>
+    
+    <th>
+      Possible Values
+    </th>
+  </tr>
+  
+  <tr>
+    <td>
+      name
+    </td>
+    
+    <td>
+      string
+    </td>
+    
+    <td>
+      YES
+    </td>
+    
+    <td>
+      The name of the tag.
+    </td>
+    
+    <td>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      user
+    </td>
+    
+    <td>
+      id
+    </td>
+    
+    <td>
+      NO
+    </td>
+    
+    <td>
+      The user id of the user who owns the tag, which can only be the id of the user adding the tag.
+    </td>
+    
+    <td>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      wallet
+    </td>
+    
+    <td>
+      id
+    </td>
+    
+    <td>
+      NO
+    </td>
+    
+    <td>
+      The id, not bitcoin address, of the wallet to own the tag.
+    </td>
+    
+    <td>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      enterprise
+    </td>
+    
+    <td>
+      id
+    </td>
+    
+    <td>
+      NO
+    </td>
+    
+    <td>
+      The id of the enterprise to own the tag.
+    </td>
+    
+    <td>
+    </td>
+  </tr>
+</table>
 
 ### Response
 
@@ -4154,9 +4077,10 @@ Returns the tag.
 ```
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
+
+| Response        | Description                                       |
+| --------------- | ------------------------------------------------- |
+| 400 Bad Request | The request parameters were missing or incorrect. |
 
 ## Add a tag to a wallet
 
@@ -4166,12 +4090,52 @@ Response | Description
 
 ### BODY Parameters
 
-You must specify the id of the tag you are adding to the wallet, and no other parameters
-are required.
+You must specify the id of the tag you are adding to the wallet, and no other parameters are required.
 
-Parameter | Type | Required | Description | Possible Values
---------- | ---- | -------- | ----------- | ---------------
-tag | id | YES |  The id of the tag. |
+<table>
+  <tr>
+    <th>
+      Parameter
+    </th>
+    
+    <th>
+      Type
+    </th>
+    
+    <th>
+      Required
+    </th>
+    
+    <th>
+      Description
+    </th>
+    
+    <th>
+      Possible Values
+    </th>
+  </tr>
+  
+  <tr>
+    <td>
+      tag
+    </td>
+    
+    <td>
+      id
+    </td>
+    
+    <td>
+      YES
+    </td>
+    
+    <td>
+      The id of the tag.
+    </td>
+    
+    <td>
+    </td>
+  </tr>
+</table>
 
 ### Response
 
@@ -4186,40 +4150,37 @@ Returns the wallet, tag, and number of wallettxs affected.
 ```
 
 ### Errors
-Response | Description
--------- | -----------
-404 Not Found | The tag was not found
+
+| Response      | Description           |
+| ------------- | --------------------- |
+| 404 Not Found | The tag was not found |
 
 # Webhook Notifications
 
 > Example transaction Webhook callback
 
-```
-POST http://your.server.com/webhook
-{
-  "type": "transaction",
-  "walletId": "2MwLxgWaAGmMT9asT4nAdeewWzPEz3Sn5Eg",
-  "hash": "c9a55f32d4b63d02a617eea58873227e4f011d0dfc836cb2e9cab531c4db0c4a"
-}
-```
+    POST http://your.server.com/webhook
+    {
+      "type": "transaction",
+      "walletId": "2MwLxgWaAGmMT9asT4nAdeewWzPEz3Sn5Eg",
+      "hash": "c9a55f32d4b63d02a617eea58873227e4f011d0dfc836cb2e9cab531c4db0c4a"
+    }
+    
 
 > Example pending approval Webhook callback
 
-```
-POST http://your.server.com/webhook
-{
-  "type": "pendingapproval",
-  "pendingApprovalId": "55e79a1b5f9a20da1d3fe5b988a71c93",
-  "walletId": "2MwLxgWaAGmMT9asT4nAdeewWzPEz3Sn5Eg",
-  "state": "accepted"
-}
-```
+    POST http://your.server.com/webhook
+    {
+      "type": "pendingapproval",
+      "pendingApprovalId": "55e79a1b5f9a20da1d3fe5b988a71c93",
+      "walletId": "2MwLxgWaAGmMT9asT4nAdeewWzPEz3Sn5Eg",
+      "state": "accepted"
+    }
+    
 
-Webhooks may be setup up to programmatically receive callbacks from BitGo. These may be attached to wallets (in the case of transactions), or to a user (for block notifications).
-Webhook notifications are triggered when the specified event occurs, such as an incoming transaction.
+Webhooks may be setup up to programmatically receive callbacks from BitGo. These may be attached to wallets (in the case of transactions), or to a user (for block notifications). Webhook notifications are triggered when the specified event occurs, such as an incoming transaction.
 
-BitGo servers will make a POST http request to the URL defined with a JSON payload, and expect a `HTTP 200 OK`.
-If a successful response is not received, BitGo will attempt to retry the webhook with an increasing delay between each retry.
+BitGo servers will make a POST http request to the URL defined with a JSON payload, and expect a `HTTP 200 OK`. If a successful response is not received, BitGo will attempt to retry the webhook with an increasing delay between each retry.
 
 Developers should take care to ensure that their application succeeds even in the cases of transient network error, or if receive the same webhook twice due to an improper acknowledgement.
 
@@ -4227,26 +4188,25 @@ Developers should take care to ensure that their application succeeds even in th
 
 The Webhook URL will be called with the following JSON-encoded fields in the HTTP body.
 
-Field | Description
------ | -----------
-type | type of Webhook: 'transaction', 'transactionExpire', 'transactionRemoved', 'block', and 'pendingapproval'.
-walletId | ID of the wallet associated with the webhook event, if this is a wallet webhook.
-hash | transaction ID, if this is a transaction webhook
-pendingApprovalId | pending approval ID, if this is a pending approval webhook
-state | the state of the pending approval (pending, approved, or rejected), if this is a pending approval webhook
-
+| Field             | Description                                                                                                |
+| ----------------- | ---------------------------------------------------------------------------------------------------------- |
+| type              | type of Webhook: 'transaction', 'transactionExpire', 'transactionRemoved', 'block', and 'pendingapproval'. |
+| walletId          | ID of the wallet associated with the webhook event, if this is a wallet webhook.                           |
+| hash              | transaction ID, if this is a transaction webhook                                                           |
+| pendingApprovalId | pending approval ID, if this is a pending approval webhook                                                 |
+| state             | the state of the pending approval (pending, approved, or rejected), if this is a pending approval webhook  |
 
 ### Webhook Types
 
 BitGo is currently actively working on webhooks. Please get in touch with us to request more webhook types.
 
-Type | Description
------ | -----------
-transaction | Activates when a transaction is seen/confirmed on any receive address of a wallet
-transactionRemoved | Activates when a transaction is removed from a user's wallet
-transactionExpire | Activates when a transaction is about to expire
-pendingapproval | Activates when a pending approval pertaining to a user's wallet is created, approved, or rejected
-block | Activates when a new block is seen on the Bitcoin network
+| Type               | Description                                                                                       |
+| ------------------ | ------------------------------------------------------------------------------------------------- |
+| transaction        | Activates when a transaction is seen/confirmed on any receive address of a wallet                 |
+| transactionRemoved | Activates when a transaction is removed from a user's wallet                                      |
+| transactionExpire  | Activates when a transaction is about to expire                                                   |
+| pendingapproval    | Activates when a pending approval pertaining to a user's wallet is created, approved, or rejected |
+| block              | Activates when a new block is seen on the Bitcoin network                                         |
 
 ## List Wallet Webhooks
 
@@ -4283,8 +4243,7 @@ bitgo.wallets().get({ "id": walletId }, function(err, wallet) {
 ]
 ```
 
-Gets list of webhooks set up on the wallet.
-Currently, the only types of webhooks that can be attached to a wallet are transaction and pendingapproval notifications.
+Gets list of webhooks set up on the wallet. Currently, the only types of webhooks that can be attached to a wallet are transaction and pendingapproval notifications.
 
 ### HTTP Request
 
@@ -4294,11 +4253,11 @@ Currently, the only types of webhooks that can be attached to a wallet are trans
 
 An array of Webhook objects
 
-Field | Description
------ | -----------
-walletId | id of the wallet
-type | type of Webhook, e.g. transaction
-url | http/https url for callback requests
+| Field    | Description                          |
+| -------- | ------------------------------------ |
+| walletId | id of the wallet                     |
+| type     | type of Webhook, e.g. transaction    |
+| url      | http/https url for callback requests |
 
 ## Add Wallet Webhooks
 
@@ -4331,12 +4290,9 @@ bitgo.wallets().get({ "id": walletId }, function(err, wallet) {
 }
 ```
 
-Adds a Webhook that will result in a HTTP callback at the specified URL from BitGo when events are triggered.
-There is a limit of 10 Webhooks of each type per wallet.
+Adds a Webhook that will result in a HTTP callback at the specified URL from BitGo when events are triggered. There is a limit of 10 Webhooks of each type per wallet.
 
-There are 2 types of wallet webhooks available:
-1. Transaction webhooks will fire on any transaction on the wallet.
-2. Pending approval webhooks will fire when an outgoing transaction has triggered policy on the wallet.
+There are 2 types of wallet webhooks available: 1. Transaction webhooks will fire on any transaction on the wallet. 2. Pending approval webhooks will fire when an outgoing transaction has triggered policy on the wallet.
 
 ### HTTP Request
 
@@ -4344,20 +4300,19 @@ There are 2 types of wallet webhooks available:
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-type | string | YES | type of Webhook, e.g. transaction or pendingapproval
-url | string | YES | valid http/https url for callback requests
-numConfirmations | integer | NO | number of confirmations before triggering the transaction webhook. If 0 or unspecified, requests will be sent to the callback endpoint will be called when the transaction is first seen and when it is confirmed.
+| Parameter        | Type    | Required | Description                                                                                                                                                                                                        |
+| ---------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| type             | string  | YES      | type of Webhook, e.g. transaction or pendingapproval                                                                                                                                                               |
+| url              | string  | YES      | valid http/https url for callback requests                                                                                                                                                                         |
+| numConfirmations | integer | NO       | number of confirmations before triggering the transaction webhook. If 0 or unspecified, requests will be sent to the callback endpoint will be called when the transaction is first seen and when it is confirmed. |
 
 ### Response
 
-Field | Description
------ | -----------
-walletId | id of the wallet
-type | type of Webhook, e.g. transaction
-url | http/https url for callback requests
-
+| Field    | Description                          |
+| -------- | ------------------------------------ |
+| walletId | id of the wallet                     |
+| type     | type of Webhook, e.g. transaction    |
+| url      | http/https url for callback requests |
 
 ## Remove Wallet Webhooks
 
@@ -4396,18 +4351,18 @@ Removing a Webhook will cause new events of the specified type to no longer trig
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-type | string | YES | type of Webhook, e.g. transaction
-url | string | YES | valid http/https url for callback requests to be made at
+| Parameter | Type   | Required | Description                                              |
+| --------- | ------ | -------- | -------------------------------------------------------- |
+| type      | string | YES      | type of Webhook, e.g. transaction                        |
+| url       | string | YES      | valid http/https url for callback requests to be made at |
 
 ### Response
 
-Field | Description
------ | -----------
-walletId | id of the wallet
-type | type of Webhook, e.g. transaction
-url | http/https url for callback requests
+| Field    | Description                          |
+| -------- | ------------------------------------ |
+| walletId | id of the wallet                     |
+| type     | type of Webhook, e.g. transaction    |
+| url      | http/https url for callback requests |
 
 ## List User Webhooks
 
@@ -4451,11 +4406,11 @@ Gets list of webhooks attached to the user. Currently, the only type of webhook 
 
 An array of Webhook objects
 
-Field | Description
------ | -----------
-type | type of Webhook, e.g. block
-coin | string | NO | the network token e.g. "bitcoin" or "eth" (defaults to bitcoin)
-url | http/https url for callback requests
+| Field | Description                                                                   |
+| ----- | ----------------------------------------------------------------------------- |
+| type  | type of Webhook, e.g. block                                                   |
+| coin  | string | NO | the network token e.g. "bitcoin" or "eth" (defaults to bitcoin) |
+| url   | http/https url for callback requests                                          |
 
 ## Add User Webhooks
 
@@ -4494,19 +4449,18 @@ Adds a webhook that will result in a HTTP callback at the specified URL from Bit
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-type | string | YES | type of Webhook, e.g. block
-coin | string | NO | the network token e.g. "bitcoin" or "eth" (defaults to bitcoin)
-url | string | YES | valid http/https url for callback requests
+| Parameter | Type   | Required | Description                                                     |
+| --------- | ------ | -------- | --------------------------------------------------------------- |
+| type      | string | YES      | type of Webhook, e.g. block                                     |
+| coin      | string | NO       | the network token e.g. "bitcoin" or "eth" (defaults to bitcoin) |
+| url       | string | YES      | valid http/https url for callback requests                      |
 
 ### Response
 
-Field | Description
------ | -----------
-type | type of Webhook, e.g. block
-url | http/https url for callback requests
-
+| Field | Description                          |
+| ----- | ------------------------------------ |
+| type  | type of Webhook, e.g. block          |
+| url   | http/https url for callback requests |
 
 ## Remove User Webhooks
 
@@ -4542,17 +4496,17 @@ Removing a Webhook will cause new events of the specified type to no longer trig
 
 ### Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-type | string | YES | type of Webhook, e.g. transaction
-url | string | YES | valid http/https url for callback requests to be made at
+| Parameter | Type   | Required | Description                                              |
+| --------- | ------ | -------- | -------------------------------------------------------- |
+| type      | string | YES      | type of Webhook, e.g. transaction                        |
+| url       | string | YES      | valid http/https url for callback requests to be made at |
 
 ### Response
 
-Field | Description
------ | -----------
-type | type of Webhook, e.g. transaction
-url | http/https url for callback requests
+| Field | Description                          |
+| ----- | ------------------------------------ |
+| type  | type of Webhook, e.g. transaction    |
+| url   | http/https url for callback requests |
 
 # Utilities
 
@@ -4565,6 +4519,7 @@ var encryptedString = '{"iv":"n4zHXVTi/Go/riCP8fNs/A==","v":1,"iter":10000,"ks":
 var decryptedString = bitgo.decrypt({ password: "password", input: encryptedString });
 // decryptedString = "this is a secret"
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 
@@ -4587,6 +4542,7 @@ Client-side function to decrypt an encrypted blob from the BitGo API.
 var encryptedString = bitgo.encrypt({ password: "password", input: "this is a secret" });
 // encyrptedString = "{\"iv\":\"n4zHXVTi/Go/riCP8fNs/A==\",\"v\":1,\"iter\":10000,\"ks\":256,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"zvLyve+4AJU=\",\"ct\":\"gNMqheicMoD8ZmNzRwuQfWGAh+HA933l\"}"
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 
@@ -4601,7 +4557,7 @@ http://$BITGO_EXPRESS_HOST:3080/api/v1/encrypt
 { "encrypted" : "{\"iv\":\"U4uRz85ytmlCeTe2P3iOmg==\",\"v\":1,\"iter\":10000,\"ks\":256,\"ts\":64,\"mode\":\"ccm\",\"adata\":\"\",\"cipher\":\"aes\",\"salt\":\"zvLyve+4AJU=\",\"ct\":\"/tRnUh9LUyI7L5e5LPqpvnPR7RD1CdUi\"}" }
 ```
 
-Client-side function to encrypt a string.  All data stored with BitGo is encrypted using this API.
+Client-side function to encrypt a string. All data stored with BitGo is encrypted using this API.
 
 ## Estimate Transaction Fees
 
@@ -4610,12 +4566,12 @@ bitgo.estimateFee({ numBlocks: 6 }, function callback(err, res) {
   console.dir(res);
 });
 ```
+
 ```shell
 curl -k https://test.bitgo.com/api/v1/tx/fee?numBlocks=6
 ```
 
-Returns the recommended fee rate per kilobyte to confirm a transaction within a target number of blocks. This can be used to construct transactions.
-Note: The estimation algorithm is only accurate for a minimum of 2 blocks ahead.
+Returns the recommended fee rate per kilobyte to confirm a transaction within a target number of blocks. This can be used to construct transactions. Note: The estimation algorithm is only accurate for a minimum of 2 blocks ahead.
 
 ### HTTP Request
 
@@ -4645,12 +4601,12 @@ Note: The estimation algorithm is only accurate for a minimum of 2 blocks ahead.
 
 ### Response
 
-Field | Description
------ | -----------
-confidence | confidence of the estimation as used by BitGo. do not use estimation if this value is less than 85.
-feePerKb | fee (in satoshis) per kilobyte to use
-multiplier | multiplier amount used by BitGo to compute the feePerKb. informational only - do not use.
-numBlocks | the target number of blocks requested for the estimate
+| Field      | Description                                                                                         |
+| ---------- | --------------------------------------------------------------------------------------------------- |
+| confidence | confidence of the estimation as used by BitGo. do not use estimation if this value is less than 85. |
+| feePerKb   | fee (in satoshis) per kilobyte to use                                                               |
+| multiplier | multiplier amount used by BitGo to compute the feePerKb. informational only - do not use.           |
+| numBlocks  | the target number of blocks requested for the estimate                                              |
 
 ## Market Price Data
 
@@ -4662,6 +4618,7 @@ bitgo.markets().latest({}, function callback(err, market) {
   // etc
 });
 ```
+
 ```shell
 curl -k https://test.bitgo.com/api/v1/market/latest
 ```
@@ -4720,20 +4677,19 @@ Get information about the current market
 
 Returns a Market Model object. All prices are denominated in the user's set currency.
 
-Field | Description
------ | -----------
-last | Latest market price
-bid | Highest current bid price
-ask | Lowest current ask price
-volume | 24 hour volume of bitcoins exchanged
-high | Highest market price today
-low | Lowest market price today
-monthlyHigh | Highest market price this month
-monthlyLow | Lowest market price this month
-marketcap | Bitcoin market cap
-updateTime | Datetime of when this data was updated
-yesterday | An object containing the prior listed fields, but for yesterday's market data
-
+| Field       | Description                                                                   |
+| ----------- | ----------------------------------------------------------------------------- |
+| last        | Latest market price                                                           |
+| bid         | Highest current bid price                                                     |
+| ask         | Lowest current ask price                                                      |
+| volume      | 24 hour volume of bitcoins exchanged                                          |
+| high        | Highest market price today                                                    |
+| low         | Lowest market price today                                                     |
+| monthlyHigh | Highest market price this month                                               |
+| monthlyLow  | Lowest market price this month                                                |
+| marketcap   | Bitcoin market cap                                                            |
+| updateTime  | Datetime of when this data was updated                                        |
+| yesterday   | An object containing the prior listed fields, but for yesterday's market data |
 
 ## Malware Address List
 
@@ -4741,11 +4697,7 @@ yesterday | An object containing the prior listed fields, but for yesterday's ma
 curl https://www.bitgo.com/api/v1/malware/bitcoin
 ```
 
-BitGo maintains a list of addresses known to be used by address-swapping malware. BitGo will refuse to
-co-sign transactions to these addresses. This API provides the list of addresses which are currently
-blocked by BitGo. We recommend periodically polling this list (once a day, perhaps), in order to maintain
-your own block list. Otherwise you may accidentally submit bad transactions to BitGo, if one of your
-customers is infected and requests a withdrawal.
+BitGo maintains a list of addresses known to be used by address-swapping malware. BitGo will refuse to co-sign transactions to these addresses. This API provides the list of addresses which are currently blocked by BitGo. We recommend periodically polling this list (once a day, perhaps), in order to maintain your own block list. Otherwise you may accidentally submit bad transactions to BitGo, if one of your customers is infected and requests a withdrawal.
 
 ### HTTP Request
 
@@ -4769,16 +4721,17 @@ customers is infected and requests a withdrawal.
 
 ### Response
 
-Field | Description
------ | -----------
-readme | Human-readable explanation of this list
-addresses | List of { address: xxx } objects
+| Field     | Description                             |
+| --------- | --------------------------------------- |
+| readme    | Human-readable explanation of this list |
+| addresses | List of { address: xxx } objects        |
 
 ## Verify Bitcoin Address
 
 ```javascript
 var isValid = bitgo.verifyAddress({ address: "1AJbsFZ64EpEfS5UAjAfcUG8pH8Jn3rn1F" });
 ```
+
 ```shell
 Available only as a local method (BitGo Express)
 
@@ -4788,8 +4741,7 @@ curl -X POST \
 http://$BITGO_EXPRESS_HOST:3080/api/v1/verifyaddress
 ```
 
-Client-side function to verify that a given string is a valid Bitcoin Address.  Supports both v1 addresses (e.g. "1...")
-and P2SH addresses (e.g. "3...").
+Client-side function to verify that a given string is a valid Bitcoin Address. Supports both v1 addresses (e.g. "1...") and P2SH addresses (e.g. "3...").
 
 Returns true if the address is valid.
 
@@ -4803,18 +4755,11 @@ Client-side function to get the version of this BitGo SDK.
 
 Returns a string.
 
-
 # Blockchain Data
 
-BitGo provides a public API for getting blockchain data on addresses and transactions. These APIs do not relate to the concept of BitGo users or wallets.
-The purpose of this API endpoint is to allow API consumers to get data on non-BitGo addresses and transactions (similar to the concept of txindex and watchonly in the Satoshi client).
+BitGo provides a public API for getting blockchain data on addresses and transactions. These APIs do not relate to the concept of BitGo users or wallets. The purpose of this API endpoint is to allow API consumers to get data on non-BitGo addresses and transactions (similar to the concept of txindex and watchonly in the Satoshi client).
 
-For most wallet use cases, developers will want to use the Wallet and Keychain APIs. They support many more operations, such as checking the combined balances of HD wallets, creating addresses, sending transactions, etc.
-
-<aside class="success">
-The Blockchain Data API does not require authentication, since it returns only public blockchain data.
-It is still recommended to send the access token in the header to achieve a higher rate limit allowance from our service.
-</aside>
+For most wallet use cases, developers will want to use the Wallet and Keychain APIs. They support many more operations, such as checking the combined balances of HD wallets, creating addresses, sending transactions, etc.<aside class="success"> The Blockchain Data API does not require authentication, since it returns only public blockchain data. It is still recommended to send the access token in the header to achieve a higher rate limit allowance from our service. </aside> 
 
 ## Get Address
 
@@ -4839,10 +4784,9 @@ bitgo.blockchain().getAddress({ address: address }, function(err, response) {
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-address | bitcoin address (string) | YES | The bitcoin address
-
+| Parameter | Type                     | Required | Description         |
+| --------- | ------------------------ | -------- | ------------------- |
+| address   | bitcoin address (string) | YES      | The bitcoin address |
 
 > Example response
 
@@ -4858,18 +4802,18 @@ address | bitcoin address (string) | YES | The bitcoin address
 
 Returns address summary information.
 
-Field | Description
------ | -----------
-address | The address
-balance | the balance, including transactions with 0 confirmations
-confirmedBalance | the confirmed balance
+| Field            | Description                                              |
+| ---------------- | -------------------------------------------------------- |
+| address          | The address                                              |
+| balance          | the balance, including transactions with 0 confirmations |
+| confirmedBalance | the confirmed balance                                    |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
-404 Not Found | The address was not found
 
+| Response        | Description                                       |
+| --------------- | ------------------------------------------------- |
+| 400 Bad Request | The request parameters were missing or incorrect. |
+| 404 Not Found   | The address was not found                         |
 
 ## Get Address Transactions
 
@@ -4894,16 +4838,16 @@ bitgo.blockchain().getAddressTransactions({address: address}, function(err, resp
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-address | bitcoin address (string) | YES | The bitcoin address
+| Parameter | Type                     | Required | Description         |
+| --------- | ------------------------ | -------- | ------------------- |
+| address   | bitcoin address (string) | YES      | The bitcoin address |
 
 ### QUERY Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-skip | number | NO | The starting index number to list from.  Default is 0.
-limit | number | NO | Max number of results to return in a single call (default=25, max=250)
+| Parameter | Type   | Required | Description                                                            |
+| --------- | ------ | -------- | ---------------------------------------------------------------------- |
+| skip      | number | NO       | The starting index number to list from. Default is 0.                  |
+| limit     | number | NO       | Max number of results to return in a single call (default=25, max=250) |
 
 > Example response
 
@@ -4955,17 +4899,16 @@ limit | number | NO | Max number of results to return in a single call (default=
     "total": 2
 }
 ```
+
 ### Response
 
-Returns an array of Transaction objects.  Each transaction contains summary
-information about how that transaction affected the net balance of any
-bitcoin address involved in the transaction.
+Returns an array of Transaction objects. Each transaction contains summary information about how that transaction affected the net balance of any bitcoin address involved in the transaction.
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
 
+| Response        | Description                                       |
+| --------------- | ------------------------------------------------- |
+| 400 Bad Request | The request parameters were missing or incorrect. |
 
 ## Get Address Unspent Outputs
 
@@ -4990,9 +4933,9 @@ bitgo.blockchain().getAddressUnspents({address: address}, function(err, response
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-address | bitcoin address (string) | YES | The bitcoin address
+| Parameter | Type                     | Required | Description         |
+| --------- | ------------------------ | -------- | ------------------- |
+| address   | bitcoin address (string) | YES      | The bitcoin address |
 
 > Example response
 
@@ -5023,27 +4966,27 @@ address | bitcoin address (string) | YES | The bitcoin address
     ]
 }
 ```
+
 ### Response
 
-Returns an array of unspent Transaction objects.  Each transaction contains the following information
+Returns an array of unspent Transaction objects. Each transaction contains the following information
 
-Name | Type | Description
--------- | ----------- | --------------
-address | string | The address with the unspent output
-tx_hash | number | Amount in satoshis of the output unspent
-tx_output_n | number | Amount in satoshis of the output unspent
-value | number | Amount in satoshis of the output unspent
-blockheight | number | The height in which the transaction was seen
-confirmations | number | The number of confirmations for this transaction
-date | date | The datetime the transaction was seen on the network
-script | string | The output bitcoin script in hex format
-
+| Name          | Type   | Description                                          |
+| ------------- | ------ | ---------------------------------------------------- |
+| address       | string | The address with the unspent output                  |
+| tx_hash       | number | Amount in satoshis of the output unspent             |
+| tx_output_n | number | Amount in satoshis of the output unspent             |
+| value         | number | Amount in satoshis of the output unspent             |
+| blockheight   | number | The height in which the transaction was seen         |
+| confirmations | number | The number of confirmations for this transaction     |
+| date          | date   | The datetime the transaction was seen on the network |
+| script        | string | The output bitcoin script in hex format              |
 
 ### Errors
-Response | Description
--------- | -----------
-400 Bad Request | The request parameters were missing or incorrect.
 
+| Response        | Description                                       |
+| --------------- | ------------------------------------------------- |
+| 400 Bad Request | The request parameters were missing or incorrect. |
 
 ## Get Transaction Details
 
@@ -5068,9 +5011,9 @@ Gets details for a transaction hash
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-txid | string | YES | The transaction ID (hash)
+| Parameter | Type   | Required | Description               |
+| --------- | ------ | -------- | ------------------------- |
+| txid      | string | YES      | The transaction ID (hash) |
 
 > Example response
 
@@ -5119,11 +5062,9 @@ txid | string | YES | The transaction ID (hash)
 }
 ```
 
-
 ### Response
 
 Returns detailed information on a transaction, including net effects on all bitcoin addresses involved in the transaction.
-
 
 ## Get Block
 
@@ -5152,10 +5093,10 @@ Gets a Bitcoin block and the transactions within it. You can use 'latest' to get
 
 ### URL Parameters
 
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-id | variable | YES | The block hash (string), height (number) or 'latest' for the latest block
-extended | boolean | NO | Set to true to return details on each transaction within the block
+| Parameter | Type     | Required | Description                                                               |
+| --------- | -------- | -------- | ------------------------------------------------------------------------- |
+| id        | variable | YES      | The block hash (string), height (number) or 'latest' for the latest block |
+| extended  | boolean  | NO       | Set to true to return details on each transaction within the block        |
 
 > Example response
 
@@ -5176,106 +5117,85 @@ extended | boolean | NO | Set to true to return details on each transaction with
 }
 ```
 
-
 ### Response
 
-Name | Type | Description
--------- | ----------- | --------------
-date | datetime | The timestamp the block was seen on the network
-id | string | Hash of the block
-previous | string | Hash of the previous block in the chain
-transactions | array | Array of transaction hashes (strings) that are in the block
+| Name         | Type     | Description                                                 |
+| ------------ | -------- | ----------------------------------------------------------- |
+| date         | datetime | The timestamp the block was seen on the network             |
+| id           | string   | Hash of the block                                           |
+| previous     | string   | Hash of the previous block in the chain                     |
+| transactions | array    | Array of transaction hashes (strings) that are in the block |
 
 # BitGo Instant
 
-BitGo Instant allows sending on-chain transactions which can be credited instantly by recipients, due to a financial
-guarantee by BitGo against double-spending. Anyone can receive BitGo Instant transactions. In order to send BitGo Instant
-transactions, you will need either a BitGo KRS wallet, or will need to arrange a collateral agreement with BitGo.
+BitGo Instant allows sending on-chain transactions which can be credited instantly by recipients, due to a financial guarantee by BitGo against double-spending. Anyone can receive BitGo Instant transactions. In order to send BitGo Instant transactions, you will need either a BitGo KRS wallet, or will need to arrange a collateral agreement with BitGo.
 
 ## Receiving
 
-In order to credit BitGo Instant transactions instantly, you will need to respect the **instant: true** property on the
-transaction objects returned from the [List Wallet Transactions](#list-wallet-transactions) and
-[Get Wallet Transaction](#get-wallet-transaction) APIs. Instant transactions will also have a field **instantId** which
-can be used to [Get the Instant Guarantee](#get-instant-guarantee) on a transaction.
+In order to credit BitGo Instant transactions instantly, you will need to respect the **instant: true** property on the transaction objects returned from the [List Wallet Transactions](#list-wallet-transactions) and [Get Wallet Transaction](#get-wallet-transaction) APIs. Instant transactions will also have a field **instantId** which can be used to [Get the Instant Guarantee](#get-instant-guarantee) on a transaction.
 
 ## Sending
 
-You will first need a BitGo Instant-compatible wallet. This can be done by creating a KRS-enabled wallet in
-the web interface, or using the [Create Wallet API](#create-wallet-with-keychains) with a **backupXpubProvider** specified.
-If you have an existing non-KRS wallet, it can be upgraded to BitGo Instant-capable by arranging a
-collateral agreement with BitGo.
+You will first need a BitGo Instant-compatible wallet. This can be done by creating a KRS-enabled wallet in the web interface, or using the [Create Wallet API](#create-wallet-with-keychains) with a **backupXpubProvider** specified. If you have an existing non-KRS wallet, it can be upgraded to BitGo Instant-capable by arranging a collateral agreement with BitGo.
 
-In order to send a BitGo Instant transaction, use the **instant: true** flag on any of the transaction APIs,
-such as [Send Coins to Address](#send-coins-to-address) or [Create Transaction](#create-transaction). BitGoD
-also has the capability to send BitGo Instant transactions through its JSON interface.
+In order to send a BitGo Instant transaction, use the **instant: true** flag on any of the transaction APIs, such as [Send Coins to Address](#send-coins-to-address) or [Create Transaction](#create-transaction). BitGoD also has the capability to send BitGo Instant transactions through its JSON interface.
 
-BitGo Instant transactions have stricter requirements about the depths of the inputs being spent. This means
-that the balance of a wallet available for sending a BitGo Instant transaction may be less than the total
-balance of the wallet. The **instantBalance** property on the wallet object returned by
-the [Get Wallet API](#get-wallet) will tell you the available balance for sending a BitGo Instant transaction.
+BitGo Instant transactions have stricter requirements about the depths of the inputs being spent. This means that the balance of a wallet available for sending a BitGo Instant transaction may be less than the total balance of the wallet. The **instantBalance** property on the wallet object returned by the [Get Wallet API](#get-wallet) will tell you the available balance for sending a BitGo Instant transaction.
 
-When sending a BitGo Instant transaction, the transaction may fail if you do not have enough confirmed
-unspents in your wallet, or if the transaction would cause you to exceed the risk limits supported
-for your wallet. The risk limit is determined by the amount of collateral pledged, or by a risk limit
-BitGo applies to all wallets served by a particular KRS. You will need to handle potential failures
-when sending a BitGo Instant transaction, and possibly retry as a standard transaction.
+When sending a BitGo Instant transaction, the transaction may fail if you do not have enough confirmed unspents in your wallet, or if the transaction would cause you to exceed the risk limits supported for your wallet. The risk limit is determined by the amount of collateral pledged, or by a risk limit BitGo applies to all wallets served by a particular KRS. You will need to handle potential failures when sending a BitGo Instant transaction, and possibly retry as a standard transaction.
 
-BitGo Instant transactions are provided at no additional cost to any customer on our standard transactional
-pricing plans, including volume discount plans.
+BitGo Instant transactions are provided at no additional cost to any customer on our standard transactional pricing plans, including volume discount plans.
 
 # Partner OAuth
 
-BitGo partners may utilize our OAuth endpoints to obtain authorized access and perform actions on behalf of 3rd party BitGo accounts.
-BitGo complies with the OAuth standard to allow secure access to customer accounts while keeping their passwords safe.
+BitGo partners may utilize our OAuth endpoints to obtain authorized access and perform actions on behalf of 3rd party BitGo accounts. BitGo complies with the OAuth standard to allow secure access to customer accounts while keeping their passwords safe.
 
 To begin, partners should obtain OAuth application parameters by getting in touch with us. The OAuth flow typically goes as follows:
 
-1. You redirect users to log into BitGo via our OAuth gateway at `https://www.bitgo.com/oauth/authorize`. In the parameters of this request, you specify the client id, redirect uri and scope.
-2. The user reaches the BitGo OAuth gateway. We ask them if it's ok for you to gain access to the requested scope. They log in with their password and 2FA to confirm.
-3. We redirect the user back to your redirect Uri, with a code parameter. This authorization code is valid for use by your client ID only.
-4. You send the authorization code back to your servers and create a request to BitGo servers with the code, client id and secret. We exchange this for an access token.
-5. You use the access token in the Authorization header to make API calls on behalf of the BitGo user.
+  1. You redirect users to log into BitGo via our OAuth gateway at `https://www.bitgo.com/oauth/authorize`. In the parameters of this request, you specify the client id, redirect uri and scope.
+  2. The user reaches the BitGo OAuth gateway. We ask them if it's ok for you to gain access to the requested scope. They log in with their password and 2FA to confirm.
+  3. We redirect the user back to your redirect Uri, with a code parameter. This authorization code is valid for use by your client ID only.
+  4. You send the authorization code back to your servers and create a request to BitGo servers with the code, client id and secret. We exchange this for an access token.
+  5. You use the access token in the Authorization header to make API calls on behalf of the BitGo user.
 
 ### OAuth Variables
 
-Name | Description
--------- | -----------
-Client Id | A string (name) of the OAuth application seeking access to 3rd party accounts. This will be public.
-Client Secret | A secret string, stored on the server of the OAuth consumer, used to convert authorization codes for the client id to access tokens.
-Redirect Uris | A list of acceptable redirect URIs. When you send users to our OAuth gateway for authorization, we send them back to a Uri on your site with the authorization code.
-Scope | A list of OAuth scopes. These are the scopes that your application will be allowed to request for from the user.
+| Name          | Description                                                                                                                                                          |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Client Id     | A string (name) of the OAuth application seeking access to 3rd party accounts. This will be public.                                                                  |
+| Client Secret | A secret string, stored on the server of the OAuth consumer, used to convert authorization codes for the client id to access tokens.                                 |
+| Redirect Uris | A list of acceptable redirect URIs. When you send users to our OAuth gateway for authorization, we send them back to a Uri on your site with the authorization code. |
+| Scope         | A list of OAuth scopes. These are the scopes that your application will be allowed to request for from the user.                                                     |
 
 ### Scope Values
-The scope values define the allowed operations within an OAuth session.
-These scopes should be provided to the BitGo OAuth gateway such that BitGo may inform the user of your intent and assign you an appropriate authentication code with the requested scope.
+
+The scope values define the allowed operations within an OAuth session. These scopes should be provided to the BitGo OAuth gateway such that BitGo may inform the user of your intent and assign you an appropriate authentication code with the requested scope.
 
 Please specify scopes separated using spaces, e.g. "openid profile wallet_view_enterprise wallet_spend_enterprise".
 
 Note that more powerful scopes do not encompass basic ones, ie. wallet_spend does not encompass wallet_view, so you should request for both.
 
-OAuth Scope Value | Description of Allowed Actions
--------- | -----------
-openid | Verify the user is logged in and get their User ID
-profile | Get the user's profile, including email and phone number
-wallet_create | Create wallets on behalf of the user
-wallet_view_enterprise | View wallets created under their enterprise
-wallet_spend_enterprise | Spend Bitcoin from wallets created under their enterprise
-wallet_manage_enterprise | Manage and modify settings from wallets created under their enterprise
-wallet_view:#WALLETID | View a wallet's transactions and addresses
-wallet_spend:#WALLETID | Spend Bitcoin from the specific wallet
-wallet_manage:#WALLETID | Manage and modify settings on the specific wallet
-wallet_view_all | View all the transactions and addresses for all wallets the user has access to
-wallet_freeze_#WALLETID | Freeze all spend activity on a specific wallet for a given duration (defaults to 1 hour)
-wallet_freeze_all | Freeze all spend activity on all of the user's wallets
+| OAuth Scope Value          | Description of Allowed Actions                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------- |
+| openid                     | Verify the user is logged in and get their User ID                                       |
+| profile                    | Get the user's profile, including email and phone number                                 |
+| wallet_create              | Create wallets on behalf of the user                                                     |
+| wallet_view_enterprise   | View wallets created under their enterprise                                              |
+| wallet_spend_enterprise  | Spend Bitcoin from wallets created under their enterprise                                |
+| wallet_manage_enterprise | Manage and modify settings from wallets created under their enterprise                   |
+| wallet_view:#WALLETID      | View a wallet's transactions and addresses                                               |
+| wallet_spend:#WALLETID     | Spend Bitcoin from the specific wallet                                                   |
+| wallet_manage:#WALLETID    | Manage and modify settings on the specific wallet                                        |
+| wallet_view_all          | View all the transactions and addresses for all wallets the user has access to           |
+| wallet_freeze_#WALLETID  | Freeze all spend activity on a specific wallet for a given duration (defaults to 1 hour) |
+| wallet_freeze_all        | Freeze all spend activity on all of the user's wallets                                   |
 
 ## 3rd Party BitGo Login
 
 > Example OAuth gateway redirect to send your users to BitGo OAuth
 
-```
-https://test.bitgo.com/oauth/authorize?client_id=FBExchange&redirect_uri=https%3A%2F%2Ffbexchange.com%2Foauth_redirect&scope=openid%20profile%20wallet_view_enterprise&email=test@bitgo.com&signup=false
-```
+    https://test.bitgo.com/oauth/authorize?client_id=FBExchange&redirect_uri=https%3A%2F%2Ffbexchange.com%2Foauth_redirect&scope=openid%20profile%20wallet_view_enterprise&email=test@bitgo.com&signup=false
+    
 
 The first step in the OAuth flow is to redirect your users to the BitGo OAuth gateway with the Client ID, Scope and Redirect Uri parameters.
 
@@ -5288,27 +5208,26 @@ Parameters may be sent via GET or POST.
 
 > Example redirect URL from BitGo sending users back to your site
 
-```
-https://fbexchange.com/oauth_redirect?code=440261e26512877b7ebe86e2740da3030d81e88e
-```
+    https://fbexchange.com/oauth_redirect?code=440261e26512877b7ebe86e2740da3030d81e88e
+    
 
-Parameter | Required | Description
--------- | -------- | -----------
-client_id | YES | Name of the OAuth application seeking access to 3rd party accounts
-redirect_uri | YES | Redirect Uri for BitGo to send users back to your site after they have authenticated on BitGo
-scope | YES | List of requested OAuth scopes, separated by spaces. Your access to the user's information will be dependent on these scopes
-state | NO | opaque string that you contain any custom information you wish to provide. Send back as a parameter in the redirect Uri
-signup | NO | boolean value to be used to control if the user defaults to login or sign up when they land on the OAuth gateway at BitGo
-email | NO | string value of the email username, used to pre-populate the value
-force_email | NO | if set to true, the email field (set above) will be readonly on the user's client
+| Parameter    | Required | Description                                                                                                                  |
+| ------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| client_id    | YES      | Name of the OAuth application seeking access to 3rd party accounts                                                           |
+| redirect_uri | YES      | Redirect Uri for BitGo to send users back to your site after they have authenticated on BitGo                                |
+| scope        | YES      | List of requested OAuth scopes, separated by spaces. Your access to the user's information will be dependent on these scopes |
+| state        | NO       | opaque string that you contain any custom information you wish to provide. Send back as a parameter in the redirect Uri      |
+| signup       | NO       | boolean value to be used to control if the user defaults to login or sign up when they land on the OAuth gateway at BitGo    |
+| email        | NO       | string value of the email username, used to pre-populate the value                                                           |
+| force_email  | NO       | if set to true, the email field (set above) will be readonly on the user's client                                            |
 
 ### Our server will redirect
 
 After the user has authorized your application, we will redirect back them to your URL. The redirect will contain the URL parameters:
 
-Parameter | Description
--------- | -----------
-code | Authorizing code string which you can use (together with your secret) to exchange for an access token
+| Parameter | Description                                                                                           |
+| --------- | ----------------------------------------------------------------------------------------------------- |
+| code      | Authorizing code string which you can use (together with your secret) to exchange for an access token |
 
 ## Obtaining Access Tokens
 
@@ -5330,6 +5249,7 @@ if (err) {
   });
 });
 ```
+
 ```shell
 AUTHORIZATION_CODE='440261e26512877b7ebe86e2740da3030d81e88e'
 CLIENT_ID='FBExchange'
@@ -5337,10 +5257,10 @@ CLIENT_SECRET='testclientsecret'
 curl -X POST https://test.bitgo.com/oauth/token \
 -H "Content-Type: application/json" \
 -d  "{ \"client_id\": \"$CLIENT_ID\",
-	   \"client_secret\": \"$CLIENT_SECRET\",
-	   \"grant_type\": \"authorization_code\",
-	   \"code\":\"$AUTHORIZATION_CODE\"
-	}"
+       \"client_secret\": \"$CLIENT_SECRET\",
+       \"grant_type\": \"authorization_code\",
+       \"code\":\"$AUTHORIZATION_CODE\"
+    }"
 ```
 
 When your user receives the authorization code, send it to the service backend you wish to use to perform actions on behalf of the user.
@@ -5352,12 +5272,12 @@ You then need to exchange the authentication code for an access token that you c
 
 ### OAuth Token Request Parameters
 
-Parameter | Description
--------- | -----------
-client_id | A string (name) of the OAuth application seeking access to 3rd party accounts
-client_secret | A secret string, stored on the server of the OAuth application, issued to you by BitGo
-grant_type | should be 'authorization_code'
-code | The authentication code you received in the redirect from the above user login step
+| Parameter     | Description                                                                            |
+| ------------- | -------------------------------------------------------------------------------------- |
+| client_id     | A string (name) of the OAuth application seeking access to 3rd party accounts          |
+| client_secret | A secret string, stored on the server of the OAuth application, issued to you by BitGo |
+| grant_type    | should be 'authorization_code'                                                         |
+| code          | The authentication code you received in the redirect from the above user login step    |
 
 > Example response
 
@@ -5372,34 +5292,28 @@ code | The authentication code you received in the redirect from the above user 
 }
 ```
 
-
 ### OAuth Response
 
 Our server will return an access token for use with the API.
 
-The token must be added as a HTTP header to all API calls in the HTTP
-"Authorization" header:
+The token must be added as a HTTP header to all API calls in the HTTP "Authorization" header:
 
 `Authorization: Bearer <your token goes here>`
 
-Parameter | Description
--------- | -----------
-token_type | The type of token e.g. 'bearer'
-access_token | The token to be used in the Authorization header for subsequent authorized API requests on behalf of the user
-expires_in | Number of seconds the token is valid
-expires_at | Time which the token will expire, in seconds since 1970.
-refresh_token | Can be used to obtain another access token, if your session is due to expire
-id_token | openid jwt token containing user profile information, if requested as a scope
-
+| Parameter     | Description                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------------- |
+| token_type    | The type of token e.g. 'bearer'                                                                               |
+| access_token  | The token to be used in the Authorization header for subsequent authorized API requests on behalf of the user |
+| expires_in    | Number of seconds the token is valid                                                                          |
+| expires_at    | Time which the token will expire, in seconds since 1970.                                                      |
+| refresh_token | Can be used to obtain another access token, if your session is due to expire                                  |
+| id_token      | openid jwt token containing user profile information, if requested as a scope                                 |
 
 ## OpenID JSON Web Token
 
-If the partner authentication request had an openid profile scope, a id_token in JSON Web Token (JWT) base64-encoded
-format will be returned in the response to the OAuth access token request above.
-You should validate the JSON web token is signed with the HS256 algorithm using your client secret (to prove it came from BitGo).
+If the partner authentication request had an openid profile scope, a id_token in JSON Web Token (JWT) base64-encoded format will be returned in the response to the OAuth access token request above. You should validate the JSON web token is signed with the HS256 algorithm using your client secret (to prove it came from BitGo).
 
-This token will contain user profile information. You should take care to store this information securely so as not to
- expose your users to scammers or phishing.
+This token will contain user profile information. You should take care to store this information securely so as not to expose your users to scammers or phishing.
 
 > Example decrypted id_token (from the above access token response)
 
@@ -5421,19 +5335,19 @@ This token will contain user profile information. You should take care to store 
 
 ### ID Token Claims
 
-Parameter | Format | Description
--------- | ------- | -----------
-iat | seconds since utc | time this token was created, in seconds since 1970.
-exp | seconds since utc | expiry time of the token (when to accept it until), in seconds since 1970.
-aud | string | the client id
-iss | uri string | the issue identifier
-sub | string | BitGo unique user id
-access_token | string | access token you received from this request, for verification purposes
-email | string | user email
-email_verified | boolean | if the user email has been verified
-phone_number | string | user phone number
-phone_number_verified | boolean | if the phone number has been verified
-zoneinfo | TZ | time zone information, e.g. US/pacific
+| Parameter               | Format            | Description                                                                |
+| ----------------------- | ----------------- | -------------------------------------------------------------------------- |
+| iat                     | seconds since utc | time this token was created, in seconds since 1970.                        |
+| exp                     | seconds since utc | expiry time of the token (when to accept it until), in seconds since 1970. |
+| aud                     | string            | the client id                                                              |
+| iss                     | uri string        | the issue identifier                                                       |
+| sub                     | string            | BitGo unique user id                                                       |
+| access_token            | string            | access token you received from this request, for verification purposes     |
+| email                   | string            | user email                                                                 |
+| email_verified          | boolean           | if the user email has been verified                                        |
+| phone_number            | string            | user phone number                                                          |
+| phone_number_verified | boolean           | if the phone number has been verified                                      |
+| zoneinfo                | TZ                | time zone information, e.g. US/pacific                                     |
 
 ## Refreshing Access Tokens
 
@@ -5448,6 +5362,7 @@ bitgo.refreshToken({ refreshToken: refreshToken }, function(err, result) {
   console.dir(result);
 });
 ```
+
 ```shell
 REFRESH_TOKEN='3f8aa90479b4e3f0ea4544ed302e3bfe91968581' #from above request
 CLIENT_ID='FBExchange'
@@ -5455,10 +5370,10 @@ CLIENT_SECRET='testclientsecret'
 curl -X POST https://test.bitgo.com/oauth/token \
 -H "Content-Type: application/json" \
 -d  "{ \"client_id\": \"$CLIENT_ID\",
-	   \"client_secret\": \"$CLIENT_SECRET\",
-	   \"grant_type\": \"refresh_token\",
-	   \"refresh_token\":\"$REFRESH_TOKEN\"
-	}"
+       \"client_secret\": \"$CLIENT_SECRET\",
+       \"grant_type\": \"refresh_token\",
+       \"refresh_token\":\"$REFRESH_TOKEN\"
+    }"
 ```
 
 The access token obtained in the previous step is typically good for an hour.
@@ -5484,31 +5399,24 @@ Refresh tokens have a lifetime of 2 weeks from creation and are valid for a *sin
 
 ### OAuth Token Request Parameters
 
-Parameter | Description
--------- | -----------
-client_id | A string (name) of the OAuth application seeking access to 3rd party accounts
-client_secret | A secret string, stored on the server of the OAuth application, issued to you by BitGo
-grant_type | should be 'refresh_token'
-refresh_token | The refresh token received when you exchanged the authorization code for the access token
-
+| Parameter     | Description                                                                               |
+| ------------- | ----------------------------------------------------------------------------------------- |
+| client_id     | A string (name) of the OAuth application seeking access to 3rd party accounts             |
+| client_secret | A secret string, stored on the server of the OAuth application, issued to you by BitGo    |
+| grant_type    | should be 'refresh_token'                                                                 |
+| refresh_token | The refresh token received when you exchanged the authorization code for the access token |
 
 # Examples
 
-BitGo has provided examples of how to perform several common wallet operations using our SDK. The more important ones are covered here.
+BitGo has provided examples of how to perform several common wallet operations using our SDK. The more important ones are covered here.<aside class="info"> Our SDK and examples default to the BitGo test environment which is connected to the Bitcoin TestNet. Do refer to the \[Test Environments\](#bitgo-api-endpoints) section for further details. </aside> 
 
-<aside class="info">
-Our SDK and examples default to the BitGo test environment which is connected to the Bitcoin TestNet.
-Do refer to the [Test Environments](#bitgo-api-endpoints) section for further details.
-</aside>
-
-The examples below (and more!) can be found in the `BitGoJS/examples` directory in our SDK repository.
-Please report problems with the examples via email or Git issues.
+The examples below (and more!) can be found in the `BitGoJS/examples` directory in our SDK repository. Please report problems with the examples via email or Git issues.
 
 ### Obtaining the Wallet ID
+
 When you create your wallet on the BitGo test website, the wallet id is the first receiving address. It is also in the URI when you click on it from the main menu.
 
 ## Get Wallet Balance
-
 
 > Code Snippet
 
@@ -5525,32 +5433,30 @@ bitgo.authenticate({ username: user, password: password, otp: otp }, function(er
   });
 });
 ```
-```
-$ node getWalletBalance.js tester@bitgo.com superhardseypassphrase 0000000 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD
-```
+
+    $ node getWalletBalance.js tester@bitgo.com superhardseypassphrase 0000000 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD
+    
 
 > Example output
 
-```
-Logged in!
-Balance is: 0.6274
-```
+    Logged in!
+    Balance is: 0.6274
+    
 
-This simple example shows how to authenticate and get the wallet.
-The balance in bitcoins can be found on the wallet model.
+This simple example shows how to authenticate and get the wallet. The balance in bitcoins can be found on the wallet model.
 
 ### Usage
 
-  `node getWalletBalance.js <user> <pass> <otp> <walletId>`
+`node getWalletBalance.js <user> <pass> <otp> <walletId>`
 
 ### Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-user | string | YES | username (your email on the test environment)
-pass | string | YES | password on BitGo
-otp | number | YES | the one-time-password (you can use 0000000 in the test environment)
-walletId | string | YES | id of the wallet (also the first receiving address)
+| Name     | Type   | Required | Description                                                         |
+| -------- | ------ | -------- | ------------------------------------------------------------------- |
+| user     | string | YES      | username (your email on the test environment)                       |
+| pass     | string | YES      | password on BitGo                                                   |
+| otp      | number | YES      | the one-time-password (you can use 0000000 in the test environment) |
+| walletId | string | YES      | id of the wallet (also the first receiving address)                 |
 
 ## List Wallet Transactions
 
@@ -5581,66 +5487,63 @@ bitgo.authenticate({ username: user, password: password, otp: otp }, function(er
   });
 });
 ```
-```
-$ node listWalletTransactions.js tester@bitgo.com superhardseypassphrase 0000000 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD
-```
+
+    $ node listWalletTransactions.js tester@bitgo.com superhardseypassphrase 0000000 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD
+    
 
 > Example output
 
-```
-Logged in!
-Balance is: 0.6274
-b9573e0e1d8f22fbfe314760b9abd0b6942132cfb2bd7f9fee9713b545a62689: Received 0.56000000BTC on 2014-11-17T21:20:59.000Z
-b3bd8ac76de2340c1159337acdfcaabf08a9470e8157870bd1d84631a0acc67b: Received 0.00010000BTC on 2014-11-17T21:00:58.000Z
-7f5d6a27ea832b2d0a9b63ecdbccecaadbd582b5be41d5bdeabcce72243366a3: Received 0.00010000BTC on 2014-11-17T19:57:18.000Z
-690b8a83e1685869f6138d9a74776f5f868ffc1121fa22f2086e65400f14ef78: Received 0.00010000BTC on 2014-11-17T19:57:18.000Z
-```
+    Logged in!
+    Balance is: 0.6274
+    b9573e0e1d8f22fbfe314760b9abd0b6942132cfb2bd7f9fee9713b545a62689: Received 0.56000000BTC on 2014-11-17T21:20:59.000Z
+    b3bd8ac76de2340c1159337acdfcaabf08a9470e8157870bd1d84631a0acc67b: Received 0.00010000BTC on 2014-11-17T21:00:58.000Z
+    7f5d6a27ea832b2d0a9b63ecdbccecaadbd582b5be41d5bdeabcce72243366a3: Received 0.00010000BTC on 2014-11-17T19:57:18.000Z
+    690b8a83e1685869f6138d9a74776f5f868ffc1121fa22f2086e65400f14ef78: Received 0.00010000BTC on 2014-11-17T19:57:18.000Z
+    
 
 This example shows how to get the list of transactions on a wallet. This may be useful for verifying received transaction IDs.
 
 ### Usage
 
-  `node listWalletTransactions.js <user> <pass> <otp> <walletId>`
+`node listWalletTransactions.js <user> <pass> <otp> <walletId>`
 
 ### Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-user | string | YES | username (your email on the test environment)
-pass | string | YES | password on BitGo
-otp | number | YES | the one-time-password (you can use 0000000 in the test environment)
-walletId | bitcoin address (string) | YES | id of the wallet (also the first receiving address)
+| Name     | Type                     | Required | Description                                                         |
+| -------- | ------------------------ | -------- | ------------------------------------------------------------------- |
+| user     | string                   | YES      | username (your email on the test environment)                       |
+| pass     | string                   | YES      | password on BitGo                                                   |
+| otp      | number                   | YES      | the one-time-password (you can use 0000000 in the test environment) |
+| walletId | bitcoin address (string) | YES      | id of the wallet (also the first receiving address)                 |
 
 ## Address Labels
 
-```
-$ node addressLabels.js tester@bitgo.com superhardseypassphrase 0000000
-```
+    $ node addressLabels.js tester@bitgo.com superhardseypassphrase 0000000
+    
 
 > Example output
 
-```
-Enter the wallet ID: 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD
-Which label action do you wish to perform? [list, set, delete]: list
- muYhgJrYZHffyGUmuzETjMcBQZJqFo9Vkg    Secret Stash
- 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD   another label
- 2MzjET9tYPPZQtsahFvabhaaPWuDdKn3Dh6   descriptive text
- n1wbb1HeZULZwvtcYMLeFz8J9QD7HkG1pa    watch only address
-```
+    Enter the wallet ID: 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD
+    Which label action do you wish to perform? [list, set, delete]: list
+     muYhgJrYZHffyGUmuzETjMcBQZJqFo9Vkg    Secret Stash
+     2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD   another label
+     2MzjET9tYPPZQtsahFvabhaaPWuDdKn3Dh6   descriptive text
+     n1wbb1HeZULZwvtcYMLeFz8J9QD7HkG1pa    watch only address
+    
 
 This example shows how to list, set, and delete labels on addresses.
 
 ### Usage
 
-  `node addressLabels.js <user> <pass> <otp>`
+`node addressLabels.js <user> <pass> <otp>`
 
 ### Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-user | string | YES | username (your email on the test environment)
-pass | string | YES | password on BitGo
-otp | number | YES | the one-time-password (you can use 0000000 in the test environment)
+| Name | Type   | Required | Description                                                         |
+| ---- | ------ | -------- | ------------------------------------------------------------------- |
+| user | string | YES      | username (your email on the test environment)                       |
+| pass | string | YES      | password on BitGo                                                   |
+| otp  | number | YES      | the one-time-password (you can use 0000000 in the test environment) |
 
 ## Create Wallet
 
@@ -5658,15 +5561,14 @@ otp | number | YES | the one-time-password (you can use 0000000 in the test envi
 });
 ```
 
-```
-$ node createWallet.js tester@bitgo.com superhardseypassphrase 0000000 'My API wallet'
-```
+    $ node createWallet.js tester@bitgo.com superhardseypassphrase 0000000 'My API wallet'
+    
 
 > Example output
 
-```
-New Wallet: 2NAGz3TDs5HmBU2SEodtWyks9n5KXVCzBTf
-```
+    New Wallet: 2NAGz3TDs5HmBU2SEodtWyks9n5KXVCzBTf
+    
+
 ```json
 { "id": "2NAGz3TDs5HmBU2SEodtWyks9n5KXVCzBTf",
  "label": "testwallet",
@@ -5680,38 +5582,33 @@ New Wallet: 2NAGz3TDs5HmBU2SEodtWyks9n5KXVCzBTf
  "balance": 0,
  "pendingApprovals": [] }
 ```
-```
-BACK THIS UP:
-User keychain encrypted xPrv: {"iv":"v2aVEG5A8VwnI+ewS..."}
-Backup keychain xPub: xpub6GiRC55CRuv2Fx3ihR9EPCr7gauoJcHqvvdSgQkmMmqMQmvQ1KNSBmKPReryBv8E3qJWkHmCx3cWmLGvbDRzCAoV7HUf8A5LUdRhV46u9h5
-```
+
+    BACK THIS UP:
+    User keychain encrypted xPrv: {"iv":"v2aVEG5A8VwnI+ewS..."}
+    Backup keychain xPub: xpub6GiRC55CRuv2Fx3ihR9EPCr7gauoJcHqvvdSgQkmMmqMQmvQ1KNSBmKPReryBv8E3qJWkHmCx3cWmLGvbDRzCAoV7HUf8A5LUdRhV46u9h5
+    
 
 Creates a wallet on BitGo. The example performs the following steps:
 
-1. Authenticates with BitGo
-2. Unlocks the account
-3. Creates the user keychain on the client, encrypts it with the password and sends it to the server.
-4. Creates the backup keychain on the client.
-5. Creates the BitGo keychain on the BitGo server.
-6. Creates the wallet with the corresponding public keys to the keychains above.
-
-<aside class="warning">
-It is **VERY IMPORTANT** to have the user print out / back up their user and backup keys.
-Failure to do so can result in the loss of funds!
-</aside>
+  1. Authenticates with BitGo
+  2. Unlocks the account
+  3. Creates the user keychain on the client, encrypts it with the password and sends it to the server.
+  4. Creates the backup keychain on the client.
+  5. Creates the BitGo keychain on the BitGo server.
+  6. Creates the wallet with the corresponding public keys to the keychains above.<aside class="warning"> It is **VERY IMPORTANT** to have the user print out / back up their user and backup keys. Failure to do so can result in the loss of funds! </aside> 
 
 ### Usage
 
-  `node createWallet.js <user> <pass> <otp> <label>`
+`node createWallet.js <user> <pass> <otp> <label>`
 
 ### Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-user | string | YES | username (your email on the test environment)
-pass | string | YES | password on BitGo
-otp | number | YES | the one-time-password (you can use 0000000 in the test environment)
-label | string | YES | the wallet name as shown in the BitGo UI
+| Name  | Type   | Required | Description                                                         |
+| ----- | ------ | -------- | ------------------------------------------------------------------- |
+| user  | string | YES      | username (your email on the test environment)                       |
+| pass  | string | YES      | password on BitGo                                                   |
+| otp   | number | YES      | the one-time-password (you can use 0000000 in the test environment) |
+| label | string | YES      | the wallet name as shown in the BitGo UI                            |
 
 ## Send Bitcoins to an Address
 
@@ -5735,40 +5632,39 @@ bitgo.authenticate({ username: user, password: password, otp: otp }, function(er
   });
 });
 ```
-```
-$ node sendBitcoin tester@bitgo.com superhardseypassphrase 0000000 2N91XzUxLrSkfDMaRcwQhe9DauhZMhUoxGr superhardseypassphrase 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD 10000
-```
+
+    $ node sendBitcoin tester@bitgo.com superhardseypassphrase 0000000 2N91XzUxLrSkfDMaRcwQhe9DauhZMhUoxGr superhardseypassphrase 2N4Xz4itCdKKUREiySS7oBzoXUKnuxP4nRD 10000
+    
 
 > Example output
 
-```
-{ "tx": "01000000017bc6aca03146d8d10b875781...",
-  "hash": "101f1f0f2218b0a0ac9aea1c054fbba7d2e75e09fbeeae7acea0254baa9505b7",
-  "fee": 10000 }
-```
+    { "tx": "01000000017bc6aca03146d8d10b875781...",
+      "hash": "101f1f0f2218b0a0ac9aea1c054fbba7d2e75e09fbeeae7acea0254baa9505b7",
+      "fee": 10000 }
+    
 
 Sends Bitcoin to another bitcoin address. The example uses the following steps:
 
-1. Authenticates with BitGo
-2. Unlocks the account to make it possible to spend coins
-3. Gets the wallet from the server by the provided walletId.
-4. Calls the wallet.sendCoins method, which finds the user key, decrypts it, creates and signs the transaction and sends it to BitGo for signing.
+  1. Authenticates with BitGo
+  2. Unlocks the account to make it possible to spend coins
+  3. Gets the wallet from the server by the provided walletId.
+  4. Calls the wallet.sendCoins method, which finds the user key, decrypts it, creates and signs the transaction and sends it to BitGo for signing.
 
 ### Usage
 
-  `node sendBitcoin <user> <pass> <otp> <walletId> <walletPassphrase> <destinationAddress> <amountSatoshis>`
+`node sendBitcoin <user> <pass> <otp> <walletId> <walletPassphrase> <destinationAddress> <amountSatoshis>`
 
 ### Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-user | string | YES | username (your email on the test environment)
-pass | string | YES | password on BitGo
-otp | number | YES | the one-time-password (you can use 0000000 in the test environment)
-walletId | bitcoin address (string) | YES | the wallet name as shown in the BitGo UI
-walletPassphrase | string | YES | the passphrase used to encrypt the user's private key
-destinationAddress | bitcoin address (string) | YES | the destination address of the wallet
-amountSatoshis | string | YES | the number of satoshis to send, e.g. 0.1*1e8 for 0.1 bitcoin
+| Name               | Type                     | Required | Description                                                         |
+| ------------------ | ------------------------ | -------- | ------------------------------------------------------------------- |
+| user               | string                   | YES      | username (your email on the test environment)                       |
+| pass               | string                   | YES      | password on BitGo                                                   |
+| otp                | number                   | YES      | the one-time-password (you can use 0000000 in the test environment) |
+| walletId           | bitcoin address (string) | YES      | the wallet name as shown in the BitGo UI                            |
+| walletPassphrase   | string                   | YES      | the passphrase used to encrypt the user's private key               |
+| destinationAddress | bitcoin address (string) | YES      | the destination address of the wallet                               |
+| amountSatoshis     | string                   | YES      | the number of satoshis to send, e.g. 0.1*1e8 for 0.1 bitcoin        |
 
 ## Webhook Oracle Policy
 
@@ -5813,31 +5709,31 @@ bitgo.authenticate({ username: user, password: password, otp: otp }, function(er
   });
 });
 ```
+
 ```shell
 $ node addPolicyWebhookAndSendCoins bencxr@fragnetics.com nicehardpassword 0000000 2MufYDkh6iwNDtyREBeAXcrRDDAopG1RNc2 https://486d7844.ngrok.com/ walletpasw0rd 2N8ryDAob6Qn8uCsWvkkQDhyeCQTqybGUFe 1380000
 ```
 
 > Example output
 
-```
-Getting wallet..
-Balance is: 1.2582
-{ id: 'webhookRule1',
-  type: 'webhook',
-  action: { type: 'deny' },
-  condition: { url: 'https://486d7844.ngrok.com/' } }
-Setting webhook policy rule..
-New policy:
-{ id: '5632aa4039cccac60913ea0ed44276c0',
-  rules:
-   [ { id: 'webhookRule1',
-       type: 'webhook',
-       action: [Object],
-       condition: [Object] } ] }
-{ status: 'accepted',
-  tx: '0100000001a89f36c0b714878cdd4cddf5...' }
-Removed policy rule
-```
+    Getting wallet..
+    Balance is: 1.2582
+    { id: 'webhookRule1',
+      type: 'webhook',
+      action: { type: 'deny' },
+      condition: { url: 'https://486d7844.ngrok.com/' } }
+    Setting webhook policy rule..
+    New policy:
+    { id: '5632aa4039cccac60913ea0ed44276c0',
+      rules:
+       [ { id: 'webhookRule1',
+           type: 'webhook',
+           action: [Object],
+           condition: [Object] } ] }
+    { status: 'accepted',
+      tx: '0100000001a89f36c0b714878cdd4cddf5...' }
+    Removed policy rule
+    
 
 > Example webhook callback (sent to the URL provided, any non-200 response will trigger the policy denial)
 
@@ -5864,63 +5760,56 @@ Removed policy rule
 }
 ```
 
-This example demonstrates how to set up a webhook policy on a wallet capable of executing any custom external logic via a URL endpoint (potentially a script or other program) on the Internet.
-This allows external state to be mapped into a contract where various users share a single wallet (the URL acts as the "oracle").
+This example demonstrates how to set up a webhook policy on a wallet capable of executing any custom external logic via a URL endpoint (potentially a script or other program) on the Internet. This allows external state to be mapped into a contract where various users share a single wallet (the URL acts as the "oracle").
 
 When a transaction is made, the URL provided is hit. If it returns a 200 status, then the transaction will be allowed. If not, then the policy rule is fired and the transaction denied.
 
-1. Authenticates with BitGo
-2. Unlocks the account to make it possible to spend coins and set policy
-3. Gets the wallet from the server by the provided walletId
-4. Sets up the policy which will cause the URL provided to be hit.
-5. Calls the wallet.sendCoins method, which finds the user key, decrypts it, creates and signs the transaction and sends it to BitGo for signing.
-6. Removes the policy and returns the result.
+  1. Authenticates with BitGo
+  2. Unlocks the account to make it possible to spend coins and set policy
+  3. Gets the wallet from the server by the provided walletId
+  4. Sets up the policy which will cause the URL provided to be hit.
+  5. Calls the wallet.sendCoins method, which finds the user key, decrypts it, creates and signs the transaction and sends it to BitGo for signing.
+  6. Removes the policy and returns the result.
 
 When testing locally, one can create a URL by first setting up a local server (express or any http server will work), and then running a tool such as ngrok to get a public facing url.
 
 ### Usage
 
-  `node addPolicyWebhookAndSendCoins <user> <pass> <otp> <walletId> <url> <walletPassphrase> <destinationAddress> <amountSatoshis>`
+`node addPolicyWebhookAndSendCoins <user> <pass> <otp> <walletId> <url> <walletPassphrase> <destinationAddress> <amountSatoshis>`
 
 ### Parameters
 
-Name | Type | Required | Description
---------- | ---- | -------- | -----------
-user | string | YES | username (your email on the test environment)
-pass | string | YES | password on BitGo
-otp | number | YES | the one-time-password (you can use 0000000 in the test environment)
-walletId | bitcoin address (string) | YES | the wallet name as shown in the BitGo UI
-url | http endpoint (string) | YES | the URL to set up the policy with
-walletPassphrase | string | YES | the passphrase used to encrypt the user's private key
-destinationAddress | bitcoin address (string) | YES | the destination address of the wallet
-amountSatoshis | string | YES | the number of satoshis to send, e.g. 0.1*1e8 for 0.1 bitcoin
+| Name               | Type                     | Required | Description                                                         |
+| ------------------ | ------------------------ | -------- | ------------------------------------------------------------------- |
+| user               | string                   | YES      | username (your email on the test environment)                       |
+| pass               | string                   | YES      | password on BitGo                                                   |
+| otp                | number                   | YES      | the one-time-password (you can use 0000000 in the test environment) |
+| walletId           | bitcoin address (string) | YES      | the wallet name as shown in the BitGo UI                            |
+| url                | http endpoint (string)   | YES      | the URL to set up the policy with                                   |
+| walletPassphrase   | string                   | YES      | the passphrase used to encrypt the user's private key               |
+| destinationAddress | bitcoin address (string) | YES      | the destination address of the wallet                               |
+| amountSatoshis     | string                   | YES      | the number of satoshis to send, e.g. 0.1*1e8 for 0.1 bitcoin        |
 
 ## Recover Wallet
 
-RecoverWallet is a tool that can recover funds from a BitGo wallet without using the BitGo service.
-It is provided for demonstration purposes and to prove that BitGo wallets are 100% recoverable
-even if the BitGo Service is unavailable.  It is not expected that this tool would be used for
-production environments.
+RecoverWallet is a tool that can recover funds from a BitGo wallet without using the BitGo service. It is provided for demonstration purposes and to prove that BitGo wallets are 100% recoverable even if the BitGo Service is unavailable. It is not expected that this tool would be used for production environments.
 
-Given only the information on a wallet&#39;s keycard, the tool constructs a transaction
-which moves all of the funds within that wallet to a new account of the user&#39;s choice.  This is done
-without using any BitGo Service APIs.
+Given only the information on a wallet's keycard, the tool constructs a transaction which moves all of the funds within that wallet to a new account of the user's choice. This is done without using any BitGo Service APIs.
 
 The RecoverWallet tool is interactive or command line driven.
 
 ### Usage
 
-  node recoverwallet.js --userKey <UserKey from Keycard> --backupKey <BackupKey from Keycard> --bitgoKey <BitGo public key from Keycard>
+node recoverwallet.js --userKey <userkey from keycard> --backupKey <backupkey from keycard> --bitgoKey <bitgo public key from keycard>
 
 ### Parameters
 
-Name | Meaning
---------- | -----
-userKey|The user extended private key for the wallet. (Box A from the Wallet KeyCard)
-backupKey|The backup extended private key for the wallet.  (Box B from the Wallet KeyCard)
-bitgoKey|The bitgo extended public key for the wallet. (Box C from the Wallet KeyCard)
-testnet|Flag to use testnet instead of the production bitcoin network
-nosend|Flag to create the transaction but not send it
-password|The password to use to decrypt the userKey and backupKey
-destination|The bitcoin address to which you want to send the recovered funds
-
+| Name        | Meaning                                                                         |
+| ----------- | ------------------------------------------------------------------------------- |
+| userKey     | The user extended private key for the wallet. (Box A from the Wallet KeyCard)   |
+| backupKey   | The backup extended private key for the wallet. (Box B from the Wallet KeyCard) |
+| bitgoKey    | The bitgo extended public key for the wallet. (Box C from the Wallet KeyCard)   |
+| testnet     | Flag to use testnet instead of the production bitcoin network                   |
+| nosend      | Flag to create the transaction but not send it                                  |
+| password    | The password to use to decrypt the userKey and backupKey                        |
+| destination | The bitcoin address to which you want to send the recovered funds               |
