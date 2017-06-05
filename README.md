@@ -19,3 +19,5 @@ Any time a new commit is pushed to the remote master branch, Jenkins will run Sl
 3. Copy all folders and files into the BitGo client repository's static/api/ directory
 4. Run the server locally and go to http://localhost:3000/api and make sure the HTML is correct
 4. Create a diff in the BitGo client repository and land it once it's accepted
+
+If you try to get Slate to run on your machine, you should note that currently (as of 2017-05-05) there is an issue on the "master" branch of github.com/lord/slate. You want to fork off from the "dev" branch instead and use ruby 2.3 instead of ruby 2.4.
