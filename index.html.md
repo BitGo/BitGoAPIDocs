@@ -4998,6 +4998,12 @@ Get information about the current market
     }
 ```
 
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+currencyName | string | No | the 3 letter fiat symbol to request data for (returns all currencies if no argument is given)
+
 ### Response
 
 Returns a Market Model object. All prices are denominated in the user's set currency.
