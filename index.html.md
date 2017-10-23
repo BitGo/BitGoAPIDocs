@@ -3398,6 +3398,11 @@ BitGo wallets feature advanced security features such as multi-user or SMS appro
 To take advantage of this, a user/developer may add and modify policy rules on a wallet. Rules will trigger an associated action (set by the user).
 The policy engine will collect all triggered rule results, and perform any triggered actions in the order of `deny`, `getApproval` (from another user), or `getOTP` (sent via SMS to a specified user).
 
+<aside class="warning">
+Sending OTP via SMS is highly discouraged since it is easily intercepted and can result in the loss of funds!
+</aside>
+
+
 If a wallet carries a balance and there are more than two "admin" users associated with a Wallet,
 any policy change will require approval by another administrator before it will take effect (if there are no additional "admin" users, this will not be necessary).
 It is thus highly recommended to create wallets with at least 2 administrators by [performing a wallet share](#wallet-sharing).
