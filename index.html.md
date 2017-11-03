@@ -1890,7 +1890,8 @@ bitgo.wallets().get({ "id": walletId }, function callback(err, wallet) {
       "instant": true,
       "instantId": "56651c4c4e82b975616b58647c788fad",
       "sequenceId": "CustomID1",
-      "comment": "test transaction"
+      "comment": "test transaction",
+      "replayProtection": ["b2x"]
     },
     {
       "blockhash": "000000007e190d73d38f1372cb21562405c7ad88fdc3fe6bcba841228dc354c1",
@@ -1937,7 +1938,8 @@ bitgo.wallets().get({ "id": walletId }, function callback(err, wallet) {
       "pending": false,
       "instant": false,
       "sequenceId": "CustomID2",
-      "comment": "test transaction"
+      "comment": "test transaction",
+      "replayProtection": []
     }
   ],
   "start": 0,
@@ -2047,7 +2049,8 @@ bitgo.wallets().get({ "id": walletId }, function callback(err, wallet) {
     "instant": true,
     "instantId": "56651c4c4e82b975616b58661bad3ac",
     "sequenceId": "Custom1a",
-    "comment": "test transaction"
+    "comment": "test transaction",
+    "replayProtection": ["b2x"]
 }
 ```
 
@@ -2084,6 +2087,7 @@ instant | Boolean | Set to true if this transaction was sent using BitGo instant
 instantId | string | The identifier for the instant transaction to be used to reference / obtain the guarantee from BitGo
 sequenceId | string | The sequenceId (unique custom data provided when the transaction was sent)
 comment | string | The comment as set on the transaction
+replayProtection | string Array of blockchains which this transaction will not be replayed on 
 
 ### Errors
 Response | Description
@@ -2418,7 +2422,8 @@ segwit | boolean | No | Defaults to false, but is passed and set to true automat
             "tx_output_n": 0,
             "value": 78273186932,
             "wallet": "2N91XzUxLrSkfDMaRcwQhe9DauhZMhUoxGr",
-            "instant": false
+            "instant": false,
+            "replayProtection": ["b2x", "btg"]
         },
         {
             "address": "2NCB6qVywiBvWmrpcnFJ4jq8m6oZrFTCKDd",
@@ -2433,7 +2438,8 @@ segwit | boolean | No | Defaults to false, but is passed and set to true automat
             "tx_output_n": 1,
             "value": 1808807240,
             "wallet": "2N91XzUxLrSkfDMaRcwQhe9DauhZMhUoxGr",
-            "instant": true
+            "instant": true,
+            "replayProtection": []
         }
     ]
 }
@@ -2454,6 +2460,7 @@ chainPath | The BIP32 path of the unspent output relative to the wallet
 confirmations | Number of blocks seen on and after the unspent transaction was included in a block
 isChange | Boolean indicating this is an output from a previous spend originating on this wallet, and may be safe to spend even with 0 confirmations
 instant | Boolean indicating if this unspent can be used to create a BitGo Instant transaction guaranteed against double spends
+replayProtection | string Array of blockchains which this unspent will not be replayed on 
 
 ### Errors
 Response | Description
