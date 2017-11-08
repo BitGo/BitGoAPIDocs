@@ -1076,10 +1076,10 @@ https://test.bitgo.com/api/v1/wallet
 
 ```javascript
 var wallets = bitgo.wallets();
-wallets.list({}, function callback(err, wallets) {
+wallets.list({}, function callback(err, data) {
 // handle error, do something with wallets
-for (id in wallets) {
-  var wallet = wallets[id].wallet;
+for (var id in data.wallets) {
+  var wallet = data.wallets[id].wallet;
   console.log(JSON.stringify(wallet, null, 4));
 }
 });
