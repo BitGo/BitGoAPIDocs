@@ -1528,10 +1528,10 @@ in accordance with the policies set by the user.</p>
 -H <span class="s2">"Authorization: Bearer </span><span class="nv">$ACCESS_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
 https://test.bitgo.com/api/v1/wallet
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">wallets</span> <span class="o">=</span> <span class="nx">bitgo</span><span class="p">.</span><span class="nx">wallets</span><span class="p">();</span>
-<span class="nx">wallets</span><span class="p">.</span><span class="nx">list</span><span class="p">({},</span> <span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">wallets</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">wallets</span><span class="p">.</span><span class="nx">list</span><span class="p">({},</span> <span class="kd">function</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 <span class="c1">// handle error, do something with wallets</span>
-<span class="k">for</span> <span class="p">(</span><span class="nx">id</span> <span class="k">in</span> <span class="nx">wallets</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="nx">wallets</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">wallet</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">id</span> <span class="k">in</span> <span class="nx">data</span><span class="p">.</span><span class="nx">wallets</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">wallet</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">wallets</span><span class="p">[</span><span class="nx">id</span><span class="p">].</span><span class="nx">wallet</span><span class="p">;</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">wallet</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
 <span class="p">}</span>
 <span class="p">});</span>
@@ -2241,12 +2241,6 @@ https://test.bitgo.com/api/v1/wallet/<span class="nv">$WALLETID</span>/address/<
 <td>Yes</td>
 <td>0, 1, 10 or 11 (10 or 11 for SegWit)</td>
 </tr>
-<tr>
-<td>number</td>
-<td>Yes</td>
-<td>10 or 11 for SegWit</td>
-<td></td>
-</tr>
 </tbody></table>
 
 <blockquote>
@@ -2809,7 +2803,8 @@ https://test.bitgo.com/api/v1/wallet/<span class="nv">$WALLET</span>/tx
       </span><span class="s2">"instant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"instantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56651c4c4e82b975616b58647c788fad"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sequenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CustomID1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test transaction"</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test transaction"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replayProtection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"b2x"</span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"blockhash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000007e190d73d38f1372cb21562405c7ad88fdc3fe6bcba841228dc354c1"</span><span class="p">,</span><span class="w">
@@ -2856,7 +2851,8 @@ https://test.bitgo.com/api/v1/wallet/<span class="nv">$WALLET</span>/tx
       </span><span class="s2">"pending"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"instant"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="s2">"sequenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CustomID2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test transaction"</span><span class="w">
+      </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test transaction"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"replayProtection"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3010,7 +3006,8 @@ https://test.bitgo.com/api/v1/wallet/<span class="nv">$WALLET</span>/tx/<span cl
     </span><span class="s2">"instant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"instantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56651c4c4e82b975616b58661bad3ac"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"sequenceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom1a"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test transaction"</span><span class="w">
+    </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test transaction"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"replayProtection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"b2x"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Get information about a transaction on a wallet.</p>
@@ -3123,6 +3120,11 @@ https://test.bitgo.com/api/v1/wallet/<span class="nv">$WALLET</span>/tx/<span cl
 <td>comment</td>
 <td>string</td>
 <td>The comment as set on the transaction</td>
+</tr>
+<tr>
+<td>replayProtection</td>
+<td>string Array of blockchains which this transaction will not be replayed on</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -3643,7 +3645,8 @@ that transaction.</p>
             </span><span class="s2">"tx_output_n"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">78273186932</span><span class="p">,</span><span class="w">
             </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2N91XzUxLrSkfDMaRcwQhe9DauhZMhUoxGr"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instant"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="s2">"instant"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"replayProtection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"b2x"</span><span class="p">,</span><span class="w"> </span><span class="s2">"btg"</span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2NCB6qVywiBvWmrpcnFJ4jq8m6oZrFTCKDd"</span><span class="p">,</span><span class="w">
@@ -3658,7 +3661,8 @@ that transaction.</p>
             </span><span class="s2">"tx_output_n"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1808807240</span><span class="p">,</span><span class="w">
             </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2N91XzUxLrSkfDMaRcwQhe9DauhZMhUoxGr"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="s2">"instant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"replayProtection"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3708,6 +3712,10 @@ that transaction.</p>
 <tr>
 <td>instant</td>
 <td>Boolean indicating if this unspent can be used to create a BitGo Instant transaction guaranteed against double spends</td>
+</tr>
+<tr>
+<td>replayProtection</td>
+<td>string Array of blockchains which this unspent will not be replayed on</td>
 </tr>
 </tbody></table>
 
@@ -5197,6 +5205,10 @@ https://test.bitgo.com/api/v1/wallet/<span class="nv">$WALLETID</span>/user/<spa
 <p>BitGo wallets feature advanced security features such as multi-user or SMS approval of transactions and spending limits.
 To take advantage of this, a user/developer may add and modify policy rules on a wallet. Rules will trigger an associated action (set by the user).
 The policy engine will collect all triggered rule results, and perform any triggered actions in the order of <code class="prettyprint">deny</code>, <code class="prettyprint">getApproval</code> (from another user), or <code class="prettyprint">getOTP</code> (sent via SMS to a specified user).</p>
+
+<aside class="warning">
+Sending OTP via SMS is highly discouraged since it is easily intercepted and can result in the loss of funds!
+</aside>
 
 <p>If a wallet carries a balance and there are more than two &ldquo;admin&rdquo; users associated with a Wallet,
 any policy change will require approval by another administrator before it will take effect (if there are no additional &ldquo;admin&rdquo; users, this will not be necessary).
