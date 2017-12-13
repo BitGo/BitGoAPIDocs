@@ -1136,9 +1136,10 @@ Get the list of wallets for the user
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-skip | number | No | The starting index number to list from.  Default is 0.
-limit | number | No | Max number of results to return in a single call (default=25, max=250)
 enterpriseId | string | No | Filter list by Enterprise ID
+getbalances | boolean | No | Set to true to return the "balance" field for each wallet.
+limit | number | No | Max number of results to return in a single call (default=25, max=250)
+skip | number | No | The starting index number to list from.  Default is 0.
 
 ### Response
 
