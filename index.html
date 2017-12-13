@@ -1593,10 +1593,16 @@ https://test.bitgo.com/api/v1/wallet
 </tr>
 </thead><tbody>
 <tr>
-<td>skip</td>
-<td>number</td>
+<td>enterpriseId</td>
+<td>string</td>
 <td>No</td>
-<td>The starting index number to list from.  Default is 0.</td>
+<td>Filter list by Enterprise ID</td>
+</tr>
+<tr>
+<td>getbalances</td>
+<td>boolean</td>
+<td>No</td>
+<td>Set to true to return the &ldquo;balance&rdquo; field for each wallet.</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -1605,10 +1611,10 @@ https://test.bitgo.com/api/v1/wallet
 <td>Max number of results to return in a single call (default=25, max=250)</td>
 </tr>
 <tr>
-<td>enterpriseId</td>
-<td>string</td>
+<td>skip</td>
+<td>number</td>
 <td>No</td>
-<td>Filter list by Enterprise ID</td>
+<td>The starting index number to list from.  Default is 0.</td>
 </tr>
 </tbody></table>
 
@@ -7455,6 +7461,24 @@ http://<span class="nv">$BITGO_EXPRESS_HOST</span>:3080/api/v1/encrypt
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currencyName</td>
+<td>string</td>
+<td>No</td>
+<td>the 3 letter fiat symbol to request data for (returns all currencies if no argument is given)</td>
+</tr>
+</tbody></table>
+
 <h3 id="response">Response</h3>
 
 <p>Returns a Market Model object. All prices are denominated in the user&rsquo;s set currency.</p>
