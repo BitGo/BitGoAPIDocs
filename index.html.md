@@ -3304,6 +3304,48 @@ Field | Description
 state | end state of walletShare (should be 'accepted')
 changed | true if successful
 
+## Resend Wallet Share Invite
+
+```shell
+SHAREID='54c594802ebe8510790092958f526f47'
+
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $ACCESS_TOKEN" \
+https://test.bitgo.com/api/v1/walletshare/$SHAREID/resendemail
+```
+
+```javascript
+bitgo.wallets().resendShareInvite({ walletShareId: shareId }, function(err, result) {
+    if (err) { throw err; }
+    console.dir(result);
+)
+```
+
+> Example Response
+
+```json
+{ "resent": true }
+```
+
+Can be used to resend a wallet share invitation email. The share should not have been accepted yet.
+
+### HTTP Request
+
+`POST/api/v1/walletshare/:walletShareId/resendemail`
+
+### URL Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+walletShareId | string | Yes | The Wallet share whose invitation should be resent.
+
+### Response
+
+Field | Description
+----- | -----------
+resent | true if invitation was successfully resent
+
 ## Cancel Wallet Share
 
 ```shell
