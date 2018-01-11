@@ -5074,6 +5074,61 @@ This operation requires the session to be unlocked using the Unlock API.
 </tr>
 </tbody></table>
 
+<h2 id="resend-wallet-share-invite">Resend Wallet Share Invite</h2>
+<pre class="highlight shell tab-shell"><code><span class="nv">SHAREID</span><span class="o">=</span><span class="s1">'54c594802ebe8510790092958f526f47'</span>
+
+curl -X POST <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer </span><span class="nv">$ACCESS_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+https://test.bitgo.com/api/v1/walletshare/<span class="nv">$SHAREID</span>/resendemail
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">bitgo</span><span class="p">.</span><span class="nx">wallets</span><span class="p">().</span><span class="nx">resendShareInvite</span><span class="p">({</span> <span class="na">walletShareId</span><span class="p">:</span> <span class="nx">shareId</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"resent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Can be used to resend a wallet share invitation email. The share should not have been accepted yet.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST/api/v1/walletshare/:walletShareId/resendemail</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>walletShareId</td>
+<td>string</td>
+<td>Yes</td>
+<td>The Wallet share whose invitation should be resent.</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resent</td>
+<td>true if invitation was successfully resent</td>
+</tr>
+</tbody></table>
+
 <h2 id="cancel-wallet-share">Cancel Wallet Share</h2>
 <pre class="highlight shell tab-shell"><code><span class="nv">SHAREID</span><span class="o">=</span><span class="s1">'54c594802ebe8510790092958f526f47'</span>
 
