@@ -2398,7 +2398,7 @@ Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 target | number | No | The API will attempt to return enough unspents to accumulate to at least this amount (in satoshis).
 skip | number | No | The starting index number to list from.  Default is 0.
-limit | number | No | Max number of results to return in a single call (default=100, max=250)
+limit | number | No | Max number of results to return in a single call (default=100, max=5000)
 minConfirms | number | No | Only include unspents with at least this many confirmations.
 minSize | number | No | Only include unspents that are at least this many satoshis.
 segwit | boolean | No | Defaults to false, but is passed and set to true automatically from SDK version 4.3.0 forward.
