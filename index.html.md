@@ -3460,6 +3460,9 @@ any policy change will require approval by another administrator before it will 
 It is thus highly recommended to create wallets with at least 2 administrators by [performing a wallet share](#wallet-sharing).
 This way, policy can be effective even if a single user is compromised.
 
+Additionally, to prevent working around policies by policy changes, policies are immutable starting 48 hours after their creation. In order to unlock a policy, you
+will need to contact support and verify your identity.
+
 For policies with the `getOTP` action type, successfully sending a transaction will require a 7 digit OTP before the
 transaction is signed and sent. This action type lets you offer a Two Factor Authentication security option for your own service, without implementing it yourself.
 The first attempt to send a transaction will fail and send out the code to the phone specified on the rule. Once you acquire
