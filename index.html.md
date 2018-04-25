@@ -3083,6 +3083,65 @@ Response | Description
 400 Bad Request | The request parameters were missing or incorrect.
 401 Unauthorized | The authentication parameters did not match, or unlock is required.
 
+## Accelerate Transaction
+
+```javascript
+var stuckTxId = "a07c26fd216227e3517ffb9050bae2ae00405ff9454708191dfdc82c35e8a0c2"; // transaction to accelerate
+var newFeeRate = 30000; // new fee rate for the stuck transaction (satoshis per 1000 bytes)
+
+bitgo.wallets().get({ id: walletId }, function(err, wallet) {
+  bitgo.unlock({ otp: otp }, function(err) {
+    if (err) {
+      console.dir(err);
+      throw new Error("Could not unlock!");
+    }
+    wallet.accelerateTransaction({ transactionID: stuckTxId, feeRate: newFeeRate, walletPassphrase: passphrase }, function(err, result) {
+      console.dir(result);
+    });
+  });
+});
+```
+
+> Example Response
+
+```json
+{
+  "status": "accepted",
+  "tx": "01000000000101de9940ece98556e7867c70e0de795705224cfa6...",
+  "hash": "22a9f67f9563edd0f703c1d22f822573e5a39d68b6bef0cfa...",
+  "instant": false
+}
+```
+
+This function can be used to increase the effective fee rate for any transaction which is sent by or received to the wallet. It works by using an unspent output from the original transaction (known as the parent transaction) as an input for a new transaction (known as the child transaction) which pays higher fees. Because the child transaction consumes an unspent output from the parent transaction, any miner which would like to collect the child transaction's fees will also need to include the parent transaction in the block. This technique for increasing transaction fee rates is known as Child-Pays-For-Parent (CPFP).
+
+The main use case for this functionality is, as the name suggests, to accelerate the confirmation of a transaction which has become stuck in the mempool due to a low fee rate.
+
+The child transaction will, by necessity, consume one unspent output from the parent transaction. If that unspent output does not cover the total fees required by the child transaction, additional unspents from the wallet with enough value to cover the remaining fees will be used. These unspents will be either segwit or P2SH unspent outputs, with segwit unspent outputs being preferred. If no additional unspent outputs could be found, or the additional unspent outputs do not cover the remaining child fee, an error will be returned and no child transaction will be broadcast.
+
+### Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+transactionID | String | Yes | transaction ID of the transaction whose confirmation should be accelerated
+feeRate | number | Yes | The new effective fee rate for the accelerated transaction. Make sure this rate is competitive with the current transaction fee rates to ensure that the transaction is quickly confirmed.
+walletPassphrase | String | No | Passphrase for the wallet. This is used to decrypt the local keychain, which is required for signing the child transaction. If this is not provided, then you must provide the xprv parameter.
+xprv | String | No | Private key for the wallet. This is used to sign the child transaction. If this is not provided, then you must provide the walletPassphrase parameter.
+maxAdditionalUnspents | Number | No | The maximum number of additional unspent outputs which should be used to pay any child transaction fees which the parent output cannot cover. The default limit of additional unspent outputs is 100.
+
+### Response
+
+The return value of `accelerateTransaction` is the result of calling `sendTransaction` on the child transaction.
+
+Field | Description
+----- | -----------
+hash | The hash (transaction ID) of the child transaction.
+instant | Whether the child transaction is eligible for BitGo Instant
+instantid | If present, the instant ID the child transaction
+status | The status of the child transaction (usually "accepted")
+tx | The raw transaction hex of the child transaction
+
+
 # Wallet Sharing
 
 A BitGo wallet may be shared between multiple users.
