@@ -4737,6 +4737,112 @@ for a default of 1 hour.</p>
 </tr>
 </tbody></table>
 
+<h2 id="accelerate-transaction">Accelerate Transaction</h2>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">stuckTxId</span> <span class="o">=</span> <span class="s2">"a07c26fd216227e3517ffb9050bae2ae00405ff9454708191dfdc82c35e8a0c2"</span><span class="p">;</span> <span class="c1">// transaction to accelerate</span>
+<span class="kd">var</span> <span class="nx">newFeeRate</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">;</span> <span class="c1">// new fee rate for the stuck transaction (satoshis per 1000 bytes)</span>
+
+<span class="nx">bitgo</span><span class="p">.</span><span class="nx">wallets</span><span class="p">().</span><span class="nx">get</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">walletId</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">wallet</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">bitgo</span><span class="p">.</span><span class="nx">unlock</span><span class="p">({</span> <span class="na">otp</span><span class="p">:</span> <span class="nx">otp</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">"Could not unlock!"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">wallet</span><span class="p">.</span><span class="nx">accelerateTransaction</span><span class="p">({</span> <span class="na">transactionID</span><span class="p">:</span> <span class="nx">stuckTxId</span><span class="p">,</span> <span class="na">feeRate</span><span class="p">:</span> <span class="nx">newFeeRate</span><span class="p">,</span> <span class="na">walletPassphrase</span><span class="p">:</span> <span class="nx">passphrase</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01000000000101de9940ece98556e7867c70e0de795705224cfa6..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22a9f67f9563edd0f703c1d22f822573e5a39d68b6bef0cfa..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"instant"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This function can be used to increase the effective fee rate for any transaction which is sent by or received to the wallet. It works by using an unspent output from the original transaction (known as the parent transaction) as an input for a new transaction (known as the child transaction) which pays higher fees. Because the child transaction consumes an unspent output from the parent transaction, any miner which would like to collect the child transaction&rsquo;s fees will also need to include the parent transaction in the block. This technique for increasing transaction fee rates is known as Child-Pays-For-Parent (CPFP).</p>
+
+<p>The main use case for this functionality is, as the name suggests, to accelerate the confirmation of a transaction which has become stuck in the mempool due to a low fee rate.</p>
+
+<p>The child transaction will, by necessity, consume one unspent output from the parent transaction. If that unspent output does not cover the total fees required by the child transaction, additional unspents from the wallet with enough value to cover the remaining fees will be used. These unspents will be either segwit or P2SH unspent outputs, with segwit unspent outputs being preferred. If no additional unspent outputs could be found, or the additional unspent outputs do not cover the remaining child fee, an error will be returned and no child transaction will be broadcast.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transactionID</td>
+<td>String</td>
+<td>Yes</td>
+<td>transaction ID of the transaction whose confirmation should be accelerated</td>
+</tr>
+<tr>
+<td>feeRate</td>
+<td>number</td>
+<td>Yes</td>
+<td>The new effective fee rate for the accelerated transaction. Make sure this rate is competitive with the current transaction fee rates to ensure that the transaction is quickly confirmed.</td>
+</tr>
+<tr>
+<td>walletPassphrase</td>
+<td>String</td>
+<td>No</td>
+<td>Passphrase for the wallet. This is used to decrypt the local keychain, which is required for signing the child transaction. If this is not provided, then you must provide the xprv parameter.</td>
+</tr>
+<tr>
+<td>xprv</td>
+<td>String</td>
+<td>No</td>
+<td>Private key for the wallet. This is used to sign the child transaction. If this is not provided, then you must provide the walletPassphrase parameter.</td>
+</tr>
+<tr>
+<td>maxAdditionalUnspents</td>
+<td>Number</td>
+<td>No</td>
+<td>The maximum number of additional unspent outputs which should be used to pay any child transaction fees which the parent output cannot cover. The default limit of additional unspent outputs is 100.</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>The return value of <code class="prettyprint">accelerateTransaction</code> is the result of calling <code class="prettyprint">sendTransaction</code> on the child transaction.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>hash</td>
+<td>The hash (transaction ID) of the child transaction.</td>
+</tr>
+<tr>
+<td>instant</td>
+<td>Whether the child transaction is eligible for BitGo Instant</td>
+</tr>
+<tr>
+<td>instantid</td>
+<td>If present, the instant ID the child transaction</td>
+</tr>
+<tr>
+<td>status</td>
+<td>The status of the child transaction (usually &ldquo;accepted&rdquo;)</td>
+</tr>
+<tr>
+<td>tx</td>
+<td>The raw transaction hex of the child transaction</td>
+</tr>
+</tbody></table>
+
 <h1 id="wallet-sharing">Wallet Sharing</h1>
 
 <p>A BitGo wallet may be shared between multiple users.
@@ -5287,6 +5393,9 @@ Sending OTP via SMS is highly discouraged since it is easily intercepted and can
 any policy change will require approval by another administrator before it will take effect (if there are no additional &ldquo;admin&rdquo; users, this will not be necessary).
 It is thus highly recommended to create wallets with at least 2 administrators by <a href="#wallet-sharing">performing a wallet share</a>.
 This way, policy can be effective even if a single user is compromised.</p>
+
+<p>Additionally, to prevent working around policies by policy changes, policies are immutable starting 48 hours after their creation. In order to unlock a policy, you
+will need to contact support and verify your identity.</p>
 
 <p>For policies with the <code class="prettyprint">getOTP</code> action type, successfully sending a transaction will require a 7 digit OTP before the
 transaction is signed and sent. This action type lets you offer a Two Factor Authentication security option for your own service, without implementing it yourself.
