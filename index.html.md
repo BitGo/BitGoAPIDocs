@@ -6,9 +6,8 @@ language_tabs:
   - shell
 
 toc_footers:
- - <a href="https://www.bitgo.com/" target="_new">BitGo Website</a>
- - <a href="https://www.bitgo.com/terms" target="_new">Services Agreement</a>
- - <a href="https://www.bitgo.com/settings" target="_new">BitGo Settings (Get API Access Token)</a>
+ - <a href="https://www.bitgo.com/" target="_new">BitGo</a>
+ - <a href="https://www.bitgo.com/info/terms" target="_new">Terms and Conditions</a>
  - <a>Languages</a>
  - <a href="index.html">- English</a>
  - <a href="ja/index.html">- Japanese 日本語</a>
@@ -19,7 +18,9 @@ toc_footers:
 # Getting Started
 
 <aside class="info">
-Our developer platform is live. Visit the <a href="https://www.bitgo.com/platform">BitGo Platform Portal</a>  to sign up for integration support, access tokens and more information.
+This documentation is for BitGo Platform V1 and only supports Bitcoin. New features are no longer being developed for BitGo Platform V1.
+<br/><br/>
+BitGo Platform V2 supports Bitcoin, Ethereum, Ripple, Litecoin, and more through a single, unified interface. <a href="https://www.bitgo.com/api/v2/">Get started with BitGo Platform V2 here.</a>
 </aside>
 
 ### Overview
@@ -55,7 +56,7 @@ enables you to use multi-signature features in your own applications so you can 
 the full flexibility of multiple users, cosigners and state-of-the-art
 fraud detection services to protect against loss and theft.
 
-For more information, please read the <a href="https://www.bitgo.com/p2sh_safe_address" target="_new">BitGo Whitepaper</a>.
+For more information, please read the <a href="https://www.bitgo.com/info/p2sh_safe_address" target="_new">BitGo Whitepaper</a>.
 
 ### HD Wallets
 
@@ -331,8 +332,7 @@ Returns a User Model object for the currently authenticated user.
 ## Login
 
 Get a token for first-party access to the BitGo API.  First-party access is only intended for users
-accessing their own BitGo accounts.  For 3rd party access to the BitGo API on behalf of another
-user, please see **Partner Authentication**.
+accessing their own BitGo accounts.
 
 ```shell
 EMAIL="janedoe@bitgo.com"
@@ -605,11 +605,6 @@ None
 Response | Description
 -------- | -----------
 401 Unauthorized | The authentication parameters did not match
-
-## Partner Authentication
-
-3rd party applications using the BitGo API use OAuth to authenticate through BitGo.
-Please contact BitGo for a partner ID and more information.
 
 # Keychains
 
